@@ -4,41 +4,20 @@
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Personnels";
 	$_SESSION['breadcrumb_nav3'] ="";
+	$_SESSION['link_nav1'] ="index.php";
+	$_SESSION['link_nav2'] ="personnels.php";
+	$_SESSION['link_nav3'] ="";
+
 	
 ?>
 <?php require_once('menu.php'); ?>
-<div id="page-wrapper">
-		    <div class="header"> 
-				<h1 class="page-header">
-					Gestion <small> Personnels</small>
-				</h1>
-				<ol class="breadcrumb">
-				  <li><a href="#">Acceuil</a></li>
-				  <li><a href="#">Personnels</a></li>
-			    </ol> 
-									
-		    </div>
-			<br/>
-			<div class="row">
-				<div class="col-md-12">
-					<?php if(isset($_REQUEST['m'])) {?>
-							<div class="alert alert-success">
-								<?php echo $_REQUEST['m']?>
-								<a href="#" data-dismiss="alert" class="close">x</a>
-							</div>
-					<?php } ?>
-				</div>
-			</div>
-     <div id="page-inner"> 
-			  <div class="row">
-                <div class="col-md-12">
-                    <!-- Advanced Tables -->
-                    <div class="panel panel-default">
-
-             <div class="panel-body">
-                        
-			<br/>
-			<div class="widget-content nopadding">
+<div id="page-inner"> 
+	<div class="row">
+        <div class="col-md-12">
+        <!-- Advanced Tables -->
+            <div class="panel panel-default">
+	            <div class="panel-body">
+					<div class="table-responsive">
 				<?php 
 					$where1="";
 					if(isset($_POST['txtrechercher']) and !empty($_REQUEST['txtrechercher']))
@@ -56,7 +35,7 @@
 					{
 				?>
 				<br/>
-					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+				<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 				      <thead>
 				         <th>Nom</th>
 				         <th>Code</th>
@@ -113,20 +92,18 @@
 							$i++; 
 						}
 						?>
-					  </tbody>
-					</table>
-				<br/>
-				<?php 
-				} //Fin If
-				?>
-				</div>
-                            
-                    </div>
-                 </div>
-                    <!--End Advanced Tables -->
+							  </tbody>
+						</table>
+						<br/>
+						<?php 
+						} //Fin If
+						?>
+					</div>
                 </div>
             </div>
-	    </div>
-             <!-- /. PAGE INNER  -->			 
+       <!--End Advanced Tables -->
+        </div>
     </div>
+</div>
+             <!-- /. PAGE INNER  -->			 
 <?php require_once('foot.php'); ?>

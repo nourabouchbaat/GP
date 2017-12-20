@@ -93,7 +93,7 @@
 					{
 				?>
 				<form action="gestion.php" name="frm" method="post" 
-					onsubmit="return checkForm(document.frm);" class="form-horizontal">
+					onsubmit="return checkForm(document.frm);" >
 					<input type="hidden" name="act" value="ajouter_paiement"/>
 					<input type="hidden" name="DATE_POINTAGE_START" value="<?php echo $_REQUEST['dateStart'] ?>"/>
 					<input type="hidden" name="DATE_POINTAGE_END" value="<?php echo $_REQUEST['dateFin'] ?>"/>
