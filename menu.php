@@ -100,12 +100,12 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="postes.php" >
-                                        <i class="glyphicon glyphicon-list-alt"></i> Liste postes
+                                        <i class="glyphicon glyphicon-list-alt"></i> Liste des postes
                                     </a>
                             </li>
                             <li>
                                 <a href="ajouter_poste.php" >
-                                        <i class="fa fa-plus-circle"></i> &nbsp;<?php echo _AJOUTER ?> poste
+                                        <i class="fa fa-plus-circle"></i> &nbsp;<?php echo _AJOUTER ?> un poste
                                     </a>
                             </li>
                         </ul>
@@ -116,3 +116,15 @@
             </div>
 
         </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div class="header"> 
+                <h1 class="page-header">
+                    <?php echo $_SESSION['titre'] ?>
+                </h1>
+                <ol class="breadcrumb">
+                  <li><a href="<?php echo $_SESSION['link_nav1'] ?>"><?php echo $_SESSION['breadcrumb_nav1'] ?></a></li>
+                  <li><a href="<?php echo $_SESSION['link_nav2'] ?>"><?php echo $_SESSION['breadcrumb_nav2'] ?></a></li>
+                  <li><a href="<?php echo $_SESSION['link_nav3'] ?>"><?php echo $_SESSION['breadcrumb_nav3'] ?></a></li>
+                </ol>                                   
+            </div>          

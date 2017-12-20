@@ -43,7 +43,7 @@ define('_PARAM','Paramètrage(s)');
 define('_AJOUTER','Ajouter');
 define('_MODIFIER','Mettre à jour');
 define('_SUPPRIMER','Supprimer');
-define('_OP','Opération(s)');
+define('_OP','Op&eacute;ration(s)');
 define('_LISTE','Liste');
 define('_CONNEXION','Connexion');
 define('_NOM','Name');
