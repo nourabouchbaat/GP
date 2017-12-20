@@ -20,7 +20,7 @@
 		    </div>
 	<br/>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-lg-12">
 		<?php if(isset($_REQUEST['m'])) {?>
 				<div class="alert alert-info">
 					<?php echo $_REQUEST['m']?>
@@ -81,7 +81,7 @@
 		             <div class="panel-body">
 		                        
 					<br/>
-					<div class="widget-content nopadding">
+					<div class="table-responsive">
 				<?php 
 					$where1="";
 					if(isset($_POST['txtrechercher']) && !empty($_REQUEST['txtrechercher']))
@@ -104,7 +104,7 @@
 					{
 				?>
 				<br/>
-					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+					<table table-responsive>
 						<tr>
 							<th>Date Debut</th>
 							<th>Date Fin</th>
