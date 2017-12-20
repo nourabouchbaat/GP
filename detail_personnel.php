@@ -11,11 +11,11 @@
 <div id="page-wrapper">
 		    <div class="header"> 
 				<h1 class="page-header">
-					Gestion <small> Postes</small>
+					Gestion <small> Personnels</small>
 				</h1>
 				<ol class="breadcrumb">
 				  <li><a href="#">Acceuil</a></li>
-				  <li><a href="#">Detail Personnels</a></li>
+				  <li><a href="#">Profil Personnels</a></li>
 			    </ol> 									
 		    </div>
 			 <div id="page-inner"> 
