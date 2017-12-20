@@ -124,7 +124,10 @@
                 </h1>
                 <ol class="breadcrumb">
                   <li><a href="<?php echo $_SESSION['link_nav1'] ?>"><?php echo $_SESSION['breadcrumb_nav1'] ?></a></li>
+                  <?php if(isset($_SESSION['breadcrumb_nav2']) && !empty($_SESSION['breadcrumb_nav2'])){ ?>
                   <li><a href="<?php echo $_SESSION['link_nav2'] ?>"><?php echo $_SESSION['breadcrumb_nav2'] ?></a></li>
+                  <?php } if(isset($_SESSION['breadcrumb_nav3']) && !empty($_SESSION['breadcrumb_nav3'])){ ?>
                   <li><a href="<?php echo $_SESSION['link_nav3'] ?>"><?php echo $_SESSION['breadcrumb_nav3'] ?></a></li>
+                <?php } ?>
                 </ol>                                   
             </div>          

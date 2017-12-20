@@ -4,21 +4,12 @@
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Pointages";
 	$_SESSION['breadcrumb_nav3'] ="";
-	
+	$_SESSION['link_nav1'] ="index.php";
+	$_SESSION['link_nav2'] ="pointages.php";
+	$_SESSION['link_nav3'] ="";
 ?>
 <?php require_once('menu.php'); ?>
-<div id="page-wrapper">
-		    <div class="header"> 
-				<h1 class="page-header">
-					Gestion <small> Pointages</small>
-				</h1>
-				<ol class="breadcrumb">
-				  <li><a href="#">Acceuil</a></li>
-				  <li><a href="#">Pointages</a></li>
-			    </ol> 
-									
-		    </div>
-	<br/>
+
 	<div class="row">
 		<div class="col-lg-12">
 		<?php if(isset($_REQUEST['m'])) {?>
@@ -29,87 +20,83 @@
 			<?php } ?>
 		</div>
 	</div>
-    <div id="page-inner"> 
-			  <div class="row">
-                <div class="col-md-12">
-                    <!-- Advanced Tables -->
-                    <div class="panel panel-default">
 
-		             <div class="panel-body">
-		                        
-					<br/>
-					<div class="widget-content nopadding">
-						<div class="row">
-                			<div class="col-md-6">
-						<form name="frm1" action="" method="post" >
-						 <div class="form-group">
-							  <label class="control-label">Employe ou chantier:</label>
-							      <div class="controls">
-							        <input type="text" name="txtrechercher" value="<?php if(isset($_POST['txtrechercher'])) echo $_POST['txtrechercher']; ?>" class="form-control input-small-recherche" />
-							     </div>
-						 </div>
-						 <div class="form-group">
-							  <label class="control-label">Date Pointage entre:</label>
-							      <div class="controls">
-							        <input type="date" id="cal_required" name="dateDebut"  value="<?php if(isset($_POST['dateDebut'])) echo $_POST['dateDebut']; ?>" class="form-control input-small" />
-							     </div>
-						 </div>
-						 <div class="form-group">
-							  <label class="control-label">Et :</label>
-							      <div class="controls">
-							       <input type="date" id="cal_required" name="dateFin"  value="<?php if(isset($_POST['dateFin'])) echo $_POST['dateFin']; ?>"   class="form-control input-small" />
-							     </div>
-						 </div>
+<div id="page-inner"> 
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                       	<form name="frm1" action="" method="post" >
+                       		<div class="col-lg-4">	
+								<div class="form-group">
+									<label class="control-label">Employe ou chantier:</label>
+							    	<div class="controls">
+							        	<input type="text" name="txtrechercher" value="<?php if(isset($_POST['txtrechercher'])) echo $_POST['txtrechercher']; ?>" class="form-control input-small-recherche" />
+							     	</div>
+							 	</div>
+							</div>
+		                   	<div class="col-lg-4">	
+						        <div class="form-group">
+								  <label class="control-label">Date Pointage entre:</label>
+								      <div class="controls">
+								        <input type="date" id="cal_required" name="dateDebut"  value="<?php if(isset($_POST['dateDebut'])) echo $_POST['dateDebut']; ?>" class="form-control input-small" />
+								     </div>
+							 	</div>
+							</div>
+							<div class="col-lg-4">	
+						     	<div class="form-group">
+								  <label class="control-label">Et :</label>
+								      <div class="controls">
+								       <input type="date" id="cal_required" name="dateFin"  value="<?php if(isset($_POST['dateFin'])) echo $_POST['dateFin']; ?>"   class="form-control input-small" />
+								     </div>
+							 	</div>
 						
-						<div class="form-actions">
-							<input type="submit" name="v" class="btn btn-primary" value="<?php echo _RECHERCHE."r" ?>" />
-						
-						</div>
-					</form>
+								<div class="form-actions">
+									<input type="submit" name="v" class="btn btn-primary" value="<?php echo _RECHERCHE."r" ?>" />
+								
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>						
-</div>
-</div>
-</div>		
-<div class="row">
-                <div class="col-md-12">
-                    <!-- Advanced Tables -->
-                    <div class="panel panel-default">
-
-		             <div class="panel-body">
-		                        
-					<br/>
+		</div>						
+	</div>
+	<div class="row">
+        <div class="col-md-12">
+        <!-- Advanced Tables -->
+            <div class="panel panel-default">
+	            <div class="panel-body">
 					<div class="table-responsive">
-				<?php 
-					$where1="";
-					if(isset($_POST['txtrechercher']) && !empty($_REQUEST['txtrechercher']))
-					 $where1.=" and (ID_PERSONNELS in (select ID from personnels where NOM like '%".$_POST['txtrechercher']."%' or PRENOM like '%".$_POST['txtrechercher']."%' or CODE like '%".$_POST['txtrechercher']."%')  or ID_CHANTIER in (select ID from chantiers where CODE like '%".$_POST['txtrechercher']."%'))";
+					<?php 
+						$where1="";
+						if(isset($_POST['txtrechercher']) && !empty($_REQUEST['txtrechercher']))
+						 $where1.=" and (ID_PERSONNELS in (select ID from personnels where NOM like '%".$_POST['txtrechercher']."%' or PRENOM like '%".$_POST['txtrechercher']."%' or CODE like '%".$_POST['txtrechercher']."%')  or ID_CHANTIER in (select ID from chantiers where CODE like '%".$_POST['txtrechercher']."%'))";
 
-					if(isset($_POST['dateDebut']) && !empty($_REQUEST['dateDebut']))
-					 $where1.=" and DATE_POINTAGE >= DATE_FORMAT('".$_POST['dateDebut']."', '%Y-%m-%d')";
+						if(isset($_POST['dateDebut']) && !empty($_REQUEST['dateDebut']))
+						 $where1.=" and DATE_POINTAGE >= DATE_FORMAT('".$_POST['dateDebut']."', '%Y-%m-%d')";
 
-					if(isset($_POST['dateFin']) && !empty($_REQUEST['dateFin']))
-					 $where1.=" and DATE_POINTAGE <= DATE_FORMAT('".$_POST['dateFin']."', '%Y-%m-%d')";
+						if(isset($_POST['dateFin']) && !empty($_REQUEST['dateFin']))
+						 $where1.=" and DATE_POINTAGE <= DATE_FORMAT('".$_POST['dateFin']."', '%Y-%m-%d')";
 
-					$sql = "select * from pointages where 1=1 ".$where1." order by ID desc";
-					$res = doQuery($sql);
+						$sql = "select * from pointages where 1=1 ".$where1." order by ID desc";
+						$res = doQuery($sql);
 
-					$nb = mysql_num_rows($res);
-					if( $nb==0){
-					 echo _VIDE;
-					}
-					else
-					{
-				?>
-				<br/>
-					<table table-responsive>
+						$nb = mysql_num_rows($res);
+						if( $nb==0){
+						 echo _VIDE;
+						}
+						else
+						{
+					?>
+					<br/>
+					<table class="table table-striped table-bordered table-hover" >
 						<tr>
 							<th>Date Debut</th>
 							<th>Date Fin</th>
-							<th>Heur N</th>
-							<th>Heur S</th>
+							<th style="width:300px">Somme des heurs normal</th>
+							<th style="width:300px">Somme des heurs supplementaire</th>
 							<th>Total</th>
 						</tr>
 						<tr>

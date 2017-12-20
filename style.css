@@ -1,0 +1,75 @@
+.add-element{
+	padding-left:5px;
+}
+.add-element a{
+	color:#444444;
+	float:right;
+	padding-right:10px;
+	padding-top:7px;
+}
+#content {
+	background: none repeat scroll 0 0 #eceaef;
+	margin-left: 220px;
+	margin-right: 32px;
+	position: relative;
+	min-height: 500px;
+	width: auto;
+	-webkit-background-clip: padding-box;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+.element_float{
+	float:left;
+}
+.element-clear{
+	clear:both;
+}
+.center_element{
+	padding-left:279px;
+}
+.controls .row.espace{
+	padding-left:50px;
+	
+}
+.form-group .control-label.space-label{
+	width:220px;
+	padding-left:5px;
+}
+.form-horizontal  .form-control.input-small-recherche {
+	height: 30px;
+	width :50%;
+	padding: 5px 10px;
+	font-size: 12px;
+	border-radius: 3px;
+}
+.center-warning{
+	padding-left:400px;
+}
+.detail-mnt{
+	padding-left:15px;
+	padding-top:10px;
+	height:50px;
+}
+.form-horizontal .form-product {
+	padding-left:100px;
+}
+.form-horizontal .form-product input[type=text] {
+width: 50%;
+height:35px;
+}
+.class-onglet{
+	padding-left:480px;
+}
+.style-onglet{
+	font-size:20px;
+}
+.space-ligne{
+	padding-left:30px;
+	padding-bottom:8px;
+	padding-right:10px;
+}
+.widget-space{
+	padding-left:10px;
+	padding-right:10px;
+}

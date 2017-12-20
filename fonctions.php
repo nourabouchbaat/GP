@@ -1431,7 +1431,7 @@ function getTableList($table,$nom,$valeur,$champ,$change,$where,$libelle){
 	?>
 	<div class="controls">
 	<select name="<?php echo $nom ?>" <?php echo $change ?> 
-	id="<?php echo $libelle ?>_required">
+	id="<?php echo $libelle ?>_required" class="form-control">
 		
 		<option value="">- -  - - _</option>
 		

@@ -6,7 +6,7 @@
 	$_SESSION['breadcrumb_nav3'] ="";
 ?>
 <?php require_once('menu.php'); ?>     
-
+	 <!-- /. NAV SIDE  -->
             <div id="page-inner"> 
 				<div class="row">
 				<div class="col-xs-6 col-md-3">
