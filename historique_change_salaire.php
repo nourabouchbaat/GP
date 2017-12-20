@@ -4,20 +4,13 @@
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Personnels";
 	$_SESSION['breadcrumb_nav3'] ="Historique de changement du salaire";
+	$_SESSION['link_nav1'] ="index.php";
+	$_SESSION['link_nav2'] ="personnels.php";
+	$_SESSION['link_nav3'] ="historique_change_salaire.php?persosnnels=".$_REQUEST['personnels'];
 	
 ?>
 <?php require_once('menu.php'); ?>
-<div id="page-wrapper">
-    <div class="header"> 
-		<h1 class="page-header">
-			Gestion <small> Historique Salaire</small>
-		</h1>
-		<ol class="breadcrumb">
-		  <li><a href="#">Acceuil</a></li>
-		  <li><a href="#">Historique Salaire</a></li>
-	    </ol> 									
-    </div>
-    <div class="row">
+<div class="row">
 		<div class="col-md-12">
 			<?php if(isset($_REQUEST['m'])) {?>
 					<div class="alert alert-info">

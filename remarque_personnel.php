@@ -7,18 +7,7 @@
 	
 ?>
 <?php require_once('menu.php'); ?>
-<div id="page-wrapper">
-		    <div class="header"> 
-				<h1 class="page-header">
-					Gestion <small> Pointages</small>
-				</h1>
-				<ol class="breadcrumb">
-				  <li><a href="#">Acceuil</a></li>
-				  <li><a href="#">Pointages</a></li>
-			    </ol> 
-									
-		    </div>
-			<br/>
+
 			<div class="row">
 				<div class="col-lg-12">
 				<?php if(isset($_REQUEST['m'])) {?>
@@ -113,34 +102,33 @@
 		                        
 					<br/>
 					<div class="widget-content nopadding">
-					<form action="gestion.php" name="frm" method="post" 
-					onsubmit="return checkForm(document.frm);">
-						<input type="hidden" name="table" value="remarque_personnels"/>
-						<input type="hidden" name="page" value="remarque_personnel.php"/>
-						<input type="hidden" name="ID_PERSONNELS" value="<?php echo $_REQUEST['personnels'] ?>"/>
-					    <input type="hidden" name="id_noms_retour" value="personnels"/>
-						<input type="hidden" name="id_valeurs_retour" value="<?php echo $_REQUEST['personnels'] ?>"/>	
+						<form action="gestion.php" name="frm" method="post" 
+						onsubmit="return checkForm(document.frm);">
+							<input type="hidden" name="table" value="remarque_personnels"/>
+							<input type="hidden" name="page" value="remarque_personnel.php"/>
+							<input type="hidden" name="ID_PERSONNELS" value="<?php echo $_REQUEST['personnels'] ?>"/>
+						    <input type="hidden" name="id_noms_retour" value="personnels"/>
+							<input type="hidden" name="id_valeurs_retour" value="<?php echo $_REQUEST['personnels'] ?>"/>	
 
-						<?php if (isset($_REQUEST['remarques']) && !empty($_REQUEST['remarques'])){ ?>
-							<input type="hidden" name="act" value="m"/>
-						    <input type="hidden" name="id_nom" value="ID"/>
-							<input type="hidden" name="id_valeur" value="<?php echo $_REQUEST['remarques'] ?>"/>	
-						<?php }else{ ?>
-							<input type="hidden" name="act" value="a"/>
-							<input type="hidden" name="DATE_REMARQUE" value="<?php echo date('Y-m-d') ?>"/>
-						<?php } ?>
-						
-					    <div class="form-group">
-							<label><?php echo "Remarque" ?> : </label>
-								<textarea id="<?php echo "REMARQUE" ?>__required" rows='10'
-									name="REMARQUE"  ><?php echo isset($_REQUEST['remarques']) && !empty($_REQUEST['remarques'])? getValeurChamp('REMARQUE','remarque_personnels','ID',$_REQUEST['remarques']):"" ?>	
-								</textarea>
-					    </div>
-						<div class="form-actions">
-							<input type="submit" class="btn btn-primary" value="<?php echo _VALIDER ?>" />
-						</div>
-					</form>
-
+							<?php if (isset($_REQUEST['remarques']) && !empty($_REQUEST['remarques'])){ ?>
+								<input type="hidden" name="act" value="m"/>
+							    <input type="hidden" name="id_nom" value="ID"/>
+								<input type="hidden" name="id_valeur" value="<?php echo $_REQUEST['remarques'] ?>"/>	
+							<?php }else{ ?>
+								<input type="hidden" name="act" value="a"/>
+								<input type="hidden" name="DATE_REMARQUE" value="<?php echo date('Y-m-d') ?>"/>
+							<?php } ?>
+							
+						    <div class="form-group">
+								<label><?php echo "Remarque" ?> : </label>
+									<textarea id="<?php echo "REMARQUE" ?>__required" rows='10'
+										name="REMARQUE"  ><?php echo isset($_REQUEST['remarques']) && !empty($_REQUEST['remarques'])? getValeurChamp('REMARQUE','remarque_personnels','ID',$_REQUEST['remarques']):"" ?>	
+									</textarea>
+						    </div>
+							<div class="form-actions">
+								<input type="submit" class="btn btn-primary" value="<?php echo _VALIDER ?>" />
+							</div>
+						</form>
 				</div>
 			</div>						
 		</div>

@@ -5,19 +5,13 @@
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Personnels";
 	$_SESSION['breadcrumb_nav3'] ="Profil";
+	$_SESSION['link_nav1'] ="index.php";
+	$_SESSION['link_nav2'] ="personnels.php";
+	$_SESSION['link_nav3'] ="detail_personnels.php?persosnnels=".$_REQUEST['personnels'];
 ?>
 <?php require_once('menu.php'); ?>
 
-<div id="page-wrapper">
-		    <div class="header"> 
-				<h1 class="page-header">
-					Gestion <small> Personnels</small>
-				</h1>
-				<ol class="breadcrumb">
-				  <li><a href="#">Acceuil</a></li>
-				  <li><a href="#">Profil Personnels</a></li>
-			    </ol> 									
-		    </div>
+		    
 			 <div id="page-inner"> 
               <div class="row">
                 <div class="col-lg-12">

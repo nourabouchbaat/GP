@@ -3,22 +3,11 @@
 	$_SESSION['titre'] ="Gestion Personnels";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Personnels";
-	$_SESSION['breadcrumb_nav3'] ="";
+	$_SESSION['link_nav1'] ="index.php";
+	$_SESSION['link_nav2'] ="personnels.php";
 	
 ?>
 <?php require_once('menu.php'); ?>
-<div id="page-wrapper">
-		    <div class="header"> 
-				<h1 class="page-header">
-					Gestion <small> Personnels</small>
-				</h1>
-				<ol class="breadcrumb">
-				  <li><a href="#">Acceuil</a></li>
-				  <li><a href="#">Personnels</a></li>
-			    </ol> 
-									
-		    </div>
-			<br/>
 			<div class="row">
 				<div class="col-md-12">
 					<?php if(isset($_REQUEST['m'])) {?>
