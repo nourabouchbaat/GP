@@ -20,7 +20,7 @@
 		    </div>
 			<br/>
 			<div class="row">
-				<div class="col-12">
+				<div class="col-lg-12">
 					<?php if(isset($_REQUEST['m'])) {?>
 							<div class="alert alert-success">
 								<?php echo $_REQUEST['m']?>
@@ -113,7 +113,7 @@
                     <!--End Advanced Tables -->
                 </div>
             </div>
-	</div>
+	    </div>
              <!-- /. PAGE INNER  -->			 
-        </div>
+    </div>
 <?php require_once('foot.php'); ?>

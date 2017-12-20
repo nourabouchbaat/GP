@@ -12,6 +12,11 @@
                         <a href="personnels.php"><i class="fa fa-bar-chart-o"></i> Personnels<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
+                                <a href="personnels.php" >
+                                        <i class="glyphicon glyphicon-list-alt"></i> Liste Personnels
+                                    </a>
+                            </li>
+                            <li>
                                 <a href="ajouter_personnel.php" >
                                         <i class="fa fa-plus-circle"></i> &nbsp;<?php echo _AJOUTER ?> Personnel
                                     </a>
@@ -19,7 +24,19 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> Pointages</a>
+                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> Pointages<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="pointages.php" >
+                                        <i class="glyphicon glyphicon-list-alt"></i> Liste Pointages
+                                    </a>
+                            </li>
+                            <li>
+                                <a href="ajouter_personnel.php" >
+                                        <i class="fa fa-plus-circle"></i> &nbsp;<?php echo _AJOUTER ?> Pointages
+                                    </a>
+                            </li>
+                        </ul></a>
                     </li>                    
                     <li>
                         <a href="table.html"><i class="fa fa-table"></i> Paiements</a>

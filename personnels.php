@@ -20,7 +20,7 @@
 		    </div>
 			<br/>
 			<div class="row">
-				<div class="col-12">
+				<div class="col-md-12">
 					<?php if(isset($_REQUEST['m'])) {?>
 							<div class="alert alert-success">
 								<?php echo $_REQUEST['m']?>
