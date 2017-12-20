@@ -65,6 +65,16 @@
 											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('RIB','personnels','ID',$_REQUEST['personnels']); ?>">
 												
 										</div>
+										<div class="form-actions">
+											<button type="submit" class="btn 	btn-default">
+											Annuler
+										</button>
+										</div>
+									 </form>
+							    </div>
+								<div class="col-lg-6">
+									<form action="personnels.php" name="frm" method="post" 
+									onsubmit="return checkForm(document.frm);" >
 										<div class="form-group">
 											<label class="control-label"><?php echo "Date d'embauche" ?> : </label>
 											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('DATE_EMBAUCHE','personnels','ID',$_REQUEST['personnels']); ?>">
@@ -95,12 +105,9 @@
 												<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('POSTE','postes','ID', $_REQUEST['ID_POSTE']) ?>">
 				                            
 				                        </div>
-										<div class="form-actions">
-											<button type="submit" class="btn 	btn-default">
-											Annuler
-										</button>
-										</div>
+										
 									</form>
+								</div>
 		</div>
 	</div>
    </div>
