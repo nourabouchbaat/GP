@@ -113,8 +113,7 @@
                     <!--End Advanced Tables -->
                 </div>
             </div>
-			<footer><p>All right reserved. Template by: <a href="http://webthemez.com/">WebThemez.com</a></p></footer>
-			</div>
+	</div>
              <!-- /. PAGE INNER  -->			 
         </div>
 <?php require_once('foot.php'); ?>

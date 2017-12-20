@@ -8,7 +8,7 @@
 
 <!-- Mirrored from webthemez.com/demo/marvel-bootstrap-html-admin-template/empty.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Dec 2017 10:38:47 GMT -->
 <head>
-    <meta charset="utf-8" />
+    <meta charset="iso-8859-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestion personnels</title>
 	<!-- Bootstrap Styles-->

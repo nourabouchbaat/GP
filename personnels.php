@@ -7,61 +7,36 @@
 	
 ?>
 <?php require_once('menu.php'); ?>
-
-<br/>
-<div class="row">
-	<div class="col-12">
-	<?php if(isset($_REQUEST['m'])) {?>
-			<div class="alert alert-info">
-				<?php echo $_REQUEST['m']?>
-				<a href="#" data-dismiss="alert" class="close">x</a>
-			</div>
-		<?php } ?>
-	</div>
-</div>
-<div class="row">
-		<div class="col-12">
-			<div class="widget-box">
-				<div class="widget-title">
-					<span class="icon">
-						<i class="glyphicon glyphicon-align-justify"></i>									
-					</span>
-					<h5>Recherche</h5>
+<div id="page-wrapper">
+		    <div class="header"> 
+				<h1 class="page-header">
+					Gestion <small> Personnels</small>
+				</h1>
+				<ol class="breadcrumb">
+				  <li><a href="#">Acceuil</a></li>
+				  <li><a href="#">Personnels</a></li>
+			    </ol> 
+									
+		    </div>
+			<br/>
+			<div class="row">
+				<div class="col-12">
+					<?php if(isset($_REQUEST['m'])) {?>
+							<div class="alert alert-success">
+								<?php echo $_REQUEST['m']?>
+								<a href="#" data-dismiss="alert" class="close">x</a>
+							</div>
+					<?php } ?>
 				</div>
-				<div class="widget-content nopadding">
-					<form name="frm1" action="" method="post" class="form-horizontal">
-						 <div class="form-group">
-							  <label class="control-label"><?php echo _RECHERCHER ?>:</label>
-							      <div class="controls">
-							        <input type="text" name="txtrechercher" value="<?php if(isset($_POST['txtrechercher'])) echo $_POST['txtrechercher']; ?>" class="form-control input-small-recherche" />
-							     </div>
-						 </div>
-						
-						<div class="form-actions">
-							<input type="submit" name="v" class="btn btn-primary" value="<?php echo _RECHERCHE."r" ?>" />
-						
-						</div>
-					</form>
-		</div>
-	</div>						
-</div>
-</div>		
-<div class="row">
-	<div class="col-12">
-		<div class="widget-box">
-			<div class="widget-title">
-				<span class="icon">
-					<i class="glyphicon glyphicon-th"></i>
-				</span>
-
-				<div class="element_float"><h5>Personnels</h5></div>
-				<div class="add-element">
-				    <a href="ajouter_personnel.php" >
-				        <i class="glyphicon glyphicon-plus"></i> &nbsp;<?php echo _AJOUTER ?> Personnel
-				    </a>
-				</div>
-				<div class="element-clear"></div>
 			</div>
+     <div id="page-inner"> 
+			  <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+
+             <div class="panel-body">
+                        
 			<br/>
 			<div class="widget-content nopadding">
 				<?php 
@@ -81,7 +56,7 @@
 					{
 				?>
 				<br/>
-					<table class="table table-bordered table-striped table-hover data-table">
+					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 				      <thead>
 				         <th>Nom</th>
 				         <th>Code</th>
@@ -144,8 +119,14 @@
 				<?php 
 				} //Fin If
 				?>
- 		</div>
-	   </div>
-	</div>
-</div>
+				</div>
+                            
+                    </div>
+                 </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+	    </div>
+             <!-- /. PAGE INNER  -->			 
+    </div>
 <?php require_once('foot.php'); ?>

@@ -9,7 +9,14 @@
                         <a href="ui-elements.html"><i class="fa fa-desktop"></i> Marches</a>
                     </li>
 					<li>
-                        <a href="chart.html"><i class="fa fa-bar-chart-o"></i> Personnels</a>
+                        <a href="personnels.php"><i class="fa fa-bar-chart-o"></i> Personnels<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="ajouter_personnel.php" >
+                                        <i class="fa fa-plus-circle"></i> &nbsp;<?php echo _AJOUTER ?> Personnel
+                                    </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="tab-panel.html"><i class="fa fa-qrcode"></i> Pointages</a>
