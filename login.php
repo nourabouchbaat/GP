@@ -2,7 +2,7 @@
 <body>
         <div id="container">
             <div id="logo">
-                <img src="img/logo_header.png" alt=""  />
+                <img src="img/logo_header.png" alt=""  style="border-radius: 7px;" />
                 
             </div>
             <div id="loginbox">
@@ -17,11 +17,11 @@
                     <p>Entrer login et password pour continuer.</p>
                     <div class="input-group">
                     	
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
                         <input class="form-control" type="text" placeholder="Login" name="login" id="login_required">
                     </div>
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span><input class="form-control" type="password" placeholder="Password" id="password_required" name="password">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span><input class="form-control" type="password" placeholder="Password" id="password_required" name="password">
                     </div>
                     <hr />
                     <div class="form-actions">

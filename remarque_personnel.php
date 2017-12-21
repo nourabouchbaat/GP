@@ -121,7 +121,7 @@
 							
 						    <div class="form-group">
 								<label><?php echo "Remarque" ?> : </label>
-									<textarea id="<?php echo "REMARQUE" ?>__required" rows='10'
+									<textarea id="<?php echo "REMARQUE" ?>__required" rows='10' cols="50"
 										name="REMARQUE"  ><?php echo isset($_REQUEST['remarques']) && !empty($_REQUEST['remarques'])? getValeurChamp('REMARQUE','remarque_personnels','ID',$_REQUEST['remarques']):"" ?>	
 									</textarea>
 						    </div>

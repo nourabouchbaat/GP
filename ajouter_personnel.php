@@ -131,10 +131,12 @@
 						<div class="form-actions">
 							<input type="submit" class="btn btn-primary" value="<?php echo _AJOUTER ?>" /> ou <a class="text-danger" href="personnels.php">Annuler</a>
 						</div>
-									</div>
-				</div>
-						</div>
 					</div>
+				</div>
+			</div>
+						</form>	
+					</div>
+			
 				</div>
 			</div>
 		</div>

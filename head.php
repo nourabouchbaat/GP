@@ -22,7 +22,7 @@
         <!-- TABLE STYLES-->
    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
    
-   <script type="text/javascript" src="js/javascript.js"></script>
+   <script type="text/javascript" src="assets/js/javascript.js"></script>
 </head>
 <body>
 	<?php

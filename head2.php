@@ -4,11 +4,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
- <title>Gestion patisserie</title>  
+ <title>SOMLAKO</title>  
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/bootstrap-glyphicons.css" />
-<link rel="stylesheet" href="css/unicorn.login.css" />
+<link href="assets/css/bootstrap.css" rel="stylesheet" />
+ <link href="assets/css/font-awesome.css" rel="stylesheet" />
+<link href="assets/css/unicorn.login.css" rel="stylesheet" />
 <!--////////////////////////////////// Include PHP //////////////////////////////////-->
 <?php require_once('lang.php'); ?>
 <?php require_once('fonctions.php'); ?>
