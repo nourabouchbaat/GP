@@ -96,9 +96,9 @@
 	</div>
 	</div>
 	<div class="col-lg-6">
-			 <div class="panel panel-default">
+			 <div class="panel panel-default" >
 
-		             <div class="panel-body">
+		             <div class="panel-body" style="min-height: 370px;">
 		                        
 					<br/>
 					<div class="widget-content nopadding">
@@ -120,12 +120,12 @@
 							<?php } ?>
 							
 						    <div class="form-group">
-								<label><?php echo "Remarque" ?> : </label>
+								<label class="control-label"><?php echo "Remarque" ?> : </label>
 									<textarea id="<?php echo "REMARQUE" ?>__required" rows='10' cols="50"
-										name="REMARQUE"  ><?php echo isset($_REQUEST['remarques']) && !empty($_REQUEST['remarques'])? getValeurChamp('REMARQUE','remarque_personnels','ID',$_REQUEST['remarques']):"" ?>	
+										name="REMARQUE" class="form-control "  ><?php echo isset($_REQUEST['remarques']) && !empty($_REQUEST['remarques'])? getValeurChamp('REMARQUE','remarque_personnels','ID',$_REQUEST['remarques']):"" ?>	
 									</textarea>
 						    </div>
-							<div class="form-actions">
+							<div class="form-actions" style="float:right;">
 								<input type="submit" class="btn btn-primary" value="<?php echo _VALIDER ?>" />
 							</div>
 						</form>

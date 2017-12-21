@@ -24,7 +24,7 @@
 						<div class="panel-body easypiechart-panel">
 							<h4>Pointages</h4>
 							<div class="easypiechart" id="easypiechart-orange" data-percent="55" >								
-								<a href="pointages.php"> <img src="images/utilisateur-icone-3871-64.png"  alt="Pointages" title="Pointages"/></a>
+								<a href="pointages.php"> <img src="images/controle-poitage-icone.png"  alt="Pointages" title="Pointages"/></a>
 
 							</div>
 						</div>
@@ -35,7 +35,7 @@
 						<div class="panel-body easypiechart-panel">
 							<h4>Paiements</h4>
 							<div class="easypiechart" id="easypiechart-teal" data-percent="84" >								
-								<a href="paiements.php"><img src="images/ajouter-ecommerce-panier-boutique-en-ligne-icone-6203-64.png" alt="Paiements" title="Paiements" /></a>
+								<a href="paiements.php"><img src="images/argent-paiement-icone.png" alt="Paiements" title="Paiements" /></a>
 
 							</div>
 						</div>
@@ -59,7 +59,7 @@
 						<div class="panel-body easypiechart-panel">
 							<h4>Marchies</h4>
 							<div class="easypiechart" id="easypiechart-blue" data-percent="82" >
-							<a href="machines.php"><img src="images/client-icone-9349-64.png"  alt="Marchies" title="Marchies"/></a>
+							<a href="machines.php"><img src="images/projet-icon.jpg"  alt="Marchies" title="Marchies" style="border-radius: 7px;"/></a>
 							</div>
 						</div>
 					</div>
@@ -69,7 +69,7 @@
 						<div class="panel-body easypiechart-panel">
 							<h4>Chantiers</h4>
 							<div class="easypiechart" id="easypiechart-orange" data-percent="55" >								
-								<a href="chantiers.php"> <img src="images/utilisateur-icone-3871-64.png"  alt="Chantiers" title="Chantiller"/></a>
+								<a href="chantiers.php"> <img src="images/chantier-travaux.png"  alt="Chantiers" title="Chantiller"/></a>
 
 							</div>
 						</div>
@@ -80,7 +80,7 @@
 						<div class="panel-body easypiechart-panel">
 							<h4>Postes</h4>
 							<div class="easypiechart" id="easypiechart-teal" data-percent="84" >								
-								<a href="postes.php"><img src="images/ajouter-ecommerce-panier-boutique-en-ligne-icone-6203-64.png" alt="Postes" title="Postes" /></a>
+								<a href="postes.php"><img src="images/ouvrier-du-batiment-96.png" alt="Postes" title="Postes" /></a>
 
 							</div>
 						</div>
@@ -91,7 +91,7 @@
 						<div class="panel-body easypiechart-panel">
 							<h4>Administrations</h4>
 							<div class="easypiechart" id="easypiechart-red" data-percent="46" >								
-								<a href="ajouter_ventes.php"> <img src="images/okteta-icone-7976-64.png" alt="Marchies" title="Marchies"/> </a>
+								<a href="ajouter_ventes.php"> <img src="images/admin-user.png" alt="Marchies" title="Marchies"/> </a>
 
 							</div>
 						</div>
