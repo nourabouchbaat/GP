@@ -1,4 +1,4 @@
-<?php require_once('head.php'); ?>
+*<?php require_once('head.php'); ?>
 <?php 
 	$_SESSION['titre'] ="Statistique & Tableau de bord";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";

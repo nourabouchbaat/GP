@@ -18,13 +18,8 @@
             <div class="panel panel-default">
 	            <div class="panel-body">
 					<div class="table-responsive">
-				<?php 
-					$where1="";
-					if(isset($_POST['txtrechercher']) and !empty($_REQUEST['txtrechercher']))
-					 $where1.="and (nom like '%".$_POST['txtrechercher']."%' or prenom like '%".$_POST['txtrechercher']."%' or cin like '%".$_POST['txtrechercher']."%' or telephone like '%".$_POST['txtrechercher']."%' or cnss like '%".$_POST['txtrechercher']."%' or rib like '%".$_POST['txtrechercher']."%' or 	DATE_EMBAUCHE like '%".$_POST['txtrechercher']."%' or code like '%".$_POST['txtrechercher']."%' or poste like '%".$_POST['txtrechercher']."%' or adresse like '%".$_POST['txtrechercher']."%') ";
-
-				
-					$sql = "select * from personnels where status=1 ".$where1." order by id";
+				<?php 				
+					$sql = "select * from personnels where status=1 order by id";
 					$res = doQuery($sql);
 
 					$nb = mysql_num_rows($res);

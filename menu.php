@@ -20,21 +20,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="ui-elements.html"><i class="glyphicon glyphicon-lock"></i> Chantiers<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="chantiers.php" >
-                                        <i class="glyphicon glyphicon-list-alt"></i> Liste des chantiers
-                                    </a>
-                            </li>
-                            <li>
-                                <a href="ajouter_chantier.php" >
-                                        <i class="fa fa-plus-circle"></i> &nbsp;<?php echo _AJOUTER ?> chantier;
-                                    </a>
-                            </li>
-                        </ul>
-                    </li>
 					<li>
                         <a href="personnels.php"><i class="glyphicon glyphicon-user"></i> Personnels<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -128,6 +113,8 @@
                   <li><a href="<?php echo $_SESSION['link_nav2'] ?>"><?php echo $_SESSION['breadcrumb_nav2'] ?></a></li>
                   <?php } if(isset($_SESSION['breadcrumb_nav3']) && !empty($_SESSION['breadcrumb_nav3'])){ ?>
                   <li><a href="<?php echo $_SESSION['link_nav3'] ?>"><?php echo $_SESSION['breadcrumb_nav3'] ?></a></li>
+                <?php }  if(isset($_SESSION['breadcrumb_nav4']) && !empty($_SESSION['breadcrumb_nav4'])){ ?>
+                  <li><a href="<?php echo $_SESSION['link_nav4'] ?>"><?php echo $_SESSION['breadcrumb_nav4'] ?></a></li>
                 <?php } ?>
                 </ol>                                   
             </div>          
