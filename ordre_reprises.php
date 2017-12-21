@@ -1,12 +1,12 @@
 <?php require_once('head.php'); ?>
 <?php 
-	$_SESSION['titre'] ="Gestion des avances";
+	$_SESSION['titre'] ="Gestion des marches";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Marches";
-	$_SESSION['breadcrumb_nav3'] ="Caution definitives";
+	$_SESSION['breadcrumb_nav3'] ="Ordre de reprise";
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="marches.php";
-	$_SESSION['link_nav3'] ="caution_definitives.php";
+	$_SESSION['link_nav3'] ="ordre_reprises.php";
 ?>
 <?php require_once('menu.php'); ?>
 
@@ -28,7 +28,7 @@
 						
                         <div class="panel-body">
 							<div class="widget-content nopadding">
-								<a href="ajouter_caution_definitive.php?marches=<?php echo $_REQUEST['marches'] ?>"><i class="glyphicon glyphicon-plus"></i> Ajouter caution_definitive</a>
+								<a href="ajouter_ordre_reprise.php?marches=<?php echo $_REQUEST['marches'] ?>"><i class="glyphicon glyphicon-plus"></i> Ajouter ordre d'arrêt</a>
 							</div>
 						</div>
 
@@ -36,7 +36,7 @@
                       
 			<div class="widget-content nopadding">
 				<?php 
-				 	$sql = "select * from caution_definitive where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
+				 	$sql = "select * from ordre_reprise where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
 					$res = doQuery($sql);
 
 					$nb = mysql_num_rows($res);
@@ -50,10 +50,9 @@
 				 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 					<thead>
 				    	<tr class="<?php echo $c ?>">
-					         <th>Date Caution provisoire </th>
-					         <th>N° Caution</th>
-					         <th>Montant</th>
-					         <th>Banque</th>
+					         <th>Date</th>
+					         <th>N° Ordre de reprise</th>
+					         <th>Justificatif</th>
 				        	 <th class="op" style="width:100px"> <?php echo _OP ?> </th>
 					</thead>	
 					<tbody>
@@ -67,13 +66,12 @@
 								$c = "";	
 						?>
 						<tr class="<?php echo $c ?>">
-							<td><?php echo $ligne['DATE_CAUTION_DEFINITIVE'] ?></td>
-							<td><?php echo $ligne['N_CAUTION'] ?></td>
-							<td><?php echo $ligne['MONTANT'] ?></td>
-							<td><?php echo $ligne['BANQUE'] ?></td>
+							<td><?php echo $ligne['DATE_ORDRE_REPRISE'] ?></td>
+							<td><?php echo $ligne['N_ORDRE_REPRISE'] ?></td>
+							<td><?php echo $ligne['JUSTIFICAION'] ?></td>
 							<td class="op">
 							    &nbsp;
-								<a href="modifier_caution_definitive.php?marches=<?php echo $_REQUEST['marches'] ?>&caution_definitives=<?php echo $ligne['ID'] ?>" class="modifier2" title="<?php echo _MODIFIER ?>">
+								<a href="modifier_ordre_reprise.php?marches=<?php echo $_REQUEST['marches'] ?>&ordre_reprises=<?php echo $ligne['ID'] ?>" class="modifier2" title="<?php echo _MODIFIER ?>">
 									<i class="glyphicon glyphicon-edit"></i> 
 				                </a>
 								&nbsp;
@@ -81,9 +79,9 @@
 				                <a href="#ancre" 
 				                class="supprimer2" 
 				                onclick="javascript:supprimer(
-				                							'caution_definitive',
+				                							'ordre_reprise',
 				                                            '<?php echo $ligne['ID'] ?>',
-				                                            'caution_definitives.php',
+				                                            'ordre_reprises.php',
 				                                            'marches',
 				                                            '<?php echo $_REQUEST['marches'] ?>')
 										" 

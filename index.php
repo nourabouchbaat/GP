@@ -57,9 +57,9 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4>Marchies</h4>
+							<h4>Marches</h4>
 							<div class="easypiechart" id="easypiechart-blue" data-percent="82" >
-							<a href="machines.php"><img src="images/projet-icon.jpg"  alt="Marchies" title="Marchies" style="border-radius: 7px;"/></a>
+							<a href="marches.php"><img src="images/projet-icon.jpg"  alt="Marchies" title="Marchies" style="border-radius: 7px;"/></a>
 							</div>
 						</div>
 					</div>

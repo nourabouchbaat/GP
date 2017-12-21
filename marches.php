@@ -68,17 +68,17 @@
 						                     CP
 						                    </a>
 						        &nbsp;
-							    <a href="caution_retenue_garantie.php?marches=<?php echo $ligne['ID'] ?>" class="detail" title="les cautions de retenue garantie">
+							    <a href="caution_retenue_garanties.php?marches=<?php echo $ligne['ID'] ?>" class="detail" title="les cautions de retenue garantie">
 						                     CRG
 						                    </a>
 						           &nbsp;
 
-							    <a href="ordre_arret.php?marches=<?php echo $ligne['ID'] ?>" class="detail" title="les ordres d'arr&ecirc;t">
+							    <a href="ordre_arrets.php?marches=<?php echo $ligne['ID'] ?>" class="detail" title="les ordres d'arr&ecirc;t">
 						                     OA
 						                    </a>
 						           &nbsp;
 
-							    <a href="ordre_reprise.php?marches=<?php echo $ligne['ID'] ?>" class="detail" title="les ordres de reprise">
+							    <a href="ordre_reprises.php?marches=<?php echo $ligne['ID'] ?>" class="detail" title="les ordres de reprise">
 						                     OR
 						                    </a>
 						           &nbsp;

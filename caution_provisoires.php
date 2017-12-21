@@ -3,10 +3,10 @@
 	$_SESSION['titre'] ="Gestion des avances";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Marches";
-	$_SESSION['breadcrumb_nav3'] ="Caution definitives";
+	$_SESSION['breadcrumb_nav3'] ="Caution provisoires";
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="marches.php";
-	$_SESSION['link_nav3'] ="caution_definitives.php";
+	$_SESSION['link_nav3'] ="caution_provisoires.php";
 ?>
 <?php require_once('menu.php'); ?>
 
@@ -28,7 +28,7 @@
 						
                         <div class="panel-body">
 							<div class="widget-content nopadding">
-								<a href="ajouter_caution_definitive.php?marches=<?php echo $_REQUEST['marches'] ?>"><i class="glyphicon glyphicon-plus"></i> Ajouter caution_definitive</a>
+								<a href="ajouter_caution_provisoire.php?marches=<?php echo $_REQUEST['marches'] ?>"><i class="glyphicon glyphicon-plus"></i> Ajouter caution provisoire</a>
 							</div>
 						</div>
 
@@ -36,7 +36,7 @@
                       
 			<div class="widget-content nopadding">
 				<?php 
-				 	$sql = "select * from caution_definitive where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
+				 	$sql = "select * from caution_provisoire where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
 					$res = doQuery($sql);
 
 					$nb = mysql_num_rows($res);
@@ -67,13 +67,13 @@
 								$c = "";	
 						?>
 						<tr class="<?php echo $c ?>">
-							<td><?php echo $ligne['DATE_CAUTION_DEFINITIVE'] ?></td>
+							<td><?php echo $ligne['DATE_CAUTION_PROVISOIRE'] ?></td>
 							<td><?php echo $ligne['N_CAUTION'] ?></td>
 							<td><?php echo $ligne['MONTANT'] ?></td>
 							<td><?php echo $ligne['BANQUE'] ?></td>
 							<td class="op">
 							    &nbsp;
-								<a href="modifier_caution_definitive.php?marches=<?php echo $_REQUEST['marches'] ?>&caution_definitives=<?php echo $ligne['ID'] ?>" class="modifier2" title="<?php echo _MODIFIER ?>">
+								<a href="modifier_caution_provisoire.php?marches=<?php echo $_REQUEST['marches'] ?>&caution_provisoires=<?php echo $ligne['ID'] ?>" class="modifier2" title="<?php echo _MODIFIER ?>">
 									<i class="glyphicon glyphicon-edit"></i> 
 				                </a>
 								&nbsp;
@@ -81,9 +81,9 @@
 				                <a href="#ancre" 
 				                class="supprimer2" 
 				                onclick="javascript:supprimer(
-				                							'caution_definitive',
+				                							'caution_provisoire',
 				                                            '<?php echo $ligne['ID'] ?>',
-				                                            'caution_definitives.php',
+				                                            'caution_provisoires.php',
 				                                            'marches',
 				                                            '<?php echo $_REQUEST['marches'] ?>')
 										" 

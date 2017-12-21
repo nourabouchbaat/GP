@@ -1,15 +1,15 @@
 
 <?php require_once('head.php'); ?>
 <?php 
-	$_SESSION['titre'] ="Gestion des caution_definitive";
+	$_SESSION['titre'] ="Gestion des caution_provisoire";
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="marches.php";
-	$_SESSION['link_nav3'] ="caution_definitives.php";
-	$_SESSION['link_nav4'] ="ajouter_caution_definitive.php";
+	$_SESSION['link_nav3'] ="caution_provisoires.php";
+	$_SESSION['link_nav4'] ="ajouter_caution_provisoire.php";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Marches";
-	$_SESSION['breadcrumb_nav3'] ="Caution definitive";
-	$_SESSION['breadcrumb_nav4'] ="Nouveau caution definitive";
+	$_SESSION['breadcrumb_nav3'] ="Caution provisoire";
+	$_SESSION['breadcrumb_nav4'] ="Nouveau caution provisoire";
 ?>
 <?php require_once('menu.php'); ?>
 <div id="page-inner"> 
@@ -22,8 +22,8 @@
 							<form action="gestion.php" name="frm" method="post" 
 				onsubmit="return checkForm(document.frm);" >
 								<input type="hidden" name="act" value="a"/>
-							    <input type="hidden" name="table" value="caution_definitive"/>
-								<input type="hidden" name="page" value="caution_definitives.php"/>
+							    <input type="hidden" name="table" value="caution_provisoire"/>
+								<input type="hidden" name="page" value="caution_provisoires.php"/>
 								<input type="hidden" name="ID_MARCHE" value="<?php echo $_REQUEST['marches'] ?>"/>
 			
 							    <input type="hidden" name="id_noms_retour" value="marches"/>
@@ -32,7 +32,7 @@
 								<div class="form-group">
 									<label class="control-label"><?php echo "Date Caution provisoire " ?> : </label>
 									<input type="date" id="cal_required" 
-											name="DATE_CAUTION_DEFINITIVE"  class="form-control"/>
+											name="DATE_CAUTION_PROVISOIRE"  class="form-control"/>
 							    </div>
 								<div class="form-group">
 									<label class="control-label"><?php echo "N° Caution " ?> : </label>
@@ -54,7 +54,7 @@
 								<button type="submit" class="btn btn-default">
 									<?php echo _AJOUTER ?>
 								</button>
-								ou <a class="text-danger" href="caution_definitives.php?marches=<?php echo $_REQUEST['marches'] ?>">Annuler</a>
+								ou <a class="text-danger" href="caution_provisoires.php?marches=<?php echo $_REQUEST['marches'] ?>">Annuler</a>
                                     
                                 </div>
 							</form>

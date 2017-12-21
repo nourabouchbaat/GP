@@ -1,15 +1,15 @@
 
 <?php require_once('head.php'); ?>
 <?php 
-	$_SESSION['titre'] ="Gestion des caution_definitive";
+	$_SESSION['titre'] ="Gestion des marches";
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="marches.php";
-	$_SESSION['link_nav3'] ="caution_definitives.php";
-	$_SESSION['link_nav4'] ="ajouter_caution_definitive.php";
+	$_SESSION['link_nav3'] ="ordre_reprises.php";
+	$_SESSION['link_nav4'] ="ajouter_ordre_reprise.php";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Marches";
-	$_SESSION['breadcrumb_nav3'] ="Caution definitive";
-	$_SESSION['breadcrumb_nav4'] ="Nouveau caution definitive";
+	$_SESSION['breadcrumb_nav3'] ="Ordre d'reprise";
+	$_SESSION['breadcrumb_nav4'] ="Nouveau ordre d'arrêt";
 ?>
 <?php require_once('menu.php'); ?>
 <div id="page-inner"> 
@@ -22,39 +22,34 @@
 							<form action="gestion.php" name="frm" method="post" 
 				onsubmit="return checkForm(document.frm);" >
 								<input type="hidden" name="act" value="a"/>
-							    <input type="hidden" name="table" value="caution_definitive"/>
-								<input type="hidden" name="page" value="caution_definitives.php"/>
+							    <input type="hidden" name="table" value="ordre_reprise"/>
+								<input type="hidden" name="page" value="ordre_reprises.php"/>
 								<input type="hidden" name="ID_MARCHE" value="<?php echo $_REQUEST['marches'] ?>"/>
 			
 							    <input type="hidden" name="id_noms_retour" value="marches"/>
 								<input type="hidden" name="id_valeurs_retour" value="<?php echo $_REQUEST['marches'] ?>"/>	
 
 								<div class="form-group">
-									<label class="control-label"><?php echo "Date Caution provisoire " ?> : </label>
+									<label class="control-label"><?php echo "Date " ?> : </label>
 									<input type="date" id="cal_required" 
-											name="DATE_CAUTION_DEFINITIVE"  class="form-control"/>
+											name="DATE_ORDRE_REPRISE"  class="form-control"/>
 							    </div>
 								<div class="form-group">
-									<label class="control-label"><?php echo "N° Caution " ?> : </label>
-									<input type="text" id="<?php echo "N_CAUTION" ?>__required" 
-											name="N_CAUTION"  class="form-control"/>
+									<label class="control-label"><?php echo "N° Ordre d'arrêt" ?> : </label>
+									<input type="text" id="<?php echo "N_ORDRE_REPRISE" ?>__required" 
+											name="N_ORDRE_REPRISE"  class="form-control"/>
 							    </div>
 								<div class="form-group">
-									<label class="control-label"><?php echo "Montant " ?> : </label>
-									<input type="text" id="<?php echo "MONTANT" ?>__required" 
-											name="MONTANT"  class="form-control"/>
-							    </div>
-								<div class="form-group">
-									<label class="control-label"><?php echo "Banque " ?> : </label>
-									<input type="text" id="<?php echo "BANQUE" ?>__required" 
-											name="BANQUE"  class="form-control"/>
+									<label class="control-label"><?php echo "Justificatif " ?> : </label>
+									<input type="text" id="<?php echo "JUSTIFICAION" ?>__required" 
+											name="JUSTIFICAION"  class="form-control"/>
 							    </div>
 								  
 							    <div class="form-group">
 								<button type="submit" class="btn btn-default">
 									<?php echo _AJOUTER ?>
 								</button>
-								ou <a class="text-danger" href="caution_definitives.php?marches=<?php echo $_REQUEST['marches'] ?>">Annuler</a>
+								ou <a class="text-danger" href="ordre_reprises.php?marches=<?php echo $_REQUEST['marches'] ?>">Annuler</a>
                                     
                                 </div>
 							</form>
