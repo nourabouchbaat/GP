@@ -26,7 +26,6 @@
 
 		             <div class="panel-body" >
 		                        
-					<br/>
 					<div class="widget-content nopadding">
 				<?php 
 					$sql = "select * from remarque_personnels where ID_PERSONNELS=".$_REQUEST['personnels']." order by ID desc";
@@ -39,7 +38,6 @@
 					else
 					{
 				?>
-				<br/>
 					<table class="table table-bordered table-striped table-hover data-table">
 				      <thead>
 				         <th>Date</th>
@@ -87,7 +85,6 @@
 						?>
 					  </tbody>
 					</table>
-				<br/>
 				<?php 
 				} //Fin If
 				?>
@@ -99,8 +96,6 @@
 			 <div class="panel panel-default" >
 
 		             <div class="panel-body" style="min-height: 370px;">
-		                        
-					<br/>
 					<div class="widget-content nopadding">
 						<form action="gestion.php" name="frm" method="post" 
 						onsubmit="return checkForm(document.frm);">

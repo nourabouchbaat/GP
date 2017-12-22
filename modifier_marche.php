@@ -75,7 +75,7 @@
 						<div class="form-group">
 							<label class="control-label"><?php echo "Montant du Marché :" ?>  </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "MONTANT_MARCHE" ?>_required"  value="<?php echo getValeurChamp('MONTANT_MARCHE','marches','ID',$_REQUIRED['marches']); ?>"
+								<input type="number" id="<?php echo "MONTANT_MARCHE" ?>_required"  value="<?php echo getValeurChamp('MONTANT_MARCHE','marches','ID',$_REQUIRED['marches']); ?>"
 									name="MONTANT_MARCHE"  class="form-control input-small"/>
 							</div>
 						</div>

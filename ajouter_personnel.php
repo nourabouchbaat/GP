@@ -110,14 +110,14 @@
 						<div class="form-group">
 							<label class="control-label"><?php echo "Salaire mensuel" ?> : </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "SALAIRE_MENSUELLE" ?>_required" 
+								<input type="number" id="<?php echo "SALAIRE_MENSUELLE" ?>_required" 
 									name="SALAIRE_MENSUELLE"  class="form-control input-small" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label"><?php echo "Tarif journaliere" ?> : </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "TARIF_JOURNALIERS" ?>_required" 
+								<input type="number" id="<?php echo "TARIF_JOURNALIERS" ?>_required" 
 									name="TARIF_JOURNALIERS"  class="form-control input-small" />
 							</div>
 						</div>

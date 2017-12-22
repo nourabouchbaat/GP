@@ -40,7 +40,6 @@
 					else
 					{
 				?>
-				<br/>
 				 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 					<thead>
 						<tr>
@@ -85,7 +84,6 @@
 						?>
 					  </tbody>
 					</table>
-				<br/>
 				<?php 
 				} //Fin If
 				?>

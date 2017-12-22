@@ -89,7 +89,6 @@
 						?>
 							  </tbody>
 						</table>
-						<br/>
 						<?php 
 						} //Fin If
 						?>

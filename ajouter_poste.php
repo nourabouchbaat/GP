@@ -9,9 +9,7 @@
 	$_SESSION['breadcrumb_nav2'] ="Postes";
 	$_SESSION['breadcrumb_nav3'] ="Nouveau poste";
 ?>
-<?php require_once('menu.php'); ?>
-
-	 
+<?php require_once('menu.php'); ?>	 
 			<div id="page-inner"> 
               <div class="row">
                 <div class="col-lg-12">

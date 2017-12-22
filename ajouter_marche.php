@@ -68,7 +68,7 @@
 						<div class="form-group">
 							<label class="control-label"><?php echo "Montant du Marché :" ?>  </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "MONTANT_MARCHE" ?>_required" 
+								<input type="number" id="<?php echo "MONTANT_MARCHE" ?>_required" 
 									name="MONTANT_MARCHE"  class="form-control input-small"/>
 							</div>
 						</div>

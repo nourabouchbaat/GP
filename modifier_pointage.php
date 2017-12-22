@@ -53,14 +53,14 @@
 					    <div class="form-group">
 							<label class="control-label"><?php echo "Heur normal"?> : </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "HEUR_N" ?>_required"  value="<?php echo getValeurChamp('HEUR_N','pointages','ID',$_REQUEST['pointages']); ?>"
+								<input type="number" id="<?php echo "HEUR_N" ?>_required"  value="<?php echo getValeurChamp('HEUR_N','pointages','ID',$_REQUEST['pointages']); ?>"
 									name="HEUR_N"  class="form-control input-small"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label"><?php echo "Heur supplementaire" ?> : </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "HEUR_S" ?>_required"  value="<?php echo getValeurChamp('HEUR_S','pointages','ID',$_REQUEST['pointages']); ?>"
+								<input type="number" id="<?php echo "HEUR_S" ?>_required"  value="<?php echo getValeurChamp('HEUR_S','pointages','ID',$_REQUEST['pointages']); ?>"
 									name="HEUR_S"  class="form-control input-small" />
 							</div>
 						</div>

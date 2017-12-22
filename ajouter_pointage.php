@@ -11,8 +11,6 @@
 	
 ?>
 <?php require_once('menu.php'); ?>
-
-<br/>
 <div class="row">
 	<div class="col-12">
 	<?php if(isset($_REQUEST['m'])) {?>
@@ -73,13 +71,11 @@
 					else
 					{
 				?>
-				<br/>
 				<form action="gestion.php" name="frm" method="post" 
 					onsubmit="return checkForm(document.frm);" >
 						<input type="hidden" name="act" value="ajouter_pointage"/>
 					    <input type="hidden" name="table" value="pointages"/>
 						<input type="hidden" name="page" value="pointages.php"/>
-										<br/>
 						<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 							<thead>
 				    
@@ -105,8 +101,8 @@
 							<td><?php echo $ligne['CODE'] ?></td>
 							<td><?php echo $ligne['NOM']." ".$ligne['PRENOM'] ?></td>
 							<td><input type="date" id="cal_required" name="DATE_POINTAGE_<?php echo $i ?>"   class="form-control input-small" /></td>
-							<td><input type="text" id="<?php echo "HEUR_N" ?>__required" name="HEUR_N_<?php echo $i ?>"  class="form-control input-small"/></td>
-							<td><input type="text" id="<?php echo "HEUR_S" ?>__required" name="HEUR_S_<?php echo $i ?>"  class="form-control input-small"/></td>
+							<td><input type="number" id="<?php echo "HEUR_N" ?>__required" name="HEUR_N_<?php echo $i ?>"  class="form-control input-small"/></td>
+							<td><input type="number" id="<?php echo "HEUR_S" ?>__required" name="HEUR_S_<?php echo $i ?>"  class="form-control input-small"/></td>
 							<td><input type="text" id="<?php echo "CODE_CHANTIER" ?>__required" name="CODE_CHANTIER_<?php echo $i ?>"  class="form-control input-small"/></td>
 						</tr>
 						<?php
@@ -116,7 +112,6 @@
 						<input type="hidden" name="nb_personnage" value="<?php echo $i ?>"/>
 					  </tbody>
 					</table>
-				<br/>
 				<?php 
 				} //Fin If
 				?>

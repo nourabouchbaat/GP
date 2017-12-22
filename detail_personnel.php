@@ -9,9 +9,7 @@
 	$_SESSION['link_nav2'] ="personnels.php";
 	$_SESSION['link_nav3'] ="detail_personnels.php?persosnnels=".$_REQUEST['personnels'];
 ?>
-<?php require_once('menu.php'); ?>
-
-		    
+<?php require_once('menu.php'); ?>		    
 			 <div id="page-inner"> 
               <div class="row">
                 <div class="col-lg-12">

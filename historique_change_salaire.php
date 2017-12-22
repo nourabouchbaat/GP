@@ -27,8 +27,6 @@
                     <div class="panel panel-default">
 
              <div class="panel-body">
-                        
-			<br/>
 			<div class="widget-content nopadding">
 				<?php 
 				
@@ -42,7 +40,6 @@
 					else
 					{
 				?>
-				<br/>
 					<table class="table table-striped table-bordered table-hover">
 				      <thead>
 				         <th>Date</th>
@@ -68,7 +65,6 @@
 						?>
 					  </tbody>
 					</table>
-				<br/>
 				<?php 
 				} //Fin If
 				?>

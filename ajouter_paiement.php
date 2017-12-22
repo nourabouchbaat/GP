@@ -10,8 +10,6 @@
 	
 ?>
 <?php require_once('menu.php'); ?>
-
-<br/>
 <div class="row">
 	<div class="col-12">
 	<?php if(isset($_REQUEST['m'])) {?>
@@ -97,8 +95,6 @@
 					<input type="hidden" name="act" value="ajouter_paiement"/>
 					<input type="hidden" name="DATE_POINTAGE_START" value="<?php echo $_REQUEST['dateStart'] ?>"/>
 					<input type="hidden" name="DATE_POINTAGE_END" value="<?php echo $_REQUEST['dateFin'] ?>"/>
-					
-						<br/>
 						<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 							<thead>
 				      <thead>
@@ -144,7 +140,6 @@
 								?>
 							  </tbody>
 						</table>
-						<br/>
 						<?php 
 						} //Fin If
 						?>

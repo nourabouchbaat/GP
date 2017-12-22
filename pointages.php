@@ -90,7 +90,6 @@
 						else
 						{
 					?>
-					<br/>
 					<table class="table table-striped table-bordered table-hover" >
 						<tr>
 							<th>Date Debut</th>
@@ -106,7 +105,7 @@
 							<td><?php echo getSommeNombreHeurS($where1) ?></td>
 							<td><?php echo getSommeNombreHeurN($where1)+getSommeNombreHeurS($where1) ?></td>
 						</tr>
-					</table><br><br>
+					</table>
 					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 				      <thead>
 				         <th>Code</th>

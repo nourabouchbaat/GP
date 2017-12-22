@@ -176,7 +176,6 @@
 					else
 					{
 				?>
-<br/>
 				 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 					<thead>
 				    	<tr class="<?php echo $c ?>">
@@ -208,7 +207,6 @@
 						?>
 					  </tbody>
 					</table>
-				<br/>
 				<?php 
 				} //Fin If
 				?>

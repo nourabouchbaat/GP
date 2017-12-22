@@ -12,7 +12,6 @@
 	$_SESSION['breadcrumb_nav4'] ="Nouveau chantier";
 ?>
 <?php require_once('menu.php'); ?>
-
 	 
 			<div id="page-inner"> 
               <div class="row">

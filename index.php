@@ -1,4 +1,4 @@
-*<?php require_once('head.php'); ?>
+<?php require_once('head.php'); ?>
 <?php 
 	$_SESSION['titre'] ="Statistique & Tableau de bord";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
@@ -33,7 +33,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4>Paiements</h4>
+							<h4><a href="paiements.php">Paiements</a></h4>
 							<div class="easypiechart" id="easypiechart-teal" data-percent="84" >								
 								<a href="paiements.php"><img src="images/argent-paiement-icone.png" alt="Paiements" title="Paiements" /></a>
 
@@ -44,7 +44,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4>Les avances</h4>
+							<h4><a href="avances.php">Les avances</a></h4>
 							<div class="easypiechart" id="easypiechart-red" data-percent="46" >								
 								<a href="avances.php"> <img src="images/okteta-icone-7976-64.png" alt="Avances" title="Avances"/> </a>
 
@@ -57,7 +57,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4>Marches</h4>
+							<h4><a href="marches.php">Marches</a></h4>
 							<div class="easypiechart" id="easypiechart-blue" data-percent="82" >
 							<a href="marches.php"><img src="images/projet-icon.jpg"  alt="Marchies" title="Marchies" style="border-radius: 7px;"/></a>
 							</div>
@@ -67,7 +67,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4>Chantiers</h4>
+							<h4><a href="chantiers.php">Chantiers</a></h4>
 							<div class="easypiechart" id="easypiechart-orange" data-percent="55" >								
 								<a href="chantiers.php"> <img src="images/chantier-travaux.png"  alt="Chantiers" title="Chantiller"/></a>
 
@@ -78,7 +78,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4>Postes</h4>
+							<h4><a href="postes.php">Postes</a></h4>
 							<div class="easypiechart" id="easypiechart-teal" data-percent="84" >								
 								<a href="postes.php"><img src="images/ouvrier-du-batiment-96.png" alt="Postes" title="Postes" /></a>
 
@@ -89,7 +89,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4>Administrations</h4>
+							<h4><a href="ajouter_ventes.php">Administrations</a></h4>
 							<div class="easypiechart" id="easypiechart-red" data-percent="46" >								
 								<a href="ajouter_ventes.php"> <img src="images/admin-user.png" alt="Marchies" title="Marchies"/> </a>
 
