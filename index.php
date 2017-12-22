@@ -12,7 +12,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4>Personnels</h4>
+							<h4><a href="personnels.php">Personnels</a></h4>
 							<div class="easypiechart" id="easypiechart-blue" data-percent="82" >
 							<a href="personnels.php"><img src="images/client-icone-9349-64.png"  alt="personnels" title="personnels"/></a>
 							</div>
@@ -22,7 +22,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4>Pointages</h4>
+							<h4><a href="pointages.php">Pointages</a></h4>
 							<div class="easypiechart" id="easypiechart-orange" data-percent="55" >								
 								<a href="pointages.php"> <img src="images/controle-poitage-icone.png"  alt="Pointages" title="Pointages"/></a>
 
@@ -98,10 +98,6 @@
 					</div>
 				</div>
 		</div><!--/.row-->
+	</div>
 
-
-			<footer><p>All right reserved. Template by: <a href="http://webthemez.com/">WebThemez.com</a></p></footer>
-			</div>
-             <!-- /. PAGE INNER  -->
-        </div>
 <?php require_once('foot.php'); ?>
