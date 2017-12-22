@@ -184,7 +184,7 @@ if ($action == "m"){
 	}
 	else 
 	{
-		$id_nom='id';
+		$id_nom='ID';
 	}
 		
 	//Rendre les dates du format 11-30-2009 => 1235543267654

@@ -44,21 +44,20 @@
 											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('TELEPHONE','personnels','ID',$_REQUEST['personnels']); ?>">
 												
 										</div>
+										
+										<div class="form-group">
+											<label class="control-label"><?php echo "Code" ?> : </label>
+											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('CODE','personnels','ID',$_REQUEST['personnels']); ?>">
+												
+										</div>
 										<div class="form-group">
 											<label class="control-label"><?php echo "ADRESSE" ?> : </label>
-											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('ADRESSE','personnels','ID',$_REQUEST['personnels']); ?>">
+											<textarea class="form-control" id="disabledInput"  placeholder="Disabled input" disabled="" rows="5">
+												<?php echo getValeurChamp('ADRESSE','personnels','ID',$_REQUEST['personnels']); ?>
+											</textarea>
 												
 										</div>
-										<div class="form-group">
-											<label class="control-label"><?php echo "CNSS" ?> : </label>
-											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('CNSS','personnels','ID',$_REQUEST['personnels']); ?>">
-												
-										</div>
-										<div class="form-group">
-											<label class="control-label"><?php echo "RIB" ?> : </label>
-											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('RIB','personnels','ID',$_REQUEST['personnels']); ?>">
-												
-										</div>
+
 										<div class="form-actions">
 											<button type="submit" class="btn 	btn-default">
 											Annuler
@@ -74,6 +73,11 @@
 											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('DATE_EMBAUCHE','personnels','ID',$_REQUEST['personnels']); ?>">
 												
 										</div>
+				                        <div class="form-group">
+				                            <label class="control-label">Poste : </label>
+												<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('POSTE','postes','ID', $_REQUEST['ID_POSTE']) ?>">
+				                            
+				                        </div>
 										<div class="form-group">
 											<label class="control-label"><?php echo "Type" ?> : </label>
 											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('TYPE','personnels','ID',$_REQUEST['personnels']); ?>">
@@ -90,15 +94,15 @@
 												
 										</div>
 										<div class="form-group">
-											<label class="control-label"><?php echo "Code" ?> : </label>
-											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('CODE','personnels','ID',$_REQUEST['personnels']); ?>">
+											<label class="control-label"><?php echo "CNSS" ?> : </label>
+											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('CNSS','personnels','ID',$_REQUEST['personnels']); ?>">
 												
 										</div>
-				                        <div class="form-group">
-				                            <label class="control-label">Poste : </label>
-												<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('POSTE','postes','ID', $_REQUEST['ID_POSTE']) ?>">
-				                            
-				                        </div>
+										<div class="form-group">
+											<label class="control-label"><?php echo "RIB" ?> : </label>
+											<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled="" value="<?php echo getValeurChamp('RIB','personnels','ID',$_REQUEST['personnels']); ?>">
+												
+										</div>
 										
 									</form>
 								</div>

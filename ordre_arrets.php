@@ -1,12 +1,12 @@
 <?php require_once('head.php'); ?>
 <?php 
-	$_SESSION['titre'] ="Gestion des postes";
-	$_SESSION['link_nav1'] ="index.php";
-	$_SESSION['link_nav2'] ="postes.php";
+	$_SESSION['titre'] ="Gestion des marches";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
-	$_SESSION['breadcrumb_nav2'] ="Postes";
-	$_SESSION['breadcrumb_nav3'] ="";
-	
+	$_SESSION['breadcrumb_nav2'] ="Marches";
+	$_SESSION['breadcrumb_nav3'] ="Ordre d'arret";
+	$_SESSION['link_nav1'] ="index.php";
+	$_SESSION['link_nav2'] ="marches.php";
+	$_SESSION['link_nav3'] ="ordre_arrets.php";
 ?>
 <?php require_once('menu.php'); ?>
 
@@ -27,10 +27,16 @@
                     <div class="panel panel-default">
 						
                         <div class="panel-body">
+							<div class="widget-content nopadding">
+								<a href="ajouter_ordre_arret.php?marches=<?php echo $_REQUEST['marches'] ?>"><i class="glyphicon glyphicon-plus"></i> Ajouter ordre d'arrêt</a>
+							</div>
+						</div>
+
+                        <div class="panel-body">
                       
 			<div class="widget-content nopadding">
 				<?php 
-					$sql = "select * from postes order by id";
+				 	$sql = "select * from ordre_arret where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
 					$res = doQuery($sql);
 
 					$nb = mysql_num_rows($res);
@@ -40,12 +46,14 @@
 					else
 					{
 				?>
-				<br/>
+<br/>
 				 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 					<thead>
-						<tr>
-				         <th>Poste</th>
-				         <th class="op"> <?php echo _OP ?> </th>
+				    	<tr class="<?php echo $c ?>">
+					         <th>Date</th>
+					         <th>N° Ordre d'arrêt</th>
+					         <th>Justificatif</th>
+				        	 <th class="op" style="width:100px"> <?php echo _OP ?> </th>
 					</thead>	
 					<tbody>
 						<?php 
@@ -58,25 +66,29 @@
 								$c = "";	
 						?>
 						<tr class="<?php echo $c ?>">
-							<td><?php echo $ligne['POSTE'] ?></td>
+							<td><?php echo $ligne['DATE_ORDRE_ARRET'] ?></td>
+							<td><?php echo $ligne['N_ORDRE_ARRET'] ?></td>
+							<td><?php echo $ligne['JUSTIFICAION'] ?></td>
 							<td class="op">
-								<a href="modifier_poste.php?postes=<?php echo $ligne['ID'] ?>" class="modifier2" title="<?php echo _MODIFIER ?>">
+							    &nbsp;
+								<a href="modifier_ordre_arret.php?marches=<?php echo $_REQUEST['marches'] ?>&ordre_arrets=<?php echo $ligne['ID'] ?>" class="modifier2" title="<?php echo _MODIFIER ?>">
 									<i class="glyphicon glyphicon-edit"></i> 
 				                </a>
-							<!--	&nbsp;
+								&nbsp;
+								
 				                <a href="#ancre" 
 				                class="supprimer2" 
 				                onclick="javascript:supprimer(
-				                							'postes',
-				                                            '<?php echo $ligne['id'] ?>',
-				                                            'postes.php',
-				                                            '1',
-				                                            '1')
+				                							'ordre_arret',
+				                                            '<?php echo $ligne['ID'] ?>',
+				                                            'ordre_arrets.php',
+				                                            'marches',
+				                                            '<?php echo $_REQUEST['marches'] ?>')
 										" 
 								title="<?php echo _SUPPRIMER ?>">
 				                	
 				                     <i class="glyphicon glyphicon-remove"></i> 
-				                </a>-->
+				                </a>
 							</td>
 						</tr>
 						<?php

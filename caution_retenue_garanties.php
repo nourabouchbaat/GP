@@ -1,12 +1,12 @@
 <?php require_once('head.php'); ?>
 <?php 
-	$_SESSION['titre'] ="Gestion des postes";
-	$_SESSION['link_nav1'] ="index.php";
-	$_SESSION['link_nav2'] ="postes.php";
+	$_SESSION['titre'] ="Gestion des avances";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
-	$_SESSION['breadcrumb_nav2'] ="Postes";
-	$_SESSION['breadcrumb_nav3'] ="";
-	
+	$_SESSION['breadcrumb_nav2'] ="Marches";
+	$_SESSION['breadcrumb_nav3'] ="Caution retenue_garanties";
+	$_SESSION['link_nav1'] ="index.php";
+	$_SESSION['link_nav2'] ="marches.php";
+	$_SESSION['link_nav3'] ="caution_retenue_garanties.php";
 ?>
 <?php require_once('menu.php'); ?>
 
@@ -27,10 +27,16 @@
                     <div class="panel panel-default">
 						
                         <div class="panel-body">
+							<div class="widget-content nopadding">
+								<a href="ajouter_caution_retenue_garantie.php?marches=<?php echo $_REQUEST['marches'] ?>"><i class="glyphicon glyphicon-plus"></i> Ajouter caution retenue garantie</a>
+							</div>
+						</div>
+
+                        <div class="panel-body">
                       
 			<div class="widget-content nopadding">
 				<?php 
-					$sql = "select * from postes order by id";
+				 	$sql = "select * from caution_retenue_garantie where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
 					$res = doQuery($sql);
 
 					$nb = mysql_num_rows($res);
@@ -40,12 +46,15 @@
 					else
 					{
 				?>
-				<br/>
+<br/>
 				 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 					<thead>
-						<tr>
-				         <th>Poste</th>
-				         <th class="op"> <?php echo _OP ?> </th>
+				    	<tr class="<?php echo $c ?>">
+					         <th>Date Caution provisoire </th>
+					         <th>N° Caution</th>
+					         <th>Montant</th>
+					         <th>Banque</th>
+				        	 <th class="op" style="width:100px"> <?php echo _OP ?> </th>
 					</thead>	
 					<tbody>
 						<?php 
@@ -58,25 +67,30 @@
 								$c = "";	
 						?>
 						<tr class="<?php echo $c ?>">
-							<td><?php echo $ligne['POSTE'] ?></td>
+							<td><?php echo $ligne['DATE_CAUTION_RETENUE_GARANTIE'] ?></td>
+							<td><?php echo $ligne['N_CAUTION'] ?></td>
+							<td><?php echo $ligne['MONTANT'] ?></td>
+							<td><?php echo $ligne['BANQUE'] ?></td>
 							<td class="op">
-								<a href="modifier_poste.php?postes=<?php echo $ligne['ID'] ?>" class="modifier2" title="<?php echo _MODIFIER ?>">
+							    &nbsp;
+								<a href="modifier_caution_retenue_garantie.php?marches=<?php echo $_REQUEST['marches'] ?>&caution_retenue_garanties=<?php echo $ligne['ID'] ?>" class="modifier2" title="<?php echo _MODIFIER ?>">
 									<i class="glyphicon glyphicon-edit"></i> 
 				                </a>
-							<!--	&nbsp;
+								&nbsp;
+								
 				                <a href="#ancre" 
 				                class="supprimer2" 
 				                onclick="javascript:supprimer(
-				                							'postes',
-				                                            '<?php echo $ligne['id'] ?>',
-				                                            'postes.php',
-				                                            '1',
-				                                            '1')
+				                							'caution_retenue_garantie',
+				                                            '<?php echo $ligne['ID'] ?>',
+				                                            'caution_retenue_garanties.php',
+				                                            'marches',
+				                                            '<?php echo $_REQUEST['marches'] ?>')
 										" 
 								title="<?php echo _SUPPRIMER ?>">
 				                	
 				                     <i class="glyphicon glyphicon-remove"></i> 
-				                </a>-->
+				                </a>
 							</td>
 						</tr>
 						<?php

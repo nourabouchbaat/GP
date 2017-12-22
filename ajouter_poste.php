@@ -19,8 +19,7 @@
                         <div class="panel-body">
                             <div class="row">
                             	<div class="col-lg-12">	
-									<form action="gestion.php" name="frm" method="post" 
-						onsubmit="return checkForm(document.frm);" >
+									<form action="gestion.php" name="frm" method="post" onsubmit="return checkForm(document.frm);" >
 										<input type="hidden" name="act" value="a"/>
 									    <input type="hidden" name="table" value="postes"/>
 										<input type="hidden" name="page" value="postes.php"/>
@@ -29,6 +28,7 @@
 											<input type="text" id="<?php echo "POSTE" ?>__required" 
 													name="POSTE"  class="form-control"/>
 									    </div>
+
 									    <div class="form-group">
 										<button type="submit" class="btn btn-default">
 											<?php echo _AJOUTER ?>

@@ -1455,6 +1455,38 @@ function getTableList($table,$nom,$valeur,$champ,$change,$where,$libelle){
 <?php
 }
 
+function getTableList5($table,$nom,$valeur,$champ1,$champ2,$champ3,$change,$where,$libelle){
+	
+	$sql = "select * from ". $table ." ". $where;
+	$res = doQuery($sql);
+	?>
+	<div class="controls">
+	<select name="<?php echo $nom ?>" <?php echo $change ?> 
+	id="<?php echo $libelle ?>_required" class="form-control">
+		
+		<option value="">- -  - - _</option>
+		
+	<?php
+	while($ligne = mysql_fetch_array($res)){	
+		
+		$s = "";
+		
+		if ( $valeur == $ligne['ID']){
+			$s = "selected";
+		}
+	?>
+		<option value="<?php echo $ligne['ID'] ?>" <?php echo $s ?>>
+			<?php echo $ligne[$champ1]." : ".$ligne[$champ2]." ".$ligne[$champ3]; ?>
+		</option>
+	<?php
+	}
+	?>
+	</select>
+ </div>
+<?php
+}
+
+
 function getTableList2($table,$nom,$valeur,$champs,$value,$change,$where,$libelle){
 	
 	$sql = "select * from ". $table ." ". $where ." order by ". $champs;
