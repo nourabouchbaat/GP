@@ -157,16 +157,69 @@
 			</div>
 						</form>	
 					</div>
-  <div class="row">
-                <div class="col-md-12">
-                    <!-- Advanced Tables -->
-                    <div class="panel panel-default">
-						
-                        <div class="panel-body">
-                      
-			<div class="widget-content nopadding">
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+				<div class="widget-content nopadding">
+					<?php 
+					 	$sql = "select * from caution_provisoire where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
+						$res = doQuery($sql);
+
+						$nb = mysql_num_rows($res);
+						if( $nb==0){
+						 echo _VIDE;
+						}
+						else
+						{
+					?>
+	     			<table class="table table-striped table-bordered table-hover" >
+						<thead>
+							<tr><th colspan="4" style="text-align: center;font-size:  22px;">Caution provisoire</th></tr>
+					    	<tr class="<?php echo $c ?>">
+						         <th>Date Caution provisoire </th>
+						         <th>N° Caution</th>
+						         <th>Montant</th>
+						         <th>Banque</th>
+						</thead>	
+						<tbody>
+							<?php 
+							$i = 0;
+							while ($ligne = mysql_fetch_array($res)){
+								
+								if($i%2==0)
+									$c = "c";
+								else
+									$c = "";	
+							?>
+							<tr class="<?php echo $c ?>">
+								<td><?php echo $ligne['DATE_CAUTION_PROVISOIRE'] ?></td>
+								<td><?php echo $ligne['N_CAUTION'] ?></td>
+								<td><?php echo $ligne['MONTANT'] ?></td>
+								<td><?php echo $ligne['BANQUE'] ?></td>
+								
+							</tr>
+							<?php
+								$i++; 
+							}
+							?>
+						  </tbody>
+					</table>
+					<?php 
+					} //Fin If
+					?>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+	        <div class="panel-body">
+				<div class="widget-content nopadding">
 				<?php 
-				 	$sql = "select * from caution_provisoire where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
+				 	$sql = "select * from caution_definitive where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
 					$res = doQuery($sql);
 
 					$nb = mysql_num_rows($res);
@@ -176,16 +229,17 @@
 					else
 					{
 				?>
-<br/>
-				 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-					<thead>
-				    	<tr class="<?php echo $c ?>">
-					         <th>Date Caution provisoire </th>
-					         <th>N° Caution</th>
-					         <th>Montant</th>
-					         <th>Banque</th>
-					</thead>	
-					<tbody>
+		   		    <table class="table table-striped table-bordered table-hover">
+						<thead>
+					    	<tr class="<?php echo $c ?>">
+					    		<tr><th colspan="4" style="text-align: center;font-size:  22px;">Caution definitive</th></tr>
+						         <th>Date Caution definitive </th>
+						         <th>N° Caution</th>
+						         <th>Montant</th>
+						         <th>Banque</th>
+					    	</tr>
+						</thead>	
+						<tbody>
 						<?php 
 						$i = 0;
 						while ($ligne = mysql_fetch_array($res)){
@@ -196,29 +250,25 @@
 								$c = "";	
 						?>
 						<tr class="<?php echo $c ?>">
-							<td><?php echo $ligne['DATE_CAUTION_PROVISOIRE'] ?></td>
+							<td><?php echo $ligne['DATE_CAUTION_DEFINITIVE'] ?></td>
 							<td><?php echo $ligne['N_CAUTION'] ?></td>
 							<td><?php echo $ligne['MONTANT'] ?></td>
 							<td><?php echo $ligne['BANQUE'] ?></td>
-							
 						</tr>
 						<?php
 							$i++; 
 						}
 						?>
-					  </tbody>
+					  	</tbody>
 					</table>
-				<br/>
 				<?php 
 				} //Fin If
 				?>
 				</div>
-                            
-                    </div>
-                 </div>
-                    <!--End Advanced Tables -->
-                </div>
             </div>
+        </div>
+    </div>
+</div>
 
 
 
