@@ -5,6 +5,8 @@
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Marche";
 	$_SESSION['breadcrumb_nav3'] ="detail marche";
+	$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 
 
 	$_SESSION['link_nav1'] ="index.php";
@@ -229,6 +231,7 @@
 					else
 					{
 				?>
+
 		   		    <table class="table table-striped table-bordered table-hover">
 						<thead>
 					    	<tr class="<?php echo $c ?>">
@@ -240,6 +243,7 @@
 					    	</tr>
 						</thead>	
 						<tbody>
+
 						<?php 
 						$i = 0;
 						while ($ligne = mysql_fetch_array($res)){

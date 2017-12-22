@@ -9,6 +9,8 @@
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="pointages.php";
 	$_SESSION['link_nav3'] ="modifier_pointage.php?pointages=".$_REQUEST['pointages'];
+		$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 ?>
 <?php require_once('menu.php'); ?>
 <div id="page-inner"> 
@@ -53,14 +55,14 @@
 					    <div class="form-group">
 							<label class="control-label"><?php echo "Heur normal"?> : </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "HEUR_N" ?>_required"  value="<?php echo getValeurChamp('HEUR_N','pointages','ID',$_REQUEST['pointages']); ?>"
+								<input type="number" id="<?php echo "HEUR_N" ?>_required"  value="<?php echo getValeurChamp('HEUR_N','pointages','ID',$_REQUEST['pointages']); ?>"
 									name="HEUR_N"  class="form-control input-small"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label"><?php echo "Heur supplementaire" ?> : </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "HEUR_S" ?>_required"  value="<?php echo getValeurChamp('HEUR_S','pointages','ID',$_REQUEST['pointages']); ?>"
+								<input type="number" id="<?php echo "HEUR_S" ?>_required"  value="<?php echo getValeurChamp('HEUR_S','pointages','ID',$_REQUEST['pointages']); ?>"
 									name="HEUR_S"  class="form-control input-small" />
 							</div>
 						</div>

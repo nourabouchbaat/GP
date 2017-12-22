@@ -8,6 +8,9 @@
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="avances.php";
 	$_SESSION['link_nav3'] ="ajouter_avance.php";
+	$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
+
 ?>
 <?php require_once('menu.php'); ?>
 			<div class="row">
@@ -41,12 +44,10 @@
 					else
 					{
 				?>
-				<br/>
 				<form action="gestion.php" name="frm" method="post" 
 					onsubmit="return checkForm(document.frm);" class="form-horizontal">
 					<input type="hidden" name="act" value="ajouter_avance"/>
 					
-				<br/>
 				 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 					  <thead>
 
@@ -72,7 +73,7 @@
 							<td><?php echo $ligne['CNSS'] ?></td>
 							<td><?php echo $ligne['CIN'] ?></td>
 							<td><?php echo $ligne['CODE'] ?></td>
-							<td><input type='text' name='avance_<?php echo $i;  ?>'><?php echo isset($_REQUEST['avance_'.$i]) and !empty($_REQUEST['avance_'.$i])?$_REQUEST['avance_'.$i]:"" ?> </td>
+							<td><input type='number' name='avance_<?php echo $i;  ?>'><?php echo isset($_REQUEST['avance_'.$i]) and !empty($_REQUEST['avance_'.$i])?$_REQUEST['avance_'.$i]:"" ?> </td>
 							
 						</tr>
 						<?php

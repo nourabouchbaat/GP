@@ -6,13 +6,12 @@
 	$_SESSION['link_nav2'] ="marches.php";
 	$_SESSION['link_nav3'] ="chantiers.php";
 	$_SESSION['link_nav4'] ="ajouter_chantier.php";
+	$_SESSION['breadcrumb_nav4'] ="Nouveau chantier";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Marches";
 	$_SESSION['breadcrumb_nav3'] ="Chantiers";
-	$_SESSION['breadcrumb_nav4'] ="Nouveau chantier";
 ?>
 <?php require_once('menu.php'); ?>
-
 	 
 			<div id="page-inner"> 
               <div class="row">
@@ -48,7 +47,7 @@
 										<button type="submit" class="btn btn-default">
 											<?php echo _AJOUTER ?>
 										</button>
-										ou <a class="text-danger" href="chantiers.php">Annuler</a>
+										ou <a class="text-danger" href="chantiers.php?marches=<?php echo $_REQUEST['marches'] ?>">Annuler</a>
                                             
                                         </div>
 								</form>

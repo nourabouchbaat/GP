@@ -10,6 +10,8 @@
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="postes.php";
 	$_SESSION['link_nav3'] ="modifier_poste.php?postes=".$_REQUEST['postes'];
+		$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 ?>
 <?php require_once('menu.php'); ?>
 <div id="page-inner"> 

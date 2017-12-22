@@ -4,7 +4,11 @@
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Personnels";
 	$_SESSION['breadcrumb_nav3'] ="Remarques";
-	
+	$_SESSION['link_nav1'] ="index.php";
+	$_SESSION['link_nav2'] ="personnels.php";
+	$_SESSION['link_nav3'] ="remarque_personnels.php?personnels=".$_REQUEST['personnels'];
+	$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 ?>
 <?php require_once('menu.php'); ?>
 
@@ -26,7 +30,6 @@
 
 		             <div class="panel-body" >
 		                        
-					<br/>
 					<div class="widget-content nopadding">
 				<?php 
 					$sql = "select * from remarque_personnels where ID_PERSONNELS=".$_REQUEST['personnels']." order by ID desc";
@@ -39,7 +42,6 @@
 					else
 					{
 				?>
-				<br/>
 					<table class="table table-bordered table-striped table-hover data-table">
 				      <thead>
 				         <th>Date</th>
@@ -87,7 +89,6 @@
 						?>
 					  </tbody>
 					</table>
-				<br/>
 				<?php 
 				} //Fin If
 				?>
@@ -99,8 +100,6 @@
 			 <div class="panel panel-default" >
 
 		             <div class="panel-body" style="min-height: 370px;">
-		                        
-					<br/>
 					<div class="widget-content nopadding">
 						<form action="gestion.php" name="frm" method="post" 
 						onsubmit="return checkForm(document.frm);">

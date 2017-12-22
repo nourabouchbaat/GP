@@ -1,4 +1,6 @@
          <!-- /. PAGE WRAPPER  -->
+
+            <footer><p>Tous droits r&eacute;serv&eacute;s. Mod&egrave;le par:<a href="http://webthemez.com/">WebThemez.com</a></p></footer>
         </div>
      <!-- /. WRAPPER  -->
    <!-- JS Scripts-->

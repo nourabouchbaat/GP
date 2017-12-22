@@ -7,6 +7,8 @@
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="pointages.php";
 	$_SESSION['link_nav3'] ="";
+		$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 ?>
 <?php require_once('menu.php'); ?>
 
@@ -90,7 +92,6 @@
 						else
 						{
 					?>
-					<br/>
 					<table class="table table-striped table-bordered table-hover" >
 						<tr>
 							<th>Date Debut</th>
@@ -106,7 +107,7 @@
 							<td><?php echo getSommeNombreHeurS($where1) ?></td>
 							<td><?php echo getSommeNombreHeurN($where1)+getSommeNombreHeurS($where1) ?></td>
 						</tr>
-					</table><br><br>
+					</table>
 					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 				      <thead>
 				         <th>Code</th>

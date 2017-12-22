@@ -9,6 +9,8 @@
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="paiements.php";
 	$_SESSION['link_nav3'] ="modifier_paiement.php?paiements=".$_REQUEST['paiements'];
+		$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 ?>
 <?php require_once('menu.php'); ?>
 
@@ -68,21 +70,21 @@
 					    <div class="form-group">
 							<label class="control-label"><?php echo "Somme des heurs normaux"?> : </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "SOMME_HEUR_N" ?>_required"  value="<?php echo getValeurChamp('SOMME_HEUR_N','paiements','ID',$_REQUEST['paiements']); ?>"
+								<input type="number" id="<?php echo "SOMME_HEUR_N" ?>_required"  value="<?php echo getValeurChamp('SOMME_HEUR_N','paiements','ID',$_REQUEST['paiements']); ?>"
 									name="SOMME_HEUR_N"  class="form-control input-small"/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label"><?php echo "Somme des heurs supplementaires" ?> : </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "SOMME_HEUR_S" ?>_required"  value="<?php echo getValeurChamp('SOMME_HEUR_S','paiements','ID',$_REQUEST['paiements']); ?>"
+								<input type="number" id="<?php echo "SOMME_HEUR_S" ?>_required"  value="<?php echo getValeurChamp('SOMME_HEUR_S','paiements','ID',$_REQUEST['paiements']); ?>"
 									name="SOMME_HEUR_S"  class="form-control input-small" />
 							</div>
 						</div>
 					    <div class="form-group">
 							<label class="control-label"><?php echo "Montant"?> : </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "MONTANT" ?>_required"  value="<?php echo getValeurChamp('MONTANT','paiements','ID',$_REQUEST['paiements']); ?>"
+								<input type="number" id="<?php echo "MONTANT" ?>_required"  value="<?php echo getValeurChamp('MONTANT','paiements','ID',$_REQUEST['paiements']); ?>"
 									name="MONTANT"  class="form-control input-small"/>
 							</div>
 						</div>

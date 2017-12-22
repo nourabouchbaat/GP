@@ -6,7 +6,8 @@
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Postes";
 	$_SESSION['breadcrumb_nav3'] ="";
-	
+		$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 ?>
 <?php require_once('menu.php'); ?>
 
@@ -40,7 +41,6 @@
 					else
 					{
 				?>
-				<br/>
 				 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 					<thead>
 						<tr>
@@ -85,7 +85,6 @@
 						?>
 					  </tbody>
 					</table>
-				<br/>
 				<?php 
 				} //Fin If
 				?>

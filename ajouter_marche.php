@@ -5,6 +5,8 @@
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Marche";
 	$_SESSION['breadcrumb_nav3'] ="Nouveau marche";
+$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 
 
 	$_SESSION['link_nav1'] ="index.php";
@@ -68,7 +70,7 @@
 						<div class="form-group">
 							<label class="control-label"><?php echo "Montant du Marché :" ?>  </label>
 							<div class="controls">
-								<input type="text" id="<?php echo "MONTANT_MARCHE" ?>_required" 
+								<input type="number" id="<?php echo "MONTANT_MARCHE" ?>_required" 
 									name="MONTANT_MARCHE"  class="form-control input-small"/>
 							</div>
 						</div>

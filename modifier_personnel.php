@@ -11,6 +11,8 @@
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="personnels.php";
 	$_SESSION['link_nav3'] ="modifier_personnel.php";
+		$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 ?>
 <?php require_once('menu.php'); ?>
 <div id="page-inner"> 
@@ -92,12 +94,12 @@
 						</div>
 						<div class="form-group">
 							<label class="control-label"><?php echo "Salaire mensuel" ?> : </label>
-								<input type="text" id="<?php echo "SALAIRE_MENSUELLE" ?>_required"  value="<?php echo getValeurChamp('SALAIRE_MENSUELLE','personnels','ID',$_REQUEST['personnels']); ?>"
+								<input type="number" id="<?php echo "SALAIRE_MENSUELLE" ?>_required"  value="<?php echo getValeurChamp('SALAIRE_MENSUELLE','personnels','ID',$_REQUEST['personnels']); ?>"
 									name="SALAIRE_MENSUELLE"  class="form-control input-small" />
 						</div>
 						<div class="form-group">
 							<label class="control-label"><?php echo "Tarif journaliere" ?> : </label>
-								<input type="text" id="<?php echo "TARIF_JOURNALIERS" ?>_required"  value="<?php echo getValeurChamp('TARIF_JOURNALIERS','personnels','ID',$_REQUEST['personnels']); ?>"
+								<input type="number" id="<?php echo "TARIF_JOURNALIERS" ?>_required"  value="<?php echo getValeurChamp('TARIF_JOURNALIERS','personnels','ID',$_REQUEST['personnels']); ?>"
 									name="TARIF_JOURNALIERS"  class="form-control input-small" />
 						</div>
 						<div class="form-group">

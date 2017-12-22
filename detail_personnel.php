@@ -8,10 +8,11 @@
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="personnels.php";
 	$_SESSION['link_nav3'] ="detail_personnels.php?persosnnels=".$_REQUEST['personnels'];
-?>
-<?php require_once('menu.php'); ?>
+	$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 
-		    
+?>
+<?php require_once('menu.php'); ?>		    
 			 <div id="page-inner"> 
               <div class="row">
                 <div class="col-lg-12">

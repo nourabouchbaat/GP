@@ -6,7 +6,7 @@
                         <a href="index.php"><i class="fa fa-dashboard"></i> Accueil</a>
                     </li>
                     <li>
-                        <a href="ui-elements.html"><i class="glyphicon glyphicon-road"></i> Marches<span class="fa arrow"></span></a>
+                        <a href="#"><i class="glyphicon glyphicon-road"></i> Marches<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="marches.php" >
@@ -21,7 +21,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="personnels.php"><i class="glyphicon glyphicon-user"></i> Personnels<span class="fa arrow"></span></a>
+                        <a href="#"><i class="glyphicon glyphicon-user"></i> Personnels<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="personnels.php" >
@@ -36,7 +36,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="tab-panel.html"><i class="glyphicon glyphicon-time"></i> Pointages<span class="fa arrow"></span></a>
+                        <a href="#"><i class="glyphicon glyphicon-time"></i> Pointages<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="pointages.php" >
@@ -51,7 +51,7 @@
                         </ul></a>
                     </li>                    
                     <li>
-                        <a href="table.html"><i class="glyphicon glyphicon-usd"></i> Paiements<span class="fa arrow"></span></a>
+                        <a href="#"><i class="glyphicon glyphicon-usd"></i> Paiements<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="paiements.php" >
@@ -66,7 +66,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="form.html"><i class="glyphicon glyphicon-euro"></i> Avances<span class="fa arrow"></span> </a>
+                        <a href="#"><i class="glyphicon glyphicon-euro"></i> Avances<span class="fa arrow"></span> </a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="avances.php" >
@@ -81,7 +81,7 @@
                         </ul>
                     </li>
 					<li>
-                        <a href="postes.php"><i class="glyphicon glyphicon-wrench"></i> Postes <span class="fa arrow"></span></a>
+                        <a href="#"><i class="glyphicon glyphicon-wrench"></i> Postes <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="postes.php" >

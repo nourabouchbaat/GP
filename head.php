@@ -3,10 +3,7 @@
 <?php require_once('lang.php'); ?>
 <?php require_once('fonctions.php'); ?>
 <?php require_once('tabs.php'); ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<!-- Mirrored from webthemez.com/demo/marvel-bootstrap-html-admin-template/empty.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Dec 2017 10:38:47 GMT -->
+<html >
 <head>
     <meta charset="iso-8859-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,13 +22,6 @@
    <script type="text/javascript" src="assets/js/javascript.js"></script>
 </head>
 <body>
-	<?php
-		/*if($_SESSION['admin']!="SOMLAKO")
-		{
-			redirect('login.php');
-		}*/
-
-	?>
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">

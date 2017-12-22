@@ -8,10 +8,11 @@
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Postes";
 	$_SESSION['breadcrumb_nav3'] ="Nouveau poste";
-?>
-<?php require_once('menu.php'); ?>
+	$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 
-	 
+?>
+<?php require_once('menu.php'); ?>	 
 			<div id="page-inner"> 
               <div class="row">
                 <div class="col-lg-12">

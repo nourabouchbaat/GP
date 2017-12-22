@@ -9,6 +9,8 @@
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="avances.php";
 	$_SESSION['link_nav3'] ="modifier_avances.php?avances=".$_REQUEST['avances'];
+		$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 
 ?>
 <?php require_once('menu.php'); ?>

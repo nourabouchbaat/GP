@@ -7,6 +7,9 @@
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="personnels.php";
 	$_SESSION['link_nav3'] ="historique_change_salaire.php?persosnnels=".$_REQUEST['personnels'];
+	$_SESSION['link_nav4'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
+
 	
 ?>
 <?php require_once('menu.php'); ?>
@@ -27,8 +30,6 @@
                     <div class="panel panel-default">
 
              <div class="panel-body">
-                        
-			<br/>
 			<div class="widget-content nopadding">
 				<?php 
 				
@@ -42,7 +43,6 @@
 					else
 					{
 				?>
-				<br/>
 					<table class="table table-striped table-bordered table-hover">
 				      <thead>
 				         <th>Date</th>
@@ -68,7 +68,6 @@
 						?>
 					  </tbody>
 					</table>
-				<br/>
 				<?php 
 				} //Fin If
 				?>
