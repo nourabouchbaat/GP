@@ -1,6 +1,7 @@
          <!-- /. PAGE WRAPPER  -->
 
-            <footer><p>Tous droits r&eacute;serv&eacute;s. Mod&egrave;le par:<a href="http://webthemez.com/">WebThemez.com</a></p></footer>
+            <footer><p style="margin: 10px 20px 10px 0px;padding: 15px 30px;">Tous droits r&eacute;serv&eacute;s. Mod&egrave;le par:<a href="
+http://marrakech-it.com/">marrakech-it.com</a></p></footer>
         </div>
      <!-- /. WRAPPER  -->
    <!-- JS Scripts-->
