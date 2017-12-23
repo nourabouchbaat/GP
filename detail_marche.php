@@ -273,9 +273,191 @@
         </div>
     </div>
 </div>
+			  <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
 
+                        <div class="panel-body">
+                      
+			<div class="widget-content nopadding">
+				<?php 
+				 	$sql = "select * from caution_retenue_garantie where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
+					$res = doQuery($sql);
 
+					$nb = mysql_num_rows($res);
+					if( $nb==0){
+					 echo _VIDE;
+					}
+					else
+					{
+				?>
+				 <table class="table table-striped table-bordered table-hover" >
+					<thead>
+ 				    		<tr><th colspan="4" style="text-align: center;font-size:  22px;">Caution Retenue de Garantie</th></tr>
+				    	<tr class="<?php echo $c ?>">
+					         <th>Date Caution provisoire </th>
+					         <th>N° Caution</th>
+					         <th>Montant</th>
+					         <th>Banque</th>
+					</thead>	
+					<tbody>
+						<?php 
+						$i = 0;
+						while ($ligne = mysql_fetch_array($res)){
+							
+							if($i%2==0)
+								$c = "c";
+							else
+								$c = "";	
+						?>
+						<tr class="<?php echo $c ?>">
+							<td><?php echo $ligne['DATE_CAUTION_RETENUE_GARANTIE'] ?></td>
+							<td><?php echo $ligne['N_CAUTION'] ?></td>
+							<td><?php echo $ligne['MONTANT'] ?></td>
+							<td><?php echo $ligne['BANQUE'] ?></td>
+						</tr>
+						<?php
+							$i++; 
+						}
+						?>
+					  </tbody>
+					</table>
+				<?php 
+				} //Fin If
+				?>
+				</div>
+                            
+        </div>
+     </div>
+        <!--End Advanced Tables -->
+    </div>
+</div>
 
+<div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+						
+
+                        <div class="panel-body">
+                      
+			<div class="widget-content nopadding">
+				<?php 
+				 	$sql = "select * from ordre_arret where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
+					$res = doQuery($sql);
+
+					$nb = mysql_num_rows($res);
+					if( $nb==0){
+					 echo _VIDE;
+					}
+					else
+					{
+				?>
+				 <table class="table table-striped table-bordered table-hover" >
+					<thead>
+						 <tr><th colspan="4" style="text-align: center;font-size:  22px;">Ordres d'arrêt </th></tr>
+
+				    	<tr class="<?php echo $c ?>">
+					         <th>Date</th>
+					         <th>N° Ordre d'arrêt</th>
+					         <th>Justificatif</th>
+					</thead>	
+					<tbody>
+						<?php 
+						$i = 0;
+						while ($ligne = mysql_fetch_array($res)){
+							
+							if($i%2==0)
+								$c = "c";
+							else
+								$c = "";	
+						?>
+						<tr class="<?php echo $c ?>">
+							<td><?php echo $ligne['DATE_ORDRE_ARRET'] ?></td>
+							<td><?php echo $ligne['N_ORDRE_ARRET'] ?></td>
+							<td><?php echo $ligne['JUSTIFICAION'] ?></td>
+						</tr>
+						<?php
+							$i++; 
+						}
+						?>
+					  </tbody>
+					</table>
+				<?php 
+				} //Fin If
+				?>
+				</div>
+                            
+                    </div>
+                 </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+						
+                        <div class="panel-body">
+                      
+			<div class="widget-content nopadding">
+				<?php 
+				 	$sql = "select * from ordre_reprise where ID_MARCHE=".$_REQUEST['marches']." order by ID desc";
+					$res = doQuery($sql);
+
+					$nb = mysql_num_rows($res);
+					if( $nb==0){
+					 echo _VIDE;
+					}
+					else
+					{
+				?>
+				 <table class="table table-striped table-bordered table-hover" >
+					<thead>
+ <tr><th colspan="4" style="text-align: center;font-size:  22px;">Ordres de reprise </th></tr>
+				    	<tr class="<?php echo $c ?>">
+					         <th>Date</th>
+					         <th>N° Ordre de reprise</th>
+					         <th>Justificatif</th>
+					</thead>	
+					<tbody>
+						<?php 
+						$i = 0;
+						while ($ligne = mysql_fetch_array($res)){
+							
+							if($i%2==0)
+								$c = "c";
+							else
+								$c = "";	
+						?>
+						<tr class="<?php echo $c ?>">
+							<td><?php echo $ligne['DATE_ORDRE_REPRISE'] ?></td>
+							<td><?php echo $ligne['N_ORDRE_REPRISE'] ?></td>
+							<td><?php echo $ligne['JUSTIFICAION'] ?></td>
+						</tr>
+						<?php
+							$i++; 
+						}
+						?>
+					  </tbody>
+					</table>
+
+				<?php 
+				} //Fin If
+				?>
+				</div>
+                            
+                    </div>
+                 </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+
+            <div class="form-actions">
+							<a class="text-danger" href="marches.php">Retour</a>
+						</div>
 			
 				</div>
 			</div>

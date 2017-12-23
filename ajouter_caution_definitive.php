@@ -46,7 +46,7 @@
 							    </div>
 								<div class="form-group">
 									<label class="control-label"><?php echo "Banque " ?> : </label>
-									<input type="text" id="<?php echo "BANQUE" ?>__required" 
+									<input type="text" id="<?php echo "BANQUE" ?>_required" 
 											name="BANQUE"  class="form-control"/>
 							    </div>
 								  

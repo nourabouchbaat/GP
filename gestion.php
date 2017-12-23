@@ -8,7 +8,6 @@
 
 <?php 
 echo "<center><h2>"._REDIRECT."</h2></center>";
-//print_r($_REQUEST);
 connect ();
 //detection de la table et des champs concerné
 $tab_table = split(',',$_REQUEST['table']);
@@ -27,6 +26,11 @@ $champ_modif=$_REQUEST['champ_modif'];
 $valeur_modif=$_REQUEST['valeur_modif'];
 
 //AJOUT
+if($action== "exporter_database"){
+print_r($_REQUEST);
+	exportDatabase();
+}
+
 if($action== "ajouter_avance"){
 	$nb =  isset($_REQUEST['nb_personnage']) && !empty($_REQUEST['nb_personnage']) ? $_REQUEST['nb_personnage'] : 0;
 	for($i=0;$i<$nb;$i++){
@@ -1762,5 +1766,5 @@ if ($action == "valider_facture_global"){
   $page="facture_global_visualiser.php";
 }
 
-redirect($page."?".$chaine_retour."&m=".$msg."&er=".$msg_err."#ancre");
+//redirect($page."?".$chaine_retour."&m=".$msg."&er=".$msg_err."#ancre");
 ?>	

@@ -3,6 +3,7 @@
 <?php require_once('lang.php'); ?>
 <?php require_once('fonctions.php'); ?>
 <?php require_once('tabs.php'); ?>
+
 <html >
 <head>
     <meta charset="iso-8859-1" />

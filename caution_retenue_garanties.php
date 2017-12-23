@@ -3,7 +3,7 @@
 	$_SESSION['titre'] ="Gestion des avances";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Marches";
-	$_SESSION['breadcrumb_nav3'] ="Caution retenue_garanties";
+	$_SESSION['breadcrumb_nav3'] ="Caution Retenue de Garantie";
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="marches.php";
 	$_SESSION['link_nav3'] ="caution_retenue_garanties.php";
@@ -31,7 +31,7 @@
 						
                         <div class="panel-body">
 							<div class="widget-content nopadding">
-								<a href="ajouter_caution_retenue_garantie.php?marches=<?php echo $_REQUEST['marches'] ?>"><i class="glyphicon glyphicon-plus"></i> Ajouter caution retenue garantie</a>
+								<a href="ajouter_caution_retenue_garantie.php?marches=<?php echo $_REQUEST['marches'] ?>"><i class="glyphicon glyphicon-plus"></i> Ajouter caution retenue de garantie</a>
 							</div>
 						</div>
 

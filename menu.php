@@ -95,6 +95,9 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="database.php"><i class="fa fa-dashboard"></i> Base de donnée</a>
+                    </li>
  
                 </ul>
 

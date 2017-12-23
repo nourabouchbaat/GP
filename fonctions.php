@@ -1,4 +1,5 @@
 <?php require('params.php'); ?>
+<?php require_once('dumper.php');?>
 <?php 
 //Fonctions
 function connect () {
@@ -48,6 +49,19 @@ function redirect($url){
 }
 
 
+function exportDatabase(){
+	try {
+		$world_dumper = Shuttle_Dumper::create(array(
+			'host' => 'localhost',
+			'username' => 'root',
+			'password' => '',
+			'db_name' => 'gestion_personnel',
+		));
+		$world_dumper->dump('somlako1.sql');
+	} catch(Shuttle_Exception $e) {
+		echo "Couldn't dump database: " . $e->getMessage();
+	}
+}
 
 
 function begin(){
