@@ -29,7 +29,8 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
-                       	<form name="frm1" action="" method="post" >
+                       	<form action="gestion.php" name="frm" method="post" 
+					onsubmit="return checkForm(document.frm);" >
 							<input type="hidden" name="act" value="exporter_database"/>
 						    <input type="hidden" name="page" value="database.php"/>
 	                   		<div class="col-lg-12">	
@@ -52,15 +53,25 @@
             <div class="panel panel-default">
 	            <div class="panel-body">
 					<div class="table-responsive">
+
+						<?php 
+							$files = scandir("backup");
+						?>								
 						<table class="table table-striped table-bordered table-hover" >
 							<tr>
-								<th>Date Debut</th>
-								<th>Date Fin</th>
+								<th>Archives</th>
+								<th>Valider</th>
 							</tr>
+							<?php 
+								for($i=2;$i<count($files);$i++){
+
+							?>
+
 							<tr>
-								<td><?php // echo getSommeNombreHeurN($where1) ?></td>
-								<td><?php // echo getSommeNombreHeurS($where1) ?></td>
+								<td><?php  echo getDateExport($files[$i]);?></td>
+								<td><a href="gestion.php?act=importer_database&page=database.php&files=backup/<?php echo $files[$i] ?>">Importer</a></td>
 							</tr>
+							<?php } ?>
 						</table>
 			 		</div>
 	   			</div>

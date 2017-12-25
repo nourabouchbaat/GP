@@ -98,6 +98,9 @@
                     <li>
                         <a href="database.php"><i class="fa fa-dashboard"></i> Base de donnée</a>
                     </li>
+                    <li>
+                        <a href="deconnexion.php"><i class="fa fa-sign-out fa-fw"></i> Deconnexion</a>
+                    </li>
  
                 </ul>
 

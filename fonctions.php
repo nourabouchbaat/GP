@@ -47,23 +47,6 @@ function redirect($url){
 	</script>
 <?php
 }
-
-
-function exportDatabase(){
-	try {
-		$world_dumper = Shuttle_Dumper::create(array(
-			'host' => 'localhost',
-			'username' => 'root',
-			'password' => '',
-			'db_name' => 'gestion_personnel',
-		));
-		$world_dumper->dump('somlako1.sql');
-	} catch(Shuttle_Exception $e) {
-		echo "Couldn't dump database: " . $e->getMessage();
-	}
-}
-
-
 function begin(){
 	doQuery("BEGIN");
 }
@@ -205,7 +188,7 @@ function Suppression($table,$valeur){
 }
 
 function formuler_retour($noms,$valeurs){
-
+$chaine="";
 	if (($noms != "") and ($valeurs != "")){
 		$tab_noms = explode(',',$noms);
 		$tab_valeurs = explode(',',$valeurs);
@@ -3924,4 +3907,70 @@ function getMontant($id, $start, $end){
 	}
 	
 }
+
+
+function getDateExport($fileName){
+	$r = str_replace("gestion_personnel-","",$fileName);
+	$r = str_replace(".sql","",$r);
+	$tab = explode("-", $r);
+	return $tab[0]."/".$tab[1]."/".$tab[2]."  ".$tab[3]." h ".$tab[4]." min ".$tab[5]." s";
+}
+
+
+function exportDatabase(){
+	try {
+		$world_dumper = Shuttle_Dumper::create(array(
+			'host' => 'localhost',
+			'username' => 'root',
+			'password' => '',
+			'db_name' => 'gestion_personnel',
+		));
+		$date = date("d-m-Y-h-i-s");
+		$world_dumper->dump('backup/gestion_personnel-'.$date.'.sql');
+
+	} catch(Shuttle_Exception $e) {
+		echo "Couldn't dump database: " . $e->getMessage();
+	} 
+}
+
+
+function importerDatabase($file){
+   $connect = mysqli_connect("localhost", "root", "", "gestion_personnel");
+   $output = '';
+   $count = 0;
+   $file_data = file($file);
+   $m="";
+   foreach($file_data as $row)
+   {
+    $start_character = substr(trim($row), 0, 2);
+    if($start_character != '--' || $start_character != '/*' || $start_character != '//' || $row != '')
+    {
+     $output = $output . $row;
+     $end_character = substr(trim($row), -1, 1);
+     if($end_character == ';')
+     {
+      if(!mysqli_query($connect, $output))
+      {
+       $count++;
+      }
+      $output = '';
+     }
+    }
+   }
+   if($count > 0)
+   {
+    $m = 'There is an error in Database Import';
+   }
+   else
+   {
+    $m = 'Database Successfully Imported';
+   }
+   echo $m;
+   redirect("database.php?m=".$m);
+   return $m;
+
+}
+
+
+
 ?>

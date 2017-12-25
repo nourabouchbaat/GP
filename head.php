@@ -3,6 +3,11 @@
 <?php require_once('lang.php'); ?>
 <?php require_once('fonctions.php'); ?>
 <?php require_once('tabs.php'); ?>
+<?php 
+ if(!isset($_SESSION['admin'])){
+        redirect("login.php");
+}
+?>
 
 <html >
 <head>
@@ -39,57 +44,23 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user">
-                         <li>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" ><i class="fa fa-gear fa-fw"></i> Profil</a>
-<ul class="dropdown-menu dropdown-messages">
+                        <ul class="dropdown-menu dropdown-user">
                         <li>
                             <a href="#">
                                 <div>
-                                    <strong>John Doe</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Today</em>
-                                    </span>
+                                    <strong><?php echo $_SESSION['user-cnx'] ?></strong>
                                 </div>
-                                <div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</div>
+                                <div><i class="fa fa-user-circle-o fa-4x"></i><?php echo $_SESSION['email-cnx'] ?></div>
                             </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem Ipsum has been the industry's standard dummy text ever since the...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
+                        </li>                        
                         <li>
                             <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
+                                <strong>Update compte</strong>
+                                <i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>
+
                             </a>
                         </li>
                     </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="deconnexion.php"><i class="fa fa-sign-out fa-fw"></i> Deconnexion</a>
-                        </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
