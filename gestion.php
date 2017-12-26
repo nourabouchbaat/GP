@@ -101,6 +101,15 @@ if ($action == "archiver_personnel"){
 	redirect('personnels.php?m=Salarie ou ouvrier est archivé avec succes');
 }
 
+if ($action == "desarchiver_personnel"){
+	$personnels = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : '';
+
+	$req ="update personnels set status = 1 where ID = ".$personnels; 
+	doQuery($req);
+	doQuery('COMMIT');
+	redirect('personnels_archiver.php?m=Salarie ou ouvrier est desarchivé avec succes');
+}
+
 if ($action == "a"){
 	
 	//Rendre les dates du format 11-30-2009 => 1235543267654
@@ -315,6 +324,7 @@ if ($action == 'conexion')
 	{
 		$ligne = mysql_fetch_array($res) or die(mysql_error());
 		$_SESSION['admin']="SOMLAKO";
+		$_SESSION['user']=$ligne['ID'];
 		$_SESSION['user-cnx']=$ligne['PRENOM']." ".$ligne['NOM'];
 		$_SESSION['email-cnx']=$ligne['EMAIL'];
 		redirect("index.php");

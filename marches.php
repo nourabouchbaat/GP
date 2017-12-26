@@ -4,38 +4,46 @@
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Marches";
 	$_SESSION['breadcrumb_nav3'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="marches.php";
 	$_SESSION['link_nav3'] ="";
 	$_SESSION['link_nav4'] ="";
-	$_SESSION['breadcrumb_nav4'] ="";
 	
 ?>
 <?php require_once('menu.php'); ?>
+<div class="row">
+	<div class="col-lg-12">
+		<?php if(isset($_REQUEST['m'])) {?>
+				<div class="alert alert-success">
+					<?php echo $_REQUEST['m']?>
+					<a href="#" data-dismiss="alert" class="close">x</a>
+				</div>
+		<?php } ?>
+	</div>
+</div>
 <div id="page-inner"> 
-	<div class="row">
-        <div class="col-md-12">
-        <!-- Advanced Tables -->
-            <div class="panel panel-default">
-	            <div class="panel-body">
-					<div class="table-responsive">
-				<?php 
+  	<div class="row">
+    	<div class="col-md-12">
+        	<!-- Advanced Tables -->
+        	<div class="panel panel-default">
+            	<div class="panel-body">                      
+					<div class="widget-content nopadding">
+					<?php 
 				
-					$sql = "select * from marches ".$where1." order by id";
+					$sql = "select * from marches order by id";
 					$res = doQuery($sql);
 
-					$nb = mysql_num_rows($res);
-					if( $nb==0){
-					 echo _VIDE;
-					}
-					else
-					{
-				?>
-				<table class="table table-striped table-bordered table-hover" id="dataTables-example">
-				      <thead>
-				      <thead>
-				         <th>Code</th>
-				         <th>Appel d'offre N°</th>
+	$nb = mysql_num_rows($res);
+						if( $nb==0){
+						 echo _VIDE;
+						}
+						else
+						{
+					?>
+						<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+							<thead>
+					     <th>Appel d'offre N°</th>
 				         <th>Marché N°</th>
 				         <th>Objet</th>
 				         <th>Maître d'ouvrage</th>
@@ -54,7 +62,6 @@
 								$c = "";	
 						?>
 						<tr class="<?php echo $c ?>">
-							<td><?php echo $ligne['CODE'] ?></td>
 							<td><?php echo $ligne['NUM_APPEL_OFFRE'] ?></td>
 							<td><?php echo $ligne['NUM_MARCHE'] ?></td>
 							<td><?php echo $ligne['OBJET'] ?></td>

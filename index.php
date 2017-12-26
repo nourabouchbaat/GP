@@ -50,7 +50,7 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4><a href="avances.php">Les avances</a></h4>
+							<h4><a href="avances.php">Credits / Avances</a></h4>
 							<div class="easypiechart" id="easypiechart-red" data-percent="46" >								
 								<a href="avances.php"> <img src="images/okteta-icone-7976-64.png" alt="Avances" title="Avances"/> </a>
 
@@ -73,9 +73,9 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4><a href="chantiers.php">Chantiers</a></h4>
+							<h4><a href="database.php">Base de données</a></h4>
 							<div class="easypiechart" id="easypiechart-orange" data-percent="55" >								
-								<a href="chantiers.php"> <img src="images/chantier-travaux.png"  alt="Chantiers" title="Chantiller"/></a>
+								<a href="database.php"> <img src="images/archiver-dossier-services-publics-icone-7132-64.png"  alt="archiver  database" title="archiver database"/></a>
 
 							</div>
 						</div>
@@ -95,9 +95,9 @@
 				<div class="col-xs-6 col-md-3">
 					<div class="panel panel-default">
 						<div class="panel-body easypiechart-panel">
-							<h4><a href="ajouter_ventes.php">Administrations</a></h4>
+							<h4><a href="ajouter_ventes.php">Deconnexion</a></h4>
 							<div class="easypiechart" id="easypiechart-red" data-percent="46" >								
-								<a href="ajouter_ventes.php"> <img src="images/admin-user.png" alt="Marchies" title="Marchies"/> </a>
+								<a href="deconnexion.php"> <img src="images/deconnexion.png" alt="Marchies" title="Marchies"/> </a>
 
 							</div>
 						</div>

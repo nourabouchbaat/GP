@@ -60,7 +60,7 @@ $_SESSION['link_nav4'] ="";
 						<div class="form-group">
 							<label class="control-label"><?php echo "Type" ?> : </label>
 							<div class="controls">
-								<select name = "TYPE" id="TYPE_required" class="form-control">	
+								<select name = "TYPE" id="TYPE_required" class="form-control" >	
 									
 								    <option value="">- -  - - - -</option>
 									<option value="Salarie">Salarie</option>

@@ -2,13 +2,13 @@
 <?php 
 	$_SESSION['titre'] ="Gestion Personnels";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
-	$_SESSION['breadcrumb_nav2'] ="Personnels";
-	$_SESSION['breadcrumb_nav3'] ="";
+	$_SESSION['breadcrumb_nav2'] ="Marche";
+	$_SESSION['breadcrumb_nav3'] ="Chantier";
 	$_SESSION['link_nav1'] ="index.php";
-	$_SESSION['link_nav2'] ="personnels.php";
-	$_SESSION['link_nav3'] ="";
-	$_SESSION['link_nav4'] ="";
-	$_SESSION['breadcrumb_nav4'] ="";
+	$_SESSION['link_nav2'] ="marches.php";
+	$_SESSION['link_nav3'] ="chantiers.php";
+	$_SESSION['link_nav4'] ="personnels_chantiers.php";
+	$_SESSION['breadcrumb_nav4'] ="Personnels Chantiers";
 	
 ?>
 <?php require_once('menu.php'); ?>
@@ -20,7 +20,7 @@
 	            <div class="panel-body">
 					<div class="table-responsive">
 				<?php 				
-					$sql = "select * from personnels where status=1 order by id";
+					$sql = "select * from personnels p, personnels_chantiers pc where p.ID = pc.ID_PERSONNELS and p.STATUS=1 order by p.ID";
 					$res = doQuery($sql);
 
 					$nb = mysql_num_rows($res);
@@ -36,9 +36,7 @@
 				         <th>Nom</th>
 				         <th>Code</th>
 				         <th>Poste</th>
-				         <th>CIN</th>
-				         <th>CNSS</th>
-				         <th>Téléphone</th>
+				         <th>Date affectation</th>
 				         <th class="op"> <?php echo _OP ?> </th>
 					</thead>	
 					<tbody>
@@ -55,28 +53,8 @@
 							<td><?php echo $ligne['NOM']." ".$ligne['PRENOM'] ?></td>
 							<td><?php echo $ligne['CODE'] ?></td>
 							<td><?php echo getValeurChamp('POSTE','postes','id',$ligne['ID_POSTES']); ?></td>
-							<td><?php echo $ligne['CIN'] ?></td>
-							<td><?php echo $ligne['CNSS'] ?></td>
-							<td><?php echo $ligne['TELEPHONE'] ?></td>
+							<td><?php echo $ligne['DATE_AFFECTATION'] ?></td>
 							<td class="op">
-								<a href="detail_personnel.php?page=personnels.php&personnels=<?php echo $ligne['ID']; ?>" class="detail" title="profil du personnel">
-                                	<i class="fa fa-user"></i>
-                                </a>
-							    &nbsp;
-    							<a href="historique_change_salaire.php?personnels=<?php echo $ligne['ID'] ?>" class="paiement" title="Historique de changement du salaire">
-				                	<i class="fa fa-th"></i>
-				                </a>
-							    &nbsp;
-							    
-						        <a href="remarque_personnel.php?personnels=<?php echo $ligne['ID'] ?>" class="detail" title="Remarque sur personnel">
-						                     <i class="glyphicon glyphicon-list-alt"></i>
-						                    </a>
-						           &nbsp;
-								<a href="modifier_personnel.php?personnels=<?php echo $ligne['ID'] ?>" class="modifier2" title="<?php echo _MODIFIER ?>">
-									<i class="glyphicon glyphicon-edit"></i> 
-				                </a>
-								&nbsp;
-								
 				                <a href="gestion.php?act=archiver_personnel&personnels=<?php echo $ligne['ID'] ?>" 
 				                class="supprimer2"  
 								title="<?php echo _ARCHIVER ?>">
@@ -100,5 +78,4 @@
         </div>
     </div>
 </div>
-             <!-- /. PAGE INNER  -->			 
 <?php require_once('foot.php'); ?>

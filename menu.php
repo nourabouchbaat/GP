@@ -29,6 +29,11 @@
                                     </a>
                             </li>
                             <li>
+                                <a href="personnels_archiver.php" >
+                                        <i class="glyphicon glyphicon-list-alt"></i> Archive
+                                    </a>
+                            </li>
+                            <li>
                                 <a href="ajouter_personnel.php" >
                                         <i class="fa fa-plus-circle"></i> &nbsp;<?php echo _AJOUTER ?> personnel
                                     </a>

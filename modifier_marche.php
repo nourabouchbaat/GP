@@ -32,14 +32,6 @@
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-body">
-
-					    <div class="form-group">
-							<label class="control-label"><?php echo "Code :" ?>  </label>
-							<div class="controls">
-								<input type="text" id="<?php echo "CODE" ?>__required" value="<?php echo getValeurChamp('CODE','marches','ID',$_REQUIRED['marches']); ?>"
-									name="CODE"  class="form-control input-small"/>
-							</div>
-					    </div>
 						
 					    <div class="form-group">
 							<label class="control-label"><?php echo "Appel d'offre N° :" ?>  </label>

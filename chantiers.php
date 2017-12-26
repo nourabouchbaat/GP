@@ -76,6 +76,11 @@
 				                </a>
 								&nbsp;
 								
+								<a href="personnels_chantiers.php?marches=<?php echo $_REQUEST['marches'] ?>&chantiers=<?php echo $ligne['ID'] ?>" class="modifier2" title="les ouvriers du chantier">
+									<i class="glyphicon glyphicon-user"></i> 
+				                </a>
+								&nbsp;
+								
 				                <a href="#ancre" 
 				                class="supprimer2" 
 				                onclick="javascript:supprimer(

@@ -54,7 +54,7 @@
                             </a>
                         </li>                        
                         <li>
-                            <a class="text-center" href="#">
+                            <a class="text-center" href="profil.php">
                                 <strong>Update compte</strong>
                                 <i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>
 

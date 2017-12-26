@@ -74,7 +74,7 @@
 						<?php 
 							$where1="";
 							if(isset($_POST['txtrechercher']) && !empty($_REQUEST['txtrechercher']))
-							 $where1.=" and (ID_PERSONNELS in (select ID from personnels where NOM like '%".$_POST['txtrechercher']."%' or PRENOM like '%".$_POST['txtrechercher']."%' or CODE like '%".$_POST['txtrechercher']."%')  or ID_CHANTIER in (select ID from chantiers where CODE like '%".$_POST['txtrechercher']."%'))";
+							 $where1.=" and (ID_PERSONNELS in (select ID from personnels where status=1 and  NOM like '%".$_POST['txtrechercher']."%' or PRENOM like '%".$_POST['txtrechercher']."%' or CODE like '%".$_POST['txtrechercher']."%')  or ID_CHANTIER in (select ID from chantiers where CODE like '%".$_POST['txtrechercher']."%'))";
 
 							if(isset($_POST['dateDebut']) && !empty($_REQUEST['dateDebut']))
 							 $where1.=" and DATE_PAIEMENT >= DATE_FORMAT('".$_POST['dateDebut']."', '%Y-%m-%d')";
