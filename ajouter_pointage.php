@@ -91,6 +91,7 @@ $_SESSION['link_nav4'] ="";
 					<tbody>
 						<?php 
 						$i = 0;
+						$nb=mysql_num_rows($res);
 						while ($ligne = mysql_fetch_array($res)){
 							
 							if($i%2==0)
@@ -105,13 +106,13 @@ $_SESSION['link_nav4'] ="";
 							<td><input type="date" id="cal_required" name="DATE_POINTAGE_<?php echo $i ?>"   class="form-control input-small" /></td>
 							<td><input type="number" id="<?php echo "HEUR_N" ?>__required" name="HEUR_N_<?php echo $i ?>"  class="form-control input-small"/></td>
 							<td><input type="number" id="<?php echo "HEUR_S" ?>__required" name="HEUR_S_<?php echo $i ?>"  class="form-control input-small"/></td>
-							<td><input type="text" id="<?php echo "CODE_CHANTIER" ?>__required" name="CODE_CHANTIER_<?php echo $i ?>"  class="form-control input-small"/></td>
+							<td><?php echo getTableList('chantiers','ID_CHANTIER_'.$i,$valeur,'CODE',$change,$where,$libelle) ?></td>
+						<input type="hidden" name="nb_personnage" value="<?php echo $nb ?>"/>
 						</tr>
 						<?php
 							$i++; 
 						}
 						?>
-						<input type="hidden" name="nb_personnage" value="<?php echo $i ?>"/>
 					  </tbody>
 					</table>
 				<?php 

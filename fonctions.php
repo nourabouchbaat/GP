@@ -211,12 +211,12 @@ $chaine="";
 
 function formuler_where($champs,$valeurs){
 
+	$chaine = "";	
 	if (($champs != "") and ($valeurs != "")){
 	
 		$tab_champs = explode(',',$champs);
 		$tab_valeurs = explode(',',$valeurs);
 		
-		$chaine = "";
 		
 		for($i=0;$i<sizeof($tab_champs);$i++){
 			$chaine .= $tab_champs[$i] ."='". $tab_valeurs[$i] ."' and ";
@@ -3895,15 +3895,28 @@ function getSommeAvance($id, $start, $end){
 	return $sommeMontant;	
 }
 
+/* TODO : calculer la some des credit : cette fonction est just copie de avance*/
+function getSommeCredit($id, $start, $end){
+	$sql = "select SUM(MONTANT) as total from  avances where ID_PERSONNELS=".$id." and DATE_EMPREINTE between DATE_FORMAT('".$start."', '%Y-%m-%d') and  DATE_FORMAT('".$end."', '%Y-%m-%d')";
+	$res = doQuery($sql);
+	$sommeMontant=0;
+	while ($ligne = mysql_fetch_array($res))
+	{
+		$sommeMontant+=$ligne['total'];
+	}
+	return 100;	
+}
+
 function getMontant($id, $start, $end){
 	$typeEmploye = getValeurChamp('TYPE','personnels','ID',$id);
+	$nbrHeur = 	getSommeHeurN($id, $start, $end)+getSommeHeurS($id, $start, $end);
+	$avances = getSommeAvance($id, $start, $end);
+	$credits = getSommeCredit($id, $start, $end);
 	if($typeEmploye=="Salarie"){
-		return getValeurChamp('SALAIRE_MENSUELLE','personnels','ID',$id);
+		return getValeurChamp('SALAIRE_MENSUELLE','personnels','ID',$id)+$credits-$avances;
 	} else {
-		$nbrHeur = 	getSommeHeurN($id, $start, $end)+getSommeHeurS($id, $start, $end);
-		$avances = getSommeAvance($id, $start, $end);
 		$tarifJournaliere = getValeurChamp('TARIF_JOURNALIERS','personnels','ID',$id);
-		return 	($tarifJournaliere * ($nbrHeur/9)) - $avances;
+		return 	($tarifJournaliere * ($nbrHeur/9)) - $avances+$credits;
 	}
 	
 }

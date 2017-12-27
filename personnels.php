@@ -4,11 +4,11 @@
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
 	$_SESSION['breadcrumb_nav2'] ="Personnels";
 	$_SESSION['breadcrumb_nav3'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="personnels.php";
 	$_SESSION['link_nav3'] ="";
 	$_SESSION['link_nav4'] ="";
-	$_SESSION['breadcrumb_nav4'] ="";
 	
 ?>
 <?php require_once('menu.php'); ?>
@@ -65,6 +65,10 @@
 							    &nbsp;
     							<a href="historique_change_salaire.php?personnels=<?php echo $ligne['ID'] ?>" class="paiement" title="Historique de changement du salaire">
 				                	<i class="fa fa-th"></i>
+				                </a>
+							    &nbsp;
+    							<a href="historique_personnels_chantiers.php?personnels=<?php echo $ligne['ID'] ?>" class="chantier" title="Historique des chantiers">
+				                	<i class="glyphicon glyphicon-road"></i>
 				                </a>
 							    &nbsp;
 							    

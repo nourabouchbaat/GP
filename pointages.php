@@ -134,7 +134,7 @@
 							<td><?php echo $ligne['DATE_POINTAGE'] ?></td>
 							<td><?php echo $ligne['HEUR_N'] ?></td>
 							<td><?php echo $ligne['HEUR_S'] ?></td>
-							<td><?php echo getValeurChamp('CODE','chantiers', 'ID',$ligne['ID_CHANTIERS']) ?></td>
+							<td><?php echo getValeurChamp('CODE','chantiers', 'ID',$ligne['ID_CHANTIER']) ?></td>
 							<td class="op">
 							    &nbsp;
 								<a href="modifier_pointage.php?pointages=<?php echo $ligne['ID'] ?>" class="modifier2" title="<?php echo _MODIFIER ?>">
