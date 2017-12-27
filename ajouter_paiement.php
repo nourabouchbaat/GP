@@ -60,7 +60,7 @@
 			</div>
 		</div>
 	</div>
-<?php if(isset($_REQUEST['txtrechercher']) && !empty($_REQUEST['txtrechercher']) && isset($_REQUEST['dateDebut']) && !empty($_REQUEST['dateDebut']) &&  isset($_REQUEST['dateFin']) && !empty($_REQUEST['dateFin'])) {?>
+<?php  // if(isset($_REQUEST['txtrechercher']) && !empty($_REQUEST['txtrechercher']) && isset($_REQUEST['dateDebut']) && !empty($_REQUEST['dateDebut']) &&  isset($_REQUEST['dateFin']) && !empty($_REQUEST['dateFin'])) {?>
 
 	<hr>
 	<div class="row">
@@ -105,8 +105,10 @@
 				         <th>Somme heurs N</th>
 				         <th>Somme Heurs S</th>
 				         <th>Tarif journaliere / Salaire</th>
-				         <th>Avance</th>
 				         <th>Montant</th>
+				         <th>Avance</th>
+				         <th>Credit</th>
+				         <th>Net à payer</th>
 				         <th>Valider</th>
 				         
 					</thead>	
@@ -127,8 +129,10 @@
 							<td><?php echo getSommeHeurN($ligne['ID'],$_REQUEST['dateDebut'],$_REQUEST['dateFin']) ?></td>
 							<td><?php echo getSommeHeurS($ligne['ID'],$_REQUEST['dateDebut'],$_REQUEST['dateFin']) ?></td>
 							<td><?php echo $ligne['TYPE']=="Salarie"?$ligne['SALAIRE_MENSUELLE']:$ligne['TARIF_JOURNALIERS'] ?></td>
-							<td><?php echo getSommeAvance($ligne['ID'],$_REQUEST['dateDebut'],$_REQUEST['dateFin']) ?></td>
 							<td><?php echo getMontant($ligne['ID'],$_REQUEST['dateDebut'],$_REQUEST['dateFin']) ?></td>
+							<td><?php echo getSommeAvance($ligne['ID'],$_REQUEST['dateDebut'],$_REQUEST['dateFin']) ?></td>
+							<td><?php echo getSommeCredit($ligne['ID'],$_REQUEST['dateDebut'],$_REQUEST['dateFin']) ?></td>
+							<td><?php echo getNetAPayer($ligne['ID'],$_REQUEST['dateDebut'],$_REQUEST['dateFin']) ?></td>
 							<td><a href="gestion.php?act=valider_paiement&personnels=<?php echo $ligne['ID']?>&dateDebut=<?php echo $_REQUEST['dateDebut']?>&dateFin=<?php echo $_REQUEST['dateFin']?>"
 				                class="supprimer2"  
 								title="Valider le paiement">
@@ -153,5 +157,5 @@
     </div>
 </div>
              <!-- /. PAGE INNER  -->			 
-<?php  } ?>
+<?php // } ?>
 <?php require_once('foot.php'); ?>

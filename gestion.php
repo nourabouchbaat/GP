@@ -103,7 +103,10 @@ if($action== "valider_paiement"){
 	$datePointageStart = $start;
 	$datePointageEnd = $end;
 	$montant = getMontant($idPersonne,$start,$end);
-	$req ="INSERT INTO `paiements`( `ID_PERSONNELS`, `DATE_PAIEMENT`, `SOMME_HEUR_N`, `SOMME_HEUR_S`, `DATE_POINTAGE_START`, `DATE_POINTAGE_END`, `MONTANT`) VALUES(".$idPersonne.",'".$datePaiement."',".$sommeHeurN.",".$sommeHeurN.",'".$datePointageStart."','".$datePointageEnd."',".$montant.")";
+	$credit = getSommeCredit($idPersonne,$start,$end);
+	$avance = getSommeAvance($idPersonne,$start,$end);
+	$netapayer = getNetAPayer($idPersonne,$start,$end);
+	$req ="INSERT INTO `paiements`( `ID_PERSONNELS`, `DATE_PAIEMENT`, `SOMME_HEUR_N`, `SOMME_HEUR_S`, `DATE_POINTAGE_START`, `DATE_POINTAGE_END`, `MONTANT`, `AVANCE`, `CREDIT`, `NETAPAYER`) VALUES(".$idPersonne.",'".$datePaiement."',".$sommeHeurN.",".$sommeHeurN.",'".$datePointageStart."','".$datePointageEnd."',".$montant.",".$avance.",".$credit.",".$netapayer.")";
 	doQuery($req);
 	doQuery('COMMIT');
 	redirect("ajouter_paiement.php?dateDebut=".$_REQUEST['dateDebut']."&dateFin=".$_REQUEST['dateFin']."&m=Ajout du paiement de ".$_REQUEST['txtrechercher']." est validé");

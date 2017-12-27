@@ -88,6 +88,27 @@
 									name="MONTANT"  class="form-control input-small"/>
 							</div>
 						</div>
+					    <div class="form-group">
+							<label class="control-label"><?php echo "Avance"?> : </label>
+							<div class="controls">
+								<input type="number" id="<?php echo "AVANCE" ?>_required"  value="<?php echo getValeurChamp('AVANCE','paiements','ID',$_REQUEST['paiements']); ?>"
+									name="AVANCE"  class="form-control input-small"/>
+							</div>
+						</div>
+					    <div class="form-group">
+							<label class="control-label"><?php echo "Credit"?> : </label>
+							<div class="controls">
+								<input type="number" id="<?php echo "CREDIT" ?>_required"  value="<?php echo getValeurChamp('CREDIT','paiements','ID',$_REQUEST['paiements']); ?>"
+									name="CREDIT"  class="form-control input-small"/>
+							</div>
+						</div>
+					    <div class="form-group">
+							<label class="control-label"><?php echo "Montant"?> : </label>
+							<div class="controls">
+								<input type="number" id="<?php echo "Net a payé" ?>_required"  value="<?php echo getValeurChamp('NETAPAYER','paiements','ID',$_REQUEST['paiements']); ?>"
+									name="NETAPAYER"  class="form-control input-small"/>
+							</div>
+						</div>
 						<div class="form-actions">
 							<input type="submit" class="btn btn-primary" value="<?php echo _MODIFIER ?>" /> ou <a class="text-danger" href="paiements.php">Annuler</a>
 						</div>

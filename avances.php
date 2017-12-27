@@ -1,13 +1,14 @@
 <?php require_once('head.php'); ?>
 <?php 
-	$_SESSION['titre'] ="Gestion des avances";
+	$_SESSION['titre'] ="Gestion des avances et credits";
 	$_SESSION['breadcrumb_nav1'] ="Accueil";
-	$_SESSION['breadcrumb_nav2'] ="Avances";
+	$_SESSION['breadcrumb_nav2'] ="Avances et credits";
 	$_SESSION['breadcrumb_nav3'] ="";
+	$_SESSION['breadcrumb_nav4'] ="";
 	$_SESSION['link_nav1'] ="index.php";
 	$_SESSION['link_nav2'] ="avances.php";
 	$_SESSION['link_nav4'] ="";
-	$_SESSION['breadcrumb_nav4'] ="";
+	$_SESSION['link_nav4'] ="";
 
 ?>
 <?php require_once('menu.php'); ?>

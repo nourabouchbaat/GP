@@ -69,7 +69,16 @@ $_SESSION['link_nav4'] ="";
 								    </select>
 								</div> 
 						</div>
-
+						<div class="form-group">
+							<label class="control-label"><?php echo "Administration" ?> : </label>
+							<div class="checkbox">
+								<label>
+									<input type="hidden" name="admin" value="0" />
+								<input type="checkbox" name="admin" id="admin_required" value="1">Travail dans l'administration
+								</label>
+								</div> 
+						</div>
+						
 						<div class="form-group">
 							<label class="control-label"><?php echo "ADRESSE" ?> : </label>
 							<div class="controls">

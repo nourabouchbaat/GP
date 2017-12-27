@@ -101,9 +101,12 @@
 							         <th>Date Paiement</th>
 							         <th>Depuis</th>
 							         <th>Jusqu'a</th>
-							         <th>Nombre d'heur normaux</th>
-							         <th>Nombre d'heur supplementaire</th>
+							         <th>Somme des heurs</th>
+							         <th>Somme des  jours</th>
 							         <th>Montant</th>
+							         <th>Avances</th>
+							         <th>Credit</th>
+							         <th>Net à payer</th>
 							         <th class="op"> <?php echo _OP ?> </th>
 						    	 </tr>
 							</thead>	
@@ -123,9 +126,12 @@
 									<td><?php echo $ligne['DATE_PAIEMENT'] ?></td>
 									<td><?php echo $ligne['DATE_POINTAGE_START'] ?></td>
 									<td><?php echo $ligne['DATE_POINTAGE_END'] ?></td>
-									<td><?php echo $ligne['SOMME_HEUR_N'] ?></td>
-									<td><?php echo $ligne['SOMME_HEUR_S'] ?></td>
+									<td><?php echo $ligne['SOMME_HEUR_N']+$ligne['SOMME_HEUR_S'] ?></td>
+									<td><?php echo number_format(($ligne['SOMME_HEUR_N']+$ligne['SOMME_HEUR_S'])/9, 0, '.', ''); ?></td>
 									<td><?php echo $ligne['MONTANT'] ?> Dh</td>
+									<td><?php echo $ligne['AVANCE'] ?> Dh</td>
+									<td><?php echo $ligne['CREDIT'] ?> Dh</td>
+									<td><?php echo $ligne['NETAPAYER'] ?> Dh</td>
 									<td class="op">
 									    &nbsp;
 										<a href="modifier_paiement.php?paiements=<?php echo $ligne['ID'] ?>" class="modifier2" title="<?php echo _MODIFIER ?>">

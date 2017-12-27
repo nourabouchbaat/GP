@@ -53,11 +53,19 @@
 									name="TELEPHONE"  class="form-control input-small"/>
 						</div>
 						<div class="form-group">
+							<label class="control-label"><?php echo "Administration" ?> : </label>
+							<div class="checkbox">
+								<label>
+									<?php $checked="";if(getValeurChamp('admin','personnels','ID',$_REQUEST['personnels'])==1) $checked = "checked='true'" ?>
+								<input type="checkbox" name="admin" id="admin_required" <?php echo $checked ?> value="1">Travail dans l'administration
+								</label>
+								</div> 
+						</div>
+
+						<div class="form-group">
 							<label class="control-label"><?php echo "ADRESSE" ?> : </label>
 								<textarea id="<?php echo "ADRESSE" ?>_required" rows='6'
-									name="ADRESSE"  class="form-control " value="<?php echo getValeurChamp('ADRESSE','personnels','ID',$_REQUEST['personnels']); ?>" >
-										<?php echo getValeurChamp('ADRESSE','personnels','ID',$_REQUEST['personnels']); ?>
-								</textarea>
+									name="ADRESSE"  class="form-control " value="<?php echo getValeurChamp('ADRESSE','personnels','ID',$_REQUEST['personnels']); ?>" ><?php echo getValeurChamp('ADRESSE','personnels','ID',$_REQUEST['personnels']); ?></textarea>
 						</div>
 					</div>
 				</div>

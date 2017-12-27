@@ -71,16 +71,16 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="glyphicon glyphicon-euro"></i> Avances<span class="fa arrow"></span> </a>
+                        <a href="#"><i class="glyphicon glyphicon-euro"></i> Avances / Credits <span class="fa arrow"></span> </a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="avances.php" >
-                                        <i class="glyphicon glyphicon-list-alt"></i> Liste avances
+                                        <i class="glyphicon glyphicon-list-alt"></i> Avances et credits
                                     </a>
                             </li>
                             <li>
                                 <a href="ajouter_avance.php" >
-                                        <i class="fa fa-plus-circle"></i> &nbsp;<?php echo _AJOUTER ?> avance
+                                        <i class="fa fa-plus-circle"></i> &nbsp;<?php echo _AJOUTER ?> avance / credit
                                     </a>
                             </li>
                         </ul>
