@@ -13,8 +13,13 @@ body {
     background: #323232;
 /*#2e46c5*/
 }
-
- #wrapper {
+.credit{
+  background: #f39898 !important;
+}
+.avance{
+  background: #fff !important;
+}
+#wrapper {
     width: 100%;
 }
 

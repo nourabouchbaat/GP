@@ -48,7 +48,8 @@
 				    	<tr class="<?php echo $c ?>">
 					        <th>Code</th>
 				    	     <th>Nom</th>
-				        	 <th>Date empriente</th>
+				        	 <th>Date</th>
+				        	 <th>Type</th>
 				         	<th>Montant</th>
 				         <th class="op"> <?php echo _OP ?> </th>
 					</thead>	
@@ -57,15 +58,16 @@
 						$i = 0;
 						while ($ligne = mysql_fetch_array($res)){
 							
-							if($i%2==0)
-								$c = "c";
+							if($ligne['type']=="credit")
+								$c = "credit";
 							else
-								$c = "";	
+								$c = "avance";	
 						?>
 						<tr class="<?php echo $c ?>">
 							<td><?php echo getValeurChamp('CODE','personnels', 'ID',$ligne['ID_PERSONNELS']) ?></td>
 							<td><?php echo getValeurChamp('NOM','personnels', 'ID',$ligne['ID_PERSONNELS'])." ".getValeurChamp('PRENOM','personnels', 'ID',$ligne['ID_PERSONNELS']) ?></td>
 							<td><?php echo $ligne['DATE_EMPREINTE'] ?></td>
+							<td><?php echo $ligne['type'] ?></td>
 							<td><?php echo $ligne['MONTANT'] ?> Dh</td>
 							<td class="op">
 							    &nbsp;
