@@ -46,6 +46,12 @@
 								<?php echo getValeurChamp('CODE','personnels','ID', getValeurChamp('ID_PERSONNELS','avances','ID',$_REQUEST['avances'])) ?>
 							</div>
 						</div>
+						<div class="form-group">
+							<label class="control-label"><?php echo "Code" ?> : </label>
+							<div class="controls">
+								<?php echo getValeurChamp('CODE','personnels','ID', getValeurChamp('ID_PERSONNELS','avances','ID',$_REQUEST['avances'])) ?>
+							</div>
+						</div>
 						</div>
 						
                             	<div class="col-lg-6">	
