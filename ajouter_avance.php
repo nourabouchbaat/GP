@@ -56,6 +56,7 @@
 				         <th>CIN</th>
 				         <th>Code</th>
 				         <th style="width:150px">Montant</th>
+				         <th>Code</th>
 					</thead>	
 					<tbody>
 						<?php 
@@ -74,6 +75,12 @@
 							<td><?php echo $ligne['CIN'] ?></td>
 							<td><?php echo $ligne['CODE'] ?></td>
 							<td><input type='number' name='avance_<?php echo $i;  ?>'><?php echo isset($_REQUEST['avance_'.$i]) and !empty($_REQUEST['avance_'.$i])?$_REQUEST['avance_'.$i]:"" ?> </td>
+							<td><label class="checkbox-inline">
+                                	<input type="radio" name="type_<?php echo $i;  ?>" value="avance" <?php echo $r1 ?>>Avance
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="radio"  name="type_<?php echo $i;  ?>" value="credit" <?php echo $r2 ?>>Credit
+                            </label></td>
 							
 						</tr>
 						<?php

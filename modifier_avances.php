@@ -46,6 +46,20 @@
 											<?php echo getValeurChamp('CODE','personnels','ID', getValeurChamp('ID_PERSONNELS','avances','ID',$_REQUEST['avances'])) ?>
 										</div>
 									</div>
+								<?php 
+									$type=getValeurChamp('type','avances','ID',$_REQUEST['avances']);
+									$r1 =$type=="avance"?"checked='checked'":"";
+									$r2 =$type=="credit"?"checked='checked'":""; 
+								?>
+									<div class="form-group">
+                                            <label>Type</label>
+                                            <label class="checkbox-inline">
+                                                <input type="radio" name="type" value="avance" <?php echo $r1 ?>>Avance
+                                            </label>
+                                            <label class="checkbox-inline">
+                                                <input type="radio"  name="type" value="credit" <?php echo $r2 ?>>Credit
+                                            </label>
+                                    </div>	
 								</div>
 							    <div class="col-lg-6">	
 								    <div class="form-group">
@@ -68,7 +82,9 @@
 									</div>
 								</div>
 							</div>
+
 						</form>
+
 				</div>
 			</div>
 		</div>
