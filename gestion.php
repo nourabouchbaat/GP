@@ -9,6 +9,7 @@
 <?php 
 echo "<center><h2>"._REDIRECT."</h2></center>";
 print_r($_REQUEST);
+echo "<br><br>";
 connect ();
 //detection de la table et des champs concerné
 $tablees= isset($_REQUEST['table']) && !empty($_REQUEST['table']) ? $_REQUEST['table'] : "";
@@ -76,17 +77,20 @@ if($action== "addPersonnelChantier"){
 	redirect('personnels.php?m=Salarie ou ouvrier est archivé avec succes');
 }
 
-if($action== "ajouter_avance"){
+if($action == "ajouter_avance"){
+
 	$nb =  isset($_REQUEST['nb_personnage']) && !empty($_REQUEST['nb_personnage']) ? $_REQUEST['nb_personnage'] : 0;
 	for($i=0;$i<$nb;$i++){
-		$idPersonne = isset($_REQUEST['id_'.$i]) && !empty($_REQUEST['id_'.$i]) ? $_REQUEST['id_'.$i] : 0;
-		$datePaiement = date("Y-m-d");
-		$montant = isset($_REQUEST['avance_'.$i]) && !empty($_REQUEST['avance_'.$i]) ? $_REQUEST['avance_'.$i] : 0;
+		 $idPersonne = isset($_REQUEST['id_'.$i]) && !empty($_REQUEST['id_'.$i]) ? $_REQUEST['id_'.$i] : 0;
+		 $datePaiement = date("Y-m-d");
+		 $montant = isset($_REQUEST['avance_'.$i]) && !empty($_REQUEST['avance_'.$i]) ? $_REQUEST['avance_'.$i] : 0;
+		 $type = isset($_REQUEST['type_'.$i]) && !empty($_REQUEST['type_'.$i]) ? $_REQUEST['type_'.$i] : 0;
 		if($montant>0){
-			$req ="INSERT INTO `avances`(`ID_PERSONNELS`, `DATE_EMPREINTE`, `MONTANT`) VALUES(".$idPersonne.",'".$datePaiement."',".$montant.")";
+			$req ="INSERT INTO `avances`(`ID_PERSONNELS`, `DATE_EMPREINTE`, `MONTANT`,`type`) VALUES(".$idPersonne.",'".$datePaiement."',".$montant.",'".$type."')";
 			doQuery($req);
 			doQuery('COMMIT');			
 		}
+		
 	}
 
 	redirect("ajouter_avance.php?m=Ajout d'empreint pour : ".$_REQUEST['txtrechercher']." est validé");

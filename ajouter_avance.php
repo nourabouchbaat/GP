@@ -37,7 +37,7 @@
 					$sql = "select * from personnels where STATUS=1 order by ID";
 					$res = doQuery($sql);
 
-					$nb = mysql_num_rows($res);
+					echo $nb = mysql_num_rows($res);
 					if( $nb==0){
 					 echo _VIDE;
 					}
@@ -47,6 +47,7 @@
 				<form action="gestion.php" name="frm" method="post" 
 					onsubmit="return checkForm(document.frm);" class="form-horizontal">
 					<input type="hidden" name="act" value="ajouter_avance"/>
+						<input type="hidden" name="nb_personnage" value="<?php echo $nb ?>"/>
 					
 				 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
 					  <thead>
@@ -74,7 +75,7 @@
 							<td><?php echo $ligne['CNSS'] ?></td>
 							<td><?php echo $ligne['CIN'] ?></td>
 							<td><?php echo $ligne['CODE'] ?></td>
-							<td><input type='number' name='avance_<?php echo $i;  ?>'><?php echo isset($_REQUEST['avance_'.$i]) and !empty($_REQUEST['avance_'.$i])?$_REQUEST['avance_'.$i]:"" ?> </td>
+							<td><input type='number' name='avance_<?php echo $i;  ?>'> </td>
 							<td><label class="checkbox-inline">
                                 	<input type="radio" name="type_<?php echo $i;  ?>" value="avance" <?php echo $r1 ?>>Avance
                             </label>
@@ -87,7 +88,6 @@
 							$i++; 
 						}
 						?>
-						<input type="hidden" name="nb_personnage" value="<?php echo $i ?>"/>
 					  </tbody>
 					</table>
 				<br/>

@@ -29,20 +29,19 @@ $_SESSION['link_nav4'] ="";
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
-                       	<div class="col-lg-12">	
 							<form name="frm1" action="" method="post" >
-								 <div class="form-group">
-							  <label class="control-label"><?php echo _RECHERCHER ?>:</label>
-							      <div class="controls">
-							        <input type="text" name="txtrechercher" value="<?php if(isset($_POST['txtrechercher'])) echo $_POST['txtrechercher']; ?>" class="form-control input-small-recherche" />
-							     </div>
-						 </div>
-						<div class="form-actions">
-							<input type="submit" name="v" class="btn btn-primary" value="<?php echo _RECHERCHE."r" ?>" />
-						
-						</div>
-							</form>
-						</div>
+                       	<div class="col-lg-4">	
+								<div class="form-group">
+									<?php $checked = isset($_REQUEST['admin']) && !empty($_REQUEST['admin']) ? "checked='true'":""?>
+							  		<label class="control-label"><input type="checkbox" name="admin"  onchange="this.form.submit()" <?php echo $checked ?>/>&nbsp;&nbsp;Pointage d'administration:
+							        	
+							     	</label>
+						 		</div>
+								<div class="form-actions">
+									<input type="submit" name="v" class="btn btn-primary" value="<?php echo _RECHERCHE."r" ?>" />
+								</div>
+							</div>
+						</form>
 					</div>						
 				</div>
 			</div>
@@ -60,8 +59,8 @@ $_SESSION['link_nav4'] ="";
 					<div class="widget-content nopadding">
 						<?php 
 					$where1="";
-					if(isset($_POST['txtrechercher']) and !empty($_REQUEST['txtrechercher']))
-					 $where1.="and (nom like '%".$_POST['txtrechercher']."%' or prenom like '%".$_POST['txtrechercher']."%' or cin like '%".$_POST['txtrechercher']."%' or telephone like '%".$_POST['txtrechercher']."%' or cnss like '%".$_POST['txtrechercher']."%' or rib like '%".$_POST['txtrechercher']."%' or 	DATE_EMBAUCHE like '%".$_POST['txtrechercher']."%' or code like '%".$_POST['txtrechercher']."%' or adresse like '%".$_POST['txtrechercher']."%') ";
+					if(isset($_POST['admin']) and !empty($_REQUEST['admin']))
+					 $where1.="and admin=1";
 
 					$sql = "select * from personnels where status=1 ".$where1." order by id";
 					$res = doQuery($sql);
