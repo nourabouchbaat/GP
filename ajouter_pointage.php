@@ -29,26 +29,48 @@ $_SESSION['link_nav4'] ="";
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
-							<form name="frm1" action="" method="post" >
-                       	<div class="col-lg-4">	
+						<form name="frm1" action="" method="post" >
+	                       	<div class="col-lg-4">	
 								<div class="form-group">
 									<?php $checked = isset($_REQUEST['admin']) && !empty($_REQUEST['admin']) ? "checked='true'":""?>
 							  		<label class="control-label"><input type="checkbox" name="admin"  onchange="this.form.submit()" <?php echo $checked ?>/>&nbsp;&nbsp;Pointage d'administration:
 							        	
 							     	</label>
 						 		</div>
-								<div class="form-actions">
+						 		<div class="form-actions">
 									<input type="submit" name="v" class="btn btn-primary" value="<?php echo _RECHERCHE."r" ?>" />
 								</div>
+						</div>
+	                       	<div class="col-lg-4">	
+								<div class="form-group">
+									<?php $marches = isset($_REQUEST['marches']) && !empty($_REQUEST['marches']) ? $_REQUEST['marches']:"";
+										$change = "onchange='this.form.submit()'";
+
+									?>
+							  		<label class="control-label">Marché <?php echo getTableList('marches','marches',$marches,'NUM_MARCHE',$change,$where,$libelle) ?>
+							        	
+							     	</label>
+						 		</div>
+							</div>
+							<div class="col-lg-4">	
+								<div class="form-group">
+									<?php  $chantiers = isset($_REQUEST['chantiers']) && !empty($_REQUEST['chantiers']) ? $_REQUEST['chantiers']:"";
+										$change2 = "onchange='this.form.submit()'";
+										$whereCh = $marches!=""?" where ID_MARCHE=".$_REQUEST['marches']:"";
+									?>
+							  		<label class="control-label">Chantier <?php  echo getTableList('chantiers','chantiers',$chantiers,'CODE',$change2,$whereCh,$libelle) ?>
+							        	
+							     	</label>
+						 		</div>
 							</div>
 						</form>
-					</div>						
-				</div>
+					</div>
+				</div>						
 			</div>
 		</div>
-	</div>
+	
+</div>
 
-	<hr>
 	<div class="row">
         <div class="col-md-12">
             <!-- Advanced Tables -->
@@ -60,7 +82,13 @@ $_SESSION['link_nav4'] ="";
 						<?php 
 					$where1="";
 					if(isset($_POST['admin']) and !empty($_REQUEST['admin']))
-					 $where1.="and admin=1";
+					 $where1="and admin=1";
+					else if(isset($_POST['chantiers']) and !empty($_REQUEST['chantiers'])){
+						$where1 = " and ID in (select ID_PERSONNELS from personnels_chantiers where ID_CHNATIERS=".$_REQUEST['chantiers'].")";
+					}else if(isset($_POST['marches']) and !empty($_REQUEST['marches'])){
+						$where1 = " and ID in (select ID_PERSONNELS from personnels_chantiers where ID_CHNATIERS IN(select ID from chantiers where ID_MARCHE=".$_REQUEST['marches']."))";
+					}
+
 
 					$sql = "select * from personnels where status=1 ".$where1." order by id";
 					$res = doQuery($sql);

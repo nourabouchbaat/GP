@@ -53,7 +53,7 @@
 										<button type="submit" class="btn btn-default">
 											<?php echo _AJOUTER ?>
 										</button>
-										ou <a class="text-danger" href="chantiers.php">Annuler</a>
+										ou <a class="text-danger" href="chantiers.php?marches=<?php echo $_REQUEST['marches'] ?>">Annuler</a>
                                             
                                         </div>
 								</form>
