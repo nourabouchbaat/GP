@@ -5,8 +5,9 @@
 <?php require_once('fonctions.php'); ?>
 <?php require_once('tabs.php'); ?>
 
-<?php 
-echo "<center><h2>"._REDIRECT."</h2></center>";
+<?php
+
+echo "<center><h2>" . _REDIRECT . "</h2></center>";
 
 unset($_SESSION['admin']);
 redirect('login.php');

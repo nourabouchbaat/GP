@@ -14,6 +14,17 @@
 ?>
 <?php require_once('menu.php'); ?>	 
 			<div id="page-inner"> 
+							<div class="row">
+				<div class="col-lg-12">
+					<?php if(isset($_REQUEST['m'])) {?>
+							<div class="alert alert-success">
+								<?php echo $_REQUEST['m']?>
+								<a href="#" data-dismiss="alert" class="close">x</a>
+							</div>
+					<?php } ?>
+				</div>
+			</div>
+
               <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -21,12 +32,8 @@
                             <div class="row">
                             	<div class="col-lg-12">	
 									<form action="gestion.php" name="frm" method="post" onsubmit="return checkForm(document.frm);" >
-										<input type="hidden" name="act" value="m"/>
-									    <input type="hidden" name="table" value="users"/>
-										<input type="hidden" name="page" value="index.php"/>
+										<input type="hidden" name="act" value="update_profil"/>
 
-										<input type="hidden" name="id_nom" value="ID"/>
-										<input type="hidden" name="id_valeur" value="<?php echo $userId ?>"/>	
 										<div class="form-group">
 											<label class="control-label"><?php echo "Nom" ?>  : </label>
 											<input type="text" id="<?php echo "Nom" ?>__required" 

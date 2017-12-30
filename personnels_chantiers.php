@@ -24,7 +24,7 @@
 	            <div class="panel-body">
 					<div class="table-responsive">
 					<?php 				
-						$sql = "select * from personnels p, personnels_chantiers pc where p.ID = pc.ID_PERSONNELS and p.STATUS=1 and DATE_SORTIE is null order by p.ID";
+						$sql = "select * from personnels p, personnels_chantiers pc where p.ID = pc.ID_PERSONNELS and p.STATUS=1 and pc.ID_CHNATIERS=".$_REQUEST['chantiers']." and DATE_SORTIE is null order by p.ID";
 						$res = doQuery($sql);
 						$nb = mysql_num_rows($res);
 						if( $nb==0){
