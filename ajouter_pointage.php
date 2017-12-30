@@ -13,6 +13,7 @@ $_SESSION['link_nav4'] ="";
 	
 ?>
 <?php require_once('menu.php'); ?>
+<div id="page-inner"> 
 <div class="row">
 	<div class="col-12">
 	<?php if(isset($_REQUEST['m'])) {?>
@@ -23,14 +24,13 @@ $_SESSION['link_nav4'] ="";
 		<?php } ?>
 	</div>
 </div>
-<div id="page-inner"> 
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
 						<form name="frm1" action="" method="post" >
-	                       	<div class="col-lg-4">	
+	                       	<div class="col-lg-3">	
 								<div class="form-group">
 									<?php $checked = isset($_REQUEST['admin']) && !empty($_REQUEST['admin']) ? "checked='true'":""?>
 							  		<label class="control-label"><input type="checkbox" name="admin"  onchange="this.form.submit()" <?php echo $checked ?>/>&nbsp;&nbsp;Pointage d'administration:
@@ -40,8 +40,8 @@ $_SESSION['link_nav4'] ="";
 						 		<div class="form-actions">
 									<input type="submit" name="v" class="btn btn-primary" value="<?php echo _RECHERCHE."r" ?>" />
 								</div>
-						</div>
-	                       	<div class="col-lg-4">	
+							</div>
+	                       	<div class="col-lg-3">	
 								<div class="form-group">
 									<?php $marches = isset($_REQUEST['marches']) && !empty($_REQUEST['marches']) ? $_REQUEST['marches']:"";
 										$change = "onchange='this.form.submit()'";
@@ -52,15 +52,20 @@ $_SESSION['link_nav4'] ="";
 							     	</label>
 						 		</div>
 							</div>
-							<div class="col-lg-4">	
+							<div class="col-lg-3">	
 								<div class="form-group">
 									<?php  $chantiers = isset($_REQUEST['chantiers']) && !empty($_REQUEST['chantiers']) ? $_REQUEST['chantiers']:"";
 										$change2 = "onchange='this.form.submit()'";
 										$whereCh = $marches!=""?" where ID_MARCHE=".$_REQUEST['marches']:"";
 									?>
-							  		<label class="control-label">Chantier <?php  echo getTableList('chantiers','chantiers',$chantiers,'CODE',$change2,$whereCh,$libelle) ?>
-							        	
-							     	</label>
+							  		<label class="control-label">Chantier <?php  echo getTableList('chantiers','chantiers',$chantiers,'CODE',$change2,$whereCh,$libelle) ?></label>
+						 		</div>
+							</div>
+							<div class="col-lg-3">	
+								<div class="form-group">
+									<?php  $date = isset($_REQUEST['date_pointage']) && !empty($_REQUEST['date_pointage']) ? $_REQUEST['date_pointage']:date('Y-m-d');?>
+							  		<label class="control-label">Date pointage <input type="date"  onchange="this.form.submit()"
+									name="date_pointage"  class="form-control input-small" value="<?php echo $date ?>" /></label>
 						 		</div>
 							</div>
 						</form>
@@ -105,16 +110,17 @@ $_SESSION['link_nav4'] ="";
 						<input type="hidden" name="act" value="ajouter_pointage"/>
 					    <input type="hidden" name="table" value="pointages"/>
 						<input type="hidden" name="page" value="pointages.php"/>
+						<input type="hidden" name="DATE_POINTAGE" value="<?php echo $date ?>"/>
+						<input type="hidden" name="ID_CHANTIER" value="<?php echo $_REQUEST['chantiers'] ?>"/>
+						<input type="hidden" name="ID_MARCHE" value="<?php echo $_REQUEST['marches'] ?>"/>
+						<input type="hidden" name="ADMINISTRATION" value="<?php echo $_REQUEST['admin'] ?>"/>
 						<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 							<thead>
-				    
-					       <th>Code</th>
-				         <th>Nom</th>
-				         <th>Date</th>
-				         <th>Heur N</th>
-				         <th>Heur S</th>
-				         <th>Chantier</th>
-					</thead>	
+						    	<th>Code</th>
+						        <th>Nom</th>
+						        <th>Heur N</th>
+						        <th>Heur S</th>
+							</thead>	
 					<tbody>
 						<?php 
 						$i = 0;
@@ -130,11 +136,9 @@ $_SESSION['link_nav4'] ="";
 							<input type="hidden" name="id_<?php echo $i ?>" value="<?php echo $ligne['ID'] ?>"/>
 							<td><?php echo $ligne['CODE'] ?></td>
 							<td><?php echo $ligne['NOM']." ".$ligne['PRENOM'] ?></td>
-							<td><input type="date" id="cal_required" name="DATE_POINTAGE_<?php echo $i ?>"   class="form-control input-small" /></td>
-							<td><input type="number" id="<?php echo "HEUR_N" ?>__required" name="HEUR_N_<?php echo $i ?>"  class="form-control input-small"/></td>
-							<td><input type="number" id="<?php echo "HEUR_S" ?>__required" name="HEUR_S_<?php echo $i ?>"  class="form-control input-small"/></td>
-							<td><?php echo getTableList('chantiers','ID_CHANTIER_'.$i,$valeur,'CODE',$change,$where,$libelle) ?></td>
-						<input type="hidden" name="nb_personnage" value="<?php echo $nb ?>"/>
+							<td><input type="number" id="<?php echo "HEUR_N" ?>__required" name="HEUR_N_<?php echo $i ?>"  value="0" class="form-control input-small"/></td>
+							<td><input type="number" id="<?php echo "HEUR_S" ?>__required" name="HEUR_S_<?php echo $i ?>"  value="0"  class="form-control input-small"/></td>
+							<input type="hidden" name="nb_personnage" value="<?php echo $nb ?>"/>
 						</tr>
 						<?php
 							$i++; 

@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php //error_reporting(0) ?>
+<?php error_reporting(0) ?>
 
 <link href="style.css" rel="stylesheet" type="text/css" />
 
@@ -8,8 +8,8 @@
 
 <?php 
 echo "<center><h2>"._REDIRECT."</h2></center>";
-print_r($_REQUEST);
-echo "<br><br>";
+//print_r($_REQUEST);
+//echo "<br><br>";
 connect ();
 //detection de la table et des champs concerné
 $tablees= isset($_REQUEST['table']) && !empty($_REQUEST['table']) ? $_REQUEST['table'] : "";
@@ -30,127 +30,6 @@ $valeur_modif = isset($_REQUEST['valeur_modif']) && !empty($_REQUEST['valeur_mod
 
 $chaine_retour = formuler_retour($id_noms_retour,$id_valeurs_retour);
 
-//AJOUT
-if($action== "exporter_database"){
-	exportDatabase();
-	$msg="Votre base de données est sauvgardés avec succes";
-}
-
-if($action== "importer_database"){
-	exportDatabase();
-	$msg=importerDatabase($_REQUEST['files']);
-	redirect($page."?m=".$msg);
-}
-
-if($action== "addPersonnelChantier"){
-	$personnels = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : '';
-	$chantiers = isset($_REQUEST['chantiers']) && !empty($_REQUEST['chantiers']) ? $_REQUEST['chantiers'] : '';
-	$marches = isset($_REQUEST['marches']) && !empty($_REQUEST['marches']) ? $_REQUEST['marches'] : '';
-	
-	$req ="INSERT INTO `personnels_chantiers`(`ID_PERSONNELS`, `ID_CHNATIERS`, `DATE_AFFECTATION`) VALUES (".$personnels.",".$chantiers.",'".date('Y-m-d')."')"; 
-	doQuery($req);
-	doQuery('COMMIT');
-	redirect('ajouter_personnels_chantiers.php?marches='.$marches.'&chantiers='.$chantiers.'&m=Ajout est effectue avec succes');
-}
-
-if($action== "removePersonnelChantier"){
-	$personnels = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : '';
-	$chantiers = isset($_REQUEST['chantiers']) && !empty($_REQUEST['chantiers']) ? $_REQUEST['chantiers'] : '';
-	$marches = isset($_REQUEST['marches']) && !empty($_REQUEST['marches']) ? $_REQUEST['marches'] : '';
-	
-	$ID = isset($_REQUEST['ID']) && !empty($_REQUEST['ID']) ? $_REQUEST['ID'] : '';
-
-	$req ="update personnels_chantiers set DATE_SORTIE='".date("Y-m-d")."' where ID = ".$ID; 
-	doQuery($req);
-	doQuery('COMMIT');
-	redirect('personnels_chantiers.php?marches='.$marches.'&chantiers='.$chantiers.'&m=Ouvrier a quitter le chantier');
-}
-
-if($action== "addPersonnelChantier"){
-	$personnels = isset($_REQUEST['ID_PERSONNELS']) && !empty($_REQUEST['ID_PERSONNELS']) ? $_REQUEST['ID_PERSONNELS'] : '';
-	$chantiers = isset($_REQUEST['ID_CHANTIER']) && !empty($_REQUEST['ID_CHANTIER']) ? $_REQUEST['ID_CHANTIER'] : '';
-	$ID = isset($_REQUEST['ID']) && !empty($_REQUEST['ID']) ? $_REQUEST['ID'] : '';
-
-	$req ="INSERT INTO `personnels_chantiers` (`ID`, `ID_PERSONNELS`, `ID_CHNATIERS`, `DATE_AFFECTATION`, `DATE_SORTIE`) VALUES (NULL,".$personnels.",".$chantiers.",'".date("Y-m-d")."','".date("Y-m-d")."')";; 
-	doQuery($req);
-	doQuery('COMMIT');
-	redirect('personnels.php?m=Salarie ou ouvrier est archivé avec succes');
-}
-
-if($action == "ajouter_avance"){
-
-	$nb =  isset($_REQUEST['nb_personnage']) && !empty($_REQUEST['nb_personnage']) ? $_REQUEST['nb_personnage'] : 0;
-	for($i=0;$i<$nb;$i++){
-		 $idPersonne = isset($_REQUEST['id_'.$i]) && !empty($_REQUEST['id_'.$i]) ? $_REQUEST['id_'.$i] : 0;
-		 $datePaiement = date("Y-m-d");
-		 $montant = isset($_REQUEST['avance_'.$i]) && !empty($_REQUEST['avance_'.$i]) ? $_REQUEST['avance_'.$i] : 0;
-		 $type = isset($_REQUEST['type_'.$i]) && !empty($_REQUEST['type_'.$i]) ? $_REQUEST['type_'.$i] : 0;
-		if($montant>0){
-			$req ="INSERT INTO `avances`(`ID_PERSONNELS`, `DATE_EMPREINTE`, `MONTANT`,`type`) VALUES(".$idPersonne.",'".$datePaiement."',".$montant.",'".$type."')";
-			doQuery($req);
-			doQuery('COMMIT');			
-		}
-		
-	}
-
-	redirect("ajouter_avance.php?m=Ajout d'empreint pour : ".$_REQUEST['txtrechercher']." est validé");
-}
-
-
-if($action== "valider_paiement"){
-	$idPersonne = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : "";
-	$start =  isset($_REQUEST['dateDebut']) && !empty($_REQUEST['dateDebut']) ? $_REQUEST['dateDebut'] : "";
-	$end =  isset($_REQUEST['dateFin']) && !empty($_REQUEST['dateFin']) ? $_REQUEST['dateFin'] : "";
-	$datePaiement = date("Y-m-d");
-	$sommeHeurN = getSommeHeurN($idPersonne, $start, $end);
-	$sommeHeurS = getSommeHeurS($idPersonne, $start, $end);
-	$datePointageStart = $start;
-	$datePointageEnd = $end;
-	$montant = getMontant($idPersonne,$start,$end);
-	$credit = getSommeCredit($idPersonne,$start,$end);
-	$avance = getSommeAvance($idPersonne,$start,$end);
-	$netapayer = getNetAPayer($idPersonne,$start,$end);
-	$req ="INSERT INTO `paiements`( `ID_PERSONNELS`, `DATE_PAIEMENT`, `SOMME_HEUR_N`, `SOMME_HEUR_S`, `DATE_POINTAGE_START`, `DATE_POINTAGE_END`, `MONTANT`, `AVANCE`, `CREDIT`, `NETAPAYER`) VALUES(".$idPersonne.",'".$datePaiement."',".$sommeHeurN.",".$sommeHeurN.",'".$datePointageStart."','".$datePointageEnd."',".$montant.",".$avance.",".$credit.",".$netapayer.")";
-	doQuery($req);
-	doQuery('COMMIT');
-	redirect("ajouter_paiement.php?dateDebut=".$_REQUEST['dateDebut']."&dateFin=".$_REQUEST['dateFin']."&m=Ajout du paiement de ".$_REQUEST['txtrechercher']." est validé");
-}
-
-if ($action == "ajouter_pointage"){
-	$nb = isset($_REQUEST['nb_personnage']) && !empty($_REQUEST['nb_personnage']) ? $_REQUEST['nb_personnage'] : 0;
-	for($i=0;$i<$nb;$i++){
-		$id =  isset($_REQUEST['id_'.$i]) && !empty($_REQUEST['id_'.$i]) ? $_REQUEST['id_'.$i] : "";
-		$date_pointage =  isset($_REQUEST['DATE_POINTAGE_'.$i]) && !empty($_REQUEST['DATE_POINTAGE_'.$i]) ? $_REQUEST['DATE_POINTAGE_'.$i] : "";
-		$heurN =  isset($_REQUEST['HEUR_N_'.$i]) && !empty($_REQUEST['HEUR_N_'.$i]) ? $_REQUEST['HEUR_N_'.$i] : "";
-		$heurS =  isset($_REQUEST['HEUR_S_'.$i]) && !empty($_REQUEST['HEUR_S_'.$i]) ? $_REQUEST['HEUR_S_'.$i] : "";
-		$idChantier =  isset($_REQUEST['ID_CHANTIER_'.$i]) && !empty($_REQUEST['ID_CHANTIER_'.$i]) ? $_REQUEST['ID_CHANTIER_'.$i] : "";
-		
-		if(!empty($heurN)){
-			$req = "INSERT INTO `pointages`(`ID_PERSONNELS`, `DATE_POINTAGE`, `HEUR_N`, `HEUR_S`, `ID_CHANTIER`) VALUES (".$id.",'".$date_pointage."',".$heurN.",".$heurS.",".$idChantier.")";
-			doQuery($req);
-			doQuery('COMMIT');
-			$msg = "L'Ajout a été effectue avec success";		
-		}
-	}
-}
-
-if ($action == "archiver_personnel"){
-	$personnels = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : '';
-
-	$req ="update personnels set status = 0 where ID = ".$personnels; 
-	doQuery($req);
-	doQuery('COMMIT');
-	redirect('personnels.php?m=Salarie ou ouvrier est archivé avec succes');
-}
-
-if ($action == "desarchiver_personnel"){
-	$personnels = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : '';
-
-	$req ="update personnels set status = 1 where ID = ".$personnels; 
-	doQuery($req);
-	doQuery('COMMIT');
-	redirect('personnels_archiver.php?m=Salarie ou ouvrier est desarchivé avec succes');
-}
 
 if ($action == "a"){
 	
@@ -371,6 +250,135 @@ if ($action == 'conexion')
 		$_SESSION['email-cnx']=$ligne['EMAIL'];
 		redirect("index.php");
 	}
+}
+
+//AJOUT
+if($action== "exporter_database"){
+	exportDatabase();
+	$msg="Votre base de données est sauvgardés avec succes";
+}
+
+if($action== "importer_database"){
+	exportDatabase();
+	$msg=importerDatabase($_REQUEST['files']);
+	redirect($page."?m=".$msg);
+}
+
+if($action== "addPersonnelChantier"){
+	$personnels = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : '';
+	$chantiers = isset($_REQUEST['chantiers']) && !empty($_REQUEST['chantiers']) ? $_REQUEST['chantiers'] : '';
+	$marches = isset($_REQUEST['marches']) && !empty($_REQUEST['marches']) ? $_REQUEST['marches'] : '';
+	
+	$req ="INSERT INTO `personnels_chantiers`(`ID_PERSONNELS`, `ID_CHNATIERS`, `DATE_AFFECTATION`) VALUES (".$personnels.",".$chantiers.",'".date('Y-m-d')."')"; 
+	doQuery($req);
+	doQuery('COMMIT');
+	redirect('ajouter_personnels_chantiers.php?marches='.$marches.'&chantiers='.$chantiers.'&m=Ajout est effectue avec succes');
+}
+
+if($action== "removePersonnelChantier"){
+	$personnels = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : '';
+	$chantiers = isset($_REQUEST['chantiers']) && !empty($_REQUEST['chantiers']) ? $_REQUEST['chantiers'] : '';
+	$marches = isset($_REQUEST['marches']) && !empty($_REQUEST['marches']) ? $_REQUEST['marches'] : '';
+	
+	$ID = isset($_REQUEST['ID']) && !empty($_REQUEST['ID']) ? $_REQUEST['ID'] : '';
+
+	$req ="update personnels_chantiers set DATE_SORTIE='".date("Y-m-d")."' where ID = ".$ID; 
+	doQuery($req);
+	doQuery('COMMIT');
+	redirect('personnels_chantiers.php?marches='.$marches.'&chantiers='.$chantiers.'&m=Ouvrier a quitter le chantier');
+}
+
+if($action== "addPersonnelChantier"){
+	$personnels = isset($_REQUEST['ID_PERSONNELS']) && !empty($_REQUEST['ID_PERSONNELS']) ? $_REQUEST['ID_PERSONNELS'] : '';
+	$chantiers = isset($_REQUEST['ID_CHANTIER']) && !empty($_REQUEST['ID_CHANTIER']) ? $_REQUEST['ID_CHANTIER'] : '';
+	$ID = isset($_REQUEST['ID']) && !empty($_REQUEST['ID']) ? $_REQUEST['ID'] : '';
+
+	$req ="INSERT INTO `personnels_chantiers` (`ID`, `ID_PERSONNELS`, `ID_CHNATIERS`, `DATE_AFFECTATION`, `DATE_SORTIE`) VALUES (NULL,".$personnels.",".$chantiers.",'".date("Y-m-d")."','".date("Y-m-d")."')";; 
+	doQuery($req);
+	doQuery('COMMIT');
+	redirect('personnels.php?m=Salarie ou ouvrier est archivé avec succes');
+}
+
+if($action == "ajouter_avance"){
+
+	$nb =  isset($_REQUEST['nb_personnage']) && !empty($_REQUEST['nb_personnage']) ? $_REQUEST['nb_personnage'] : 0;
+	for($i=0;$i<$nb;$i++){
+		 $idPersonne = isset($_REQUEST['id_'.$i]) && !empty($_REQUEST['id_'.$i]) ? $_REQUEST['id_'.$i] : 0;
+		 $datePaiement = date("Y-m-d");
+		 $montant = isset($_REQUEST['avance_'.$i]) && !empty($_REQUEST['avance_'.$i]) ? $_REQUEST['avance_'.$i] : 0;
+		 $type = isset($_REQUEST['type_'.$i]) && !empty($_REQUEST['type_'.$i]) ? $_REQUEST['type_'.$i] : 0;
+		if($montant>0){
+			$req ="INSERT INTO `avances`(`ID_PERSONNELS`, `DATE_EMPREINTE`, `MONTANT`,`type`) VALUES(".$idPersonne.",'".$datePaiement."',".$montant.",'".$type."')";
+			doQuery($req);
+			doQuery('COMMIT');			
+		}
+		
+	}
+
+	redirect("ajouter_avance.php?m=Ajout d'empreint pour : ".$_REQUEST['txtrechercher']." est validé");
+}
+
+
+if($action== "valider_paiement"){
+	$idPersonne = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : "";
+	$start =  isset($_REQUEST['dateDebut']) && !empty($_REQUEST['dateDebut']) ? $_REQUEST['dateDebut'] : "";
+	$end =  isset($_REQUEST['dateFin']) && !empty($_REQUEST['dateFin']) ? $_REQUEST['dateFin'] : "";
+	$datePaiement = date("Y-m-d");
+	$sommeHeurN = getSommeHeurN($idPersonne, $start, $end);
+	$sommeHeurS = getSommeHeurS($idPersonne, $start, $end);
+	$datePointageStart = $start;
+	$datePointageEnd = $end;
+	$montant = getMontant($idPersonne,$start,$end);
+	$credit = getSommeCredit($idPersonne,$start,$end);
+	$avance = getSommeAvance($idPersonne,$start,$end);
+	$netapayer = getNetAPayer($idPersonne,$start,$end);
+	$req ="INSERT INTO `paiements`( `ID_PERSONNELS`, `DATE_PAIEMENT`, `SOMME_HEUR_N`, `SOMME_HEUR_S`, `DATE_POINTAGE_START`, `DATE_POINTAGE_END`, `MONTANT`, `AVANCE`, `CREDIT`, `NETAPAYER`) VALUES(".$idPersonne.",'".$datePaiement."',".$sommeHeurN.",".$sommeHeurN.",'".$datePointageStart."','".$datePointageEnd."',".$montant.",".$avance.",".$credit.",".$netapayer.")";
+	doQuery($req);
+	doQuery('COMMIT');
+	redirect("ajouter_paiement.php?dateDebut=".$_REQUEST['dateDebut']."&dateFin=".$_REQUEST['dateFin']."&m=Ajout du paiement de ".$_REQUEST['txtrechercher']." est validé");
+}
+
+if ($action == "ajouter_pointage"){
+	$nb = isset($_REQUEST['nb_personnage']) && !empty($_REQUEST['nb_personnage']) ? $_REQUEST['nb_personnage'] : 0;
+	$date_pointage =  isset($_REQUEST['DATE_POINTAGE']) && !empty($_REQUEST['DATE_POINTAGE']) ? $_REQUEST['DATE_POINTAGE'] : "";
+	$idChantier =  isset($_REQUEST['ID_CHANTIER']) && !empty($_REQUEST['ID_CHANTIER']) ? $_REQUEST['ID_CHANTIER'] : "";
+	$idMarche =  isset($_REQUEST['ID_MARCHE']) && !empty($_REQUEST['ID_MARCHE']) ? $_REQUEST['ID_MARCHE'] : "";
+	$admin =  isset($_REQUEST['ADMINISTRATION']) && !empty($_REQUEST['ADMINISTRATION']) ? $_REQUEST['ADMINISTRATION'] : "";
+	if(empty($idChantier) && empty($idMarche) && empty($admin)){
+		redirect("ajouter_pointage.php?m=veuillez choisir un chantier ou un marche");
+	}else{
+		for($i=0;$i<$nb;$i++){
+			$id =  isset($_REQUEST['id_'.$i]) && !empty($_REQUEST['id_'.$i]) ? $_REQUEST['id_'.$i] : "";
+			$heurN =  isset($_REQUEST['HEUR_N_'.$i])  ? $_REQUEST['HEUR_N_'.$i] : "";
+			$heurS =  isset($_REQUEST['HEUR_S_'.$i])  ? $_REQUEST['HEUR_S_'.$i] : "";
+			$idChantier = getIdChantier($id,$idChantier,$idMarche);
+			(!empty($heurN) && $heurN>0) || (!empty($heurS) && $heurS>0);
+			if((!empty($heurN) && $heurN>0) || (!empty($heurS) && $heurS>0)){
+				$req = "INSERT INTO `pointages`(`ID_PERSONNELS`, `DATE_POINTAGE`, `HEUR_N`, `HEUR_S`, `ID_CHANTIER`) VALUES (".$id.",'".$date_pointage."',".$heurN.",".$heurS.",".$idChantier.")";
+				doQuery($req);
+				doQuery('COMMIT');
+				$msg = "L'Ajout a été effectue avec success";		
+			}
+		}
+	}
+}
+
+if ($action == "archiver_personnel"){
+	$personnels = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : '';
+
+	$req ="update personnels set status = 0 where ID = ".$personnels; 
+	doQuery($req);
+	doQuery('COMMIT');
+	redirect('personnels.php?m=Salarie ou ouvrier est archivé avec succes');
+}
+
+if ($action == "desarchiver_personnel"){
+	$personnels = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : '';
+
+	$req ="update personnels set status = 1 where ID = ".$personnels; 
+	doQuery($req);
+	doQuery('COMMIT');
+	redirect('personnels_archiver.php?m=Salarie ou ouvrier est desarchivé avec succes');
 }
 
 if(!isset($msg_err)){

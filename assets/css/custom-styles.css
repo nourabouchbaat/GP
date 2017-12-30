@@ -580,6 +580,23 @@ font-size: 12px;
 line-height: 1.428571429;
 }
 
+.disable {
+    position: relative;
+}
+.disable:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+}
+.disable a {
+    color: gray;
+    cursor: default;
+}
+
 /*----------------------------------------------
     MEDIA QUERIES     
 ------------------------------------------------*/
@@ -630,7 +647,7 @@ font-size: 19px;
   border-radius: 100%;
   overflow: hidden;
   margin: 14px;
-}
+  }
 }
 
 

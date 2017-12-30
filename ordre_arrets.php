@@ -12,6 +12,7 @@
 ?>
 <?php require_once('menu.php'); ?>
 
+            <div id="page-inner"> 
 			<div class="row">
 				<div class="col-lg-12">
 					<?php if(isset($_REQUEST['m'])) {?>
@@ -22,7 +23,6 @@
 					<?php } ?>
 				</div>
 			</div>
-            <div id="page-inner"> 
 			  <div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
