@@ -1,10 +1,11 @@
-;(function ($, window, document, undefined) {
+;
+(function ($, window, document, undefined) {
 
     var pluginName = "metisMenu",
-        defaults = {
-            toggle: true
-        };
-        
+            defaults = {
+                toggle: true
+            };
+
     function Plugin(element, options) {
         this.element = element;
         this.settings = $.extend({}, defaults, options);
@@ -17,7 +18,7 @@
         init: function () {
 
             var $this = $(this.element),
-                $toggle = this.settings.toggle;
+                    $toggle = this.settings.toggle;
 
             $this.find('li.active').has('ul').children('ul').addClass('collapse in');
             $this.find('li').not('.active').has('ul').children('ul').addClass('collapse');

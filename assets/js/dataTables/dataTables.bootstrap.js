@@ -18,15 +18,15 @@ $.extend($.fn.dataTableExt.oStdClasses, {
 // rather than  custom plug-in
 if ($.fn.dataTable.Api) {
     $.fn.dataTable.defaults.renderer = 'bootstrap';
-    $.fn.dataTable.ext.renderer.pageButton.bootstrap = function(settings, host, idx, buttons, page, pages) {
+    $.fn.dataTable.ext.renderer.pageButton.bootstrap = function (settings, host, idx, buttons, page, pages) {
         var api = new $.fn.dataTable.Api(settings);
         var classes = settings.oClasses;
         var lang = settings.oLanguage.oPaginate;
         var btnDisplay, btnClass;
 
-        var attach = function(container, buttons) {
+        var attach = function (container, buttons) {
             var i, ien, node, button;
-            var clickHandler = function(e) {
+            var clickHandler = function (e) {
                 e.preventDefault();
                 if (e.data.action !== 'ellipsis') {
                     api.page(e.data.action).draw(false);
@@ -51,31 +51,31 @@ if ($.fn.dataTable.Api) {
                         case 'first':
                             btnDisplay = lang.sFirst;
                             btnClass = button + (page > 0 ?
-                                '' : ' disabled');
+                                    '' : ' disabled');
                             break;
 
                         case 'previous':
                             btnDisplay = lang.sPrevious;
                             btnClass = button + (page > 0 ?
-                                '' : ' disabled');
+                                    '' : ' disabled');
                             break;
 
                         case 'next':
                             btnDisplay = lang.sNext;
                             btnClass = button + (page < pages - 1 ?
-                                '' : ' disabled');
+                                    '' : ' disabled');
                             break;
 
                         case 'last':
                             btnDisplay = lang.sLast;
                             btnClass = button + (page < pages - 1 ?
-                                '' : ' disabled');
+                                    '' : ' disabled');
                             break;
 
                         default:
                             btnDisplay = button + 1;
                             btnClass = page === button ?
-                                'active' : '';
+                                    'active' : '';
                             break;
                     }
 
@@ -86,34 +86,34 @@ if ($.fn.dataTable.Api) {
                             'tabindex': settings.iTabIndex,
                             'id': idx === 0 && typeof button === 'string' ? settings.sTableId + '_' + button : null
                         })
-                            .append($('<a>', {
+                                .append($('<a>', {
                                     'href': '#'
                                 })
-                                .html(btnDisplay)
-                        )
-                            .appendTo(container);
+                                        .html(btnDisplay)
+                                        )
+                                .appendTo(container);
 
                         settings.oApi._fnBindAction(
-                            node, {
-                                action: button
-                            }, clickHandler
-                        );
+                                node, {
+                                    action: button
+                                }, clickHandler
+                                );
                     }
                 }
             }
         };
 
         attach(
-            $(host).empty().html('<ul class="pagination"/>').children('ul'),
-            buttons
-        );
+                $(host).empty().html('<ul class="pagination"/>').children('ul'),
+                buttons
+                );
     }
 } else {
     // Integration for 1.9-
     $.fn.dataTable.defaults.sPaginationType = 'bootstrap';
 
     /* API method to get paging information */
-    $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings) {
+    $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
         return {
             "iStart": oSettings._iDisplayStart,
             "iEnd": oSettings.fnDisplayEnd(),
@@ -128,9 +128,9 @@ if ($.fn.dataTable.Api) {
     /* Bootstrap style pagination control */
     $.extend($.fn.dataTableExt.oPagination, {
         "bootstrap": {
-            "fnInit": function(oSettings, nPaging, fnDraw) {
+            "fnInit": function (oSettings, nPaging, fnDraw) {
                 var oLang = oSettings.oLanguage.oPaginate;
-                var fnClickHandler = function(e) {
+                var fnClickHandler = function (e) {
                     e.preventDefault();
                     if (oSettings.oApi._fnPageChange(oSettings, e.data.action)) {
                         fnDraw(oSettings);
@@ -138,11 +138,11 @@ if ($.fn.dataTable.Api) {
                 };
 
                 $(nPaging).append(
-                    '<ul class="pagination">' +
-                    '<li class="prev disabled"><a href="#">&larr; ' + oLang.sPrevious + '</a></li>' +
-                    '<li class="next disabled"><a href="#">' + oLang.sNext + ' &rarr; </a></li>' +
-                    '</ul>'
-                );
+                        '<ul class="pagination">' +
+                        '<li class="prev disabled"><a href="#">&larr; ' + oLang.sPrevious + '</a></li>' +
+                        '<li class="next disabled"><a href="#">' + oLang.sNext + ' &rarr; </a></li>' +
+                        '</ul>'
+                        );
                 var els = $('a', nPaging);
                 $(els[0]).bind('click.DT', {
                     action: "previous"
@@ -152,7 +152,7 @@ if ($.fn.dataTable.Api) {
                 }, fnClickHandler);
             },
 
-            "fnUpdate": function(oSettings, fnDraw) {
+            "fnUpdate": function (oSettings, fnDraw) {
                 var iListLength = 5;
                 var oPaging = oSettings.oInstance.fnPagingInfo();
                 var an = oSettings.aanFeatures.p;
@@ -180,12 +180,12 @@ if ($.fn.dataTable.Api) {
                     for (j = iStart; j <= iEnd; j++) {
                         sClass = (j == oPaging.iPage + 1) ? 'class="active"' : '';
                         $('<li ' + sClass + '><a href="#">' + j + '</a></li>')
-                            .insertBefore($('li:last', an[i])[0])
-                            .bind('click', function(e) {
-                                e.preventDefault();
-                                oSettings._iDisplayStart = (parseInt($('a', this).text(), 10) - 1) * oPaging.iLength;
-                                fnDraw(oSettings);
-                            });
+                                .insertBefore($('li:last', an[i])[0])
+                                .bind('click', function (e) {
+                                    e.preventDefault();
+                                    oSettings._iDisplayStart = (parseInt($('a', this).text(), 10) - 1) * oPaging.iLength;
+                                    fnDraw(oSettings);
+                                });
                     }
 
                     // Add / remove disabled classes from the static elements
