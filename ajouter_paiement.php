@@ -66,13 +66,13 @@ $_SESSION['breadcrumb_nav4'] = "";
                                 <div class="form-group">
                                     <label class="control-label">Date pointage entre:</label>
                                     <div class="controls">
-                                        <input type="date" id="cal_required" name="dateDebut"  value="<?php if (isset($_REQUEST['dateDebut'])) echo $_REQUEST['dateDebut']; ?>" class="form-control input-small" />
+                                        <input type="date" id="cal_required"  onchange="this.form.submit()"  name="dateDebut"  value="<?php if (isset($_REQUEST['dateDebut'])) echo $_REQUEST['dateDebut']; ?>" class="form-control input-small" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Et :</label>
                                     <div class="controls">
-                                        <input type="date" id="cal_required" name="dateFin"  value="<?php if (isset($_REQUEST['dateFin'])) echo $_REQUEST['dateFin']; ?>"   class="form-control input-small" />
+                                        <input type="date" id="cal_required" onchange="this.form.submit()" name="dateFin"  value="<?php if (isset($_REQUEST['dateFin'])) echo $_REQUEST['dateFin']; ?>"   class="form-control input-small" />
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@ $_SESSION['breadcrumb_nav4'] = "";
                             $where1 .= " and admin=1";
                         }
 
-                        echo $sql = "select * from personnels where STATUS=1 " . $where1 . " order by ID";
+                        $sql = "select * from personnels where STATUS=1 " . $where1 . " order by ID";
                         $res = doQuery($sql);
 
                         $nb = mysql_num_rows($res);
@@ -132,8 +132,10 @@ $_SESSION['breadcrumb_nav4'] = "";
                             <form action="gestion.php" name="frm" method="post" 
                                   onsubmit="return checkForm(document.frm);" >
                                 <input type="hidden" name="act" value="ajouter_paiement"/>
-                                <input type="hidden" name="DATE_POINTAGE_START" value="<?php echo $_REQUEST['dateStart'] ?>"/>
+                                <input type="hidden" name="DATE_POINTAGE_START" value="<?php echo $_REQUEST['dateDebut'] ?>"/>
                                 <input type="hidden" name="DATE_POINTAGE_END" value="<?php echo $_REQUEST['dateFin'] ?>"/>
+                                <input type="hidden" name="query" value="<?php echo $sql ?>"/>
+                                
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                     <thead>
@@ -146,52 +148,69 @@ $_SESSION['breadcrumb_nav4'] = "";
                                     <th>Avance</th>
                                     <th>Credit</th>
                                     <th>Net à payer</th>
-                                    <th>Valider</th>
-
+                                    
                                     </thead>	
                                     <tbody>
                                         <?php
                                         $i = 0;
+                                        $SumHN=0;
+                                        $SumHS=0;
+                                        $SumM=0;
+                                        $SumA=0;
+                                        $SumC=0;
+                                        $SumNet=0;
                                         while ($ligne = mysql_fetch_array($res)) {
-
+                                            $hn=getSommeHeurN($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']);$SumHN+=$hn;
+                                            $hs=getSommeHeurS($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']);$SumHS+=$hs;
+                                            $montant=getMontant($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']);$SumM+=$montant;
+                                            $sa=getSommeAvance($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']) ;$SumA+=$sa;
+                                            $sc=getSommeCredit($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']);$SumC+=$sc;
+                                            $net=getNetAPayer($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']);$SumNet+=$net;
                                             if ($i % 2 == 0)
                                                 $c = "c";
                                             else
                                                 $c = "";
                                             ?>
-                                            <?php
-                                            if ($dateFull != 2) {
-                                                $dis = "class='disable'";
-                                                $title = "Veuillez choisir l'interballe des date de pointage";
-                                            } else {
-                                                $title = "Valider le paiement";
-                                            }
-                                            ?>
-                                            <tr class="<?php echo $c ?>">
-                                        <input type="hidden" name="id_<?php echo $i ?>" value="<?php echo $ligne['ID'] ?>"/>
-                                        <td><?php echo $ligne['CODE'] ?></td>
-                                        <td><?php echo $ligne['NOM'] . " " . $ligne['PRENOM'] ?></td>
-                                        <td><?php echo getSommeHeurN($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']) ?></td>
-                                        <td><?php echo getSommeHeurS($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']) ?></td>
-                                        <td><?php echo $ligne['TYPE'] == "Salarie" ? $ligne['SALAIRE_MENSUELLE'] : $ligne['TARIF_JOURNALIERS'] ?></td>
-                                        <td><?php echo getMontant($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']) ?></td>
-                                        <td><?php echo getSommeAvance($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']) ?></td>
-                                        <td><?php echo getSommeCredit($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']) ?></td>
-                                        <td><?php echo getNetAPayer($ligne['ID'], $_REQUEST['dateDebut'], $_REQUEST['dateFin']) ?></td>
-                                        <td <?php echo $dis ?>>
-                                            <a href="gestion.php?act=valider_paiement&personnels=<?php echo $ligne['ID'] ?>&dateDebut=<?php echo $_REQUEST['dateDebut'] ?>&dateFin=<?php echo $_REQUEST['dateFin'] ?>"
-                                               class="supprimer2"
-                                               title="<?php echo $title ?>">
-                                                <i class="glyphicon glyphicon-ok"></i> 
-                                            </a>
-                                        </td>
-                                        </tr>
+                                                <tr class="<?php echo $c ?>">
+                                                    <input type="hidden" name="id_<?php echo $i ?>" value="<?php echo $ligne['ID'] ?>"/>
+                                                    <td><?php echo $ligne['CODE'] ?></td>
+                                                    <td><?php echo $ligne['NOM'] . " " . $ligne['PRENOM'] ?></td>
+                                                    <td><?php echo $hn; ?></td>
+                                                    <td><?php echo $hs; ?></td>
+                                                    <td><?php echo $ligne['TYPE'] == "Salarie" ? $ligne['SALAIRE_MENSUELLE'] : $ligne['TARIF_JOURNALIERS'] ?></td>
+                                                    <td><?php echo $montant; ?></td>
+                                                    <td><?php echo $sa; ?></td>
+                                                    <td><?php echo $sc; ?></td>
+                                                    <td><?php echo $net; ?></td>
+                                                    
+                                                </tr>
                                         <?php
                                         $i++;
                                     }
                                     ?>
+                                    <tr>
+                                        <th colspan=2>Somme</th>
+                                        <th ><?php echo $SumHN ?></th>
+                                        <th ><?php echo $SumHS ?></th>
+                                        <th ><?php echo "" ?></th>
+                                        <th ><?php echo $SumM ?></th>
+                                        <th ><?php echo $SumA ?></th>
+                                        <th ><?php echo $SumC ?></th>
+                                        <th ><?php echo $SumNet ?></th>
+
+                                    </tr>
                                     </tbody>
                                 </table>
+<?php
+                                            if ($dateFull != 2) {
+                                                $dis = "disabled";
+                                                $title = "title='Veuillez choisir l intervalle des dates de pointage'";
+                                            } else {
+                                                $title = "title='Valider le paiement'";
+                                            }
+                                            ?>
+                            <input type="submit" value="Valider le paiement" <?php echo $dis ?> <?php echo $title ?>>
+                        </form>
                                 <?php
                             } //Fin If
                             ?>

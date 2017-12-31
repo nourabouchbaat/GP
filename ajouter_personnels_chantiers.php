@@ -46,12 +46,15 @@ $_SESSION['link_nav4'] = "personnels_chantiers.php?chantiers=" . $_REQUEST['chan
                                             <td><?php echo $ligne['NOM'] . " " . $ligne['PRENOM'] ?></td>
                                             <td><?php echo $ligne['CODE'] ?></td>
                                             <td><?php echo getValeurChamp('POSTE', 'postes', 'id', $ligne['ID_POSTES']); ?></td>
-                                            <td class="op">
-                                                <a href="gestion.php?act=addPersonnelChantier&personnels=<?php echo $ligne['ID'] ?>&chantiers=<?php echo $_REQUEST['chantiers'] ?>&marches=<?php echo $_REQUEST['marches'] ?>" 
-                                                   class="supprimer2"  
-                                                   title="<?php echo _ARCHIVER ?>">
-                                                    <i class="glyphicon glyphicon-plus"></i> 
-                                                </a>
+                                            <td class="op" style="width:375px">
+                                                 <form action="gestion.php" name="frm" method="post" onsubmit="return checkForm(document.frm);" >
+                                                    <input type="hidden" name="act" value="addPersonnelChantier">
+                                                    <input type="hidden" name="personnels" value="<?php echo $ligne['ID'] ?>">
+                                                    <input type="hidden" name="chantiers" value="<?php echo $_REQUEST['chantiers'] ?>">
+                                                    <input type="hidden" name="marches" value="<?php echo $_REQUEST['marches'] ?>">
+                                                    <input type="date" id="cal_required"  class="form-control input-small" name="DATE_START"  />
+                                                    <input type="submit" title="Commencer le travail" value="Commencer le travail">
+                                                </form>
                                             </td>
                                         </tr>
                                         <?php

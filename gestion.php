@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php error_reporting(0) ?>
+<?php //error_reporting(0) ?>
 
 <link href="style.css" rel="stylesheet" type="text/css" />
 
@@ -239,6 +239,7 @@ if ($action == 'conexion') {
 //AJOUT
 if ($action == "exporter_database") {
     exportDatabase();
+   // envoi_mail("a.mareshal@gmail.com", "database somlako", "Exportation de la base de donne somlako", "database.php");
     $msg = "Votre base de données est sauvgardés avec succes";
 }
 
@@ -263,21 +264,23 @@ if ($action == "removePersonnelChantier") {
     $personnels = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : '';
     $chantiers = isset($_REQUEST['chantiers']) && !empty($_REQUEST['chantiers']) ? $_REQUEST['chantiers'] : '';
     $marches = isset($_REQUEST['marches']) && !empty($_REQUEST['marches']) ? $_REQUEST['marches'] : '';
-
+    $date =  isset($_REQUEST['DATE_SORTIE']) && !empty($_REQUEST['DATE_SORTIE']) ? $_REQUEST['DATE_SORTIE'] : '';
     $ID = isset($_REQUEST['ID']) && !empty($_REQUEST['ID']) ? $_REQUEST['ID'] : '';
 
-    $req = "update personnels_chantiers set DATE_SORTIE='" . date("Y-m-d") . "' where ID = " . $ID;
+    $req = "update personnels_chantiers set DATE_SORTIE='" . $date . "' where ID = " . $ID;
     doQuery($req);
     doQuery('COMMIT');
     redirect('personnels_chantiers.php?marches=' . $marches . '&chantiers=' . $chantiers . '&m=Ouvrier a quitter le chantier');
 }
 
 if ($action == "addPersonnelChantier") {
-    $personnels = isset($_REQUEST['ID_PERSONNELS']) && !empty($_REQUEST['ID_PERSONNELS']) ? $_REQUEST['ID_PERSONNELS'] : '';
-    $chantiers = isset($_REQUEST['ID_CHANTIER']) && !empty($_REQUEST['ID_CHANTIER']) ? $_REQUEST['ID_CHANTIER'] : '';
-    $ID = isset($_REQUEST['ID']) && !empty($_REQUEST['ID']) ? $_REQUEST['ID'] : '';
+    $chantiers = isset($_REQUEST['chantiers']) && !empty($_REQUEST['chantiers']) ? $_REQUEST['chantiers'] : '';
+    $personnels = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : '';
+    $date =  isset($_REQUEST['DATE_START']) && !empty($_REQUEST['DATE_START']) ? $_REQUEST['DATE_START'] : '';
+    
 
-    $req = "INSERT INTO `personnels_chantiers` (`ID`, `ID_PERSONNELS`, `ID_CHNATIERS`, `DATE_AFFECTATION`, `DATE_SORTIE`) VALUES (NULL," . $personnels . "," . $chantiers . ",'" . date("Y-m-d") . "','" . date("Y-m-d") . "')";
+    $req = "INSERT INTO `personnels_chantiers` (`ID_PERSONNELS`, `ID_CHNATIERS`, `DATE_AFFECTATION`) 
+    VALUES (" . $personnels . "," . $chantiers . ",'" . $date . "')";
     ;
     doQuery($req);
     doQuery('COMMIT');
@@ -302,23 +305,35 @@ if ($action == "ajouter_avance") {
     redirect("ajouter_avance.php?m=Ajout d'empreint pour : " . $_REQUEST['txtrechercher'] . " est validé");
 }
 
-
-if ($action == "valider_paiement") {
-    $idPersonne = isset($_REQUEST['personnels']) && !empty($_REQUEST['personnels']) ? $_REQUEST['personnels'] : "";
-    $start = isset($_REQUEST['dateDebut']) && !empty($_REQUEST['dateDebut']) ? $_REQUEST['dateDebut'] : "";
-    $end = isset($_REQUEST['dateFin']) && !empty($_REQUEST['dateFin']) ? $_REQUEST['dateFin'] : "";
+if ($action == "ajouter_paiement") {
+    $start = isset($_REQUEST['DATE_POINTAGE_START']) && !empty($_REQUEST['DATE_POINTAGE_START']) ? $_REQUEST['DATE_POINTAGE_START'] : "";
+    $end = isset($_REQUEST['DATE_POINTAGE_END']) && !empty($_REQUEST['DATE_POINTAGE_END']) ? $_REQUEST['DATE_POINTAGE_END'] : "";
     $datePaiement = date("Y-m-d");
-    $sommeHeurN = getSommeHeurN($idPersonne, $start, $end);
-    $sommeHeurS = getSommeHeurS($idPersonne, $start, $end);
-    $datePointageStart = $start;
-    $datePointageEnd = $end;
-    $montant = getMontant($idPersonne, $start, $end);
-    $credit = getSommeCredit($idPersonne, $start, $end);
-    $avance = getSommeAvance($idPersonne, $start, $end);
-    $netapayer = getNetAPayer($idPersonne, $start, $end);
-    $req = "INSERT INTO `paiements`( `ID_PERSONNELS`, `DATE_PAIEMENT`, `SOMME_HEUR_N`, `SOMME_HEUR_S`, `DATE_POINTAGE_START`, `DATE_POINTAGE_END`, `MONTANT`, `AVANCE`, `CREDIT`, `NETAPAYER`) VALUES(" . $idPersonne . ",'" . $datePaiement . "'," . $sommeHeurN . "," . $sommeHeurN . ",'" . $datePointageStart . "','" . $datePointageEnd . "'," . $montant . "," . $avance . "," . $credit . "," . $netapayer . ")";
-    doQuery($req);
-    doQuery('COMMIT');
+    $sql=  isset($_REQUEST['query']) && !empty($_REQUEST['query']) ? $_REQUEST['query'] : "";
+    $res = doQuery($sql);
+
+    $nb = mysql_num_rows($res);
+    if ($nb == 0) {
+        echo _VIDE;
+    } else {
+        while ($ligne = mysql_fetch_array($res)) {
+            $idPersonne = $ligne["ID"];
+            $sommeHeurN = getSommeHeurN($idPersonne, $start, $end);
+            $sommeHeurS = getSommeHeurS($idPersonne, $start, $end);
+            $datePointageStart = $start;
+            $datePointageEnd = $end;
+            $montant = getMontant($idPersonne, $start, $end);
+            $credit = getSommeCredit($idPersonne, $start, $end);
+            $avance = getSommeAvance($idPersonne, $start, $end);
+            $netapayer = getNetAPayer($idPersonne, $start, $end);
+            $req = "INSERT INTO `paiements`( `ID_PERSONNELS`, `DATE_PAIEMENT`, `SOMME_HEUR_N`, `SOMME_HEUR_S`, 
+                `DATE_POINTAGE_START`, `DATE_POINTAGE_END`, `MONTANT`, `AVANCE`, `CREDIT`, `NETAPAYER`) 
+VALUES(" . $idPersonne . ",'" . $datePaiement . "'," . $sommeHeurN . "," . $sommeHeurS . ",'" . $datePointageStart . "','" . $datePointageEnd . "'," . $montant . "," . $avance . "," . $credit . "," . $netapayer . ")";
+            doQuery($req);
+            doQuery('COMMIT');            
+        }
+    }
+    genererFichPaiement($start,$end,$datePaiement,$sql);
     redirect("ajouter_paiement.php?dateDebut=" . $_REQUEST['dateDebut'] . "&dateFin=" . $_REQUEST['dateFin'] . "&m=Ajout du paiement de " . $_REQUEST['txtrechercher'] . " est validé");
 }
 

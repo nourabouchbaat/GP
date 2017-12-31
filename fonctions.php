@@ -869,8 +869,8 @@ function formater_texte2($t) {
 function envoi_mail($dest, $sujet, $message, $page) {
 
 //envoyer un msg de confirmation par mail
-    $headers = 'From: "World Rezervation"<contact@world-rezervation.com>' . "\n";
-    $headers .= 'Reply-To: contact@world-rezervation.com' . "\n";
+    $headers = 'From: "Somlako"<a.maresham@gmail.com>' . "\n";
+    $headers .= 'Reply-To: a.maresham@gmail.com' . "\n";
     $headers .= 'Content-Type: text/html; charset="iso-8859-1"' . "\n";
     $headers .= 'Content-Transfer-Encoding: 8bit';
 
@@ -1279,5 +1279,9 @@ function getIdChantier($personnels, $idChantier, $idMarche) {
         return $id;
     }
     return "";
+}
+
+function genererFichPaiement($start,$end,$datePaiement,$sql){
+
 }
 ?>

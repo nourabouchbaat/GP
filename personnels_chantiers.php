@@ -13,6 +13,16 @@ $_SESSION['link_nav4'] = "personnels_chantiers.php?chantiers=" . $_REQUEST['chan
 <?php require_once('menu.php'); ?>
 <div id="page-inner"> 
     <div class="row">
+        <div class="col-12">
+            <?php if (isset($_REQUEST['m'])) { ?>
+                <div class="alert alert-info">
+                    <?php echo $_REQUEST['m'] ?>
+                    <a href="#" data-dismiss="alert" class="close">x</a>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+   <div class="row">
         <div class="col-md-12">
             <!-- Advanced Tables -->
             <div class="panel panel-default">
@@ -55,11 +65,15 @@ $_SESSION['link_nav4'] = "personnels_chantiers.php?chantiers=" . $_REQUEST['chan
                                             <td><?php echo getValeurChamp('POSTE', 'postes', 'id', $ligne['ID_POSTES']); ?></td>
                                             <td><?php echo $ligne['DATE_AFFECTATION'] ?></td>
                                             <td class="op">
-                                                <a href="gestion.php?act=removePersonnelChantier&ID=<?php echo $ligne['ID'] ?>&personnels=<?php echo $ligne['ID_PERSONNELS'] ?>&chantiers=<?php echo $_REQUEST['chantiers'] ?>&marches=<?php echo $_REQUEST['marches'] ?>" 
-                                                   class="supprimer2"  
-                                                   title="<?php echo _ARCHIVER ?>">
-                                                    <i class="glyphicon glyphicon-remove"></i> 
-                                                </a>
+                                                 <form action="gestion.php" name="frm" method="post" onsubmit="return checkForm(document.frm);" >
+                                                    <input type="hidden" name="act" value="removePersonnelChantier">
+                                                    <input type="hidden" name="ID" value="<?php echo $ligne['ID'] ?>">
+                                                    <input type="hidden" name="personnels" value="<?php echo $ligne['ID_PERSONNELS'] ?>">
+                                                    <input type="hidden" name="chantiers" value="<?php echo $_REQUEST['chantiers'] ?>">
+                                                    <input type="hidden" name="marches" value="<?php echo $_REQUEST['marches'] ?>">
+                                                    <input type="date" id="cal_required"  class="form-control input-small" name="DATE_SORTIE"  />
+                                                    <input type="submit" title="Fin du travail" value="Fin du travail">
+                                                </form>
                                             </td>
                                         </tr>
                                         <?php
