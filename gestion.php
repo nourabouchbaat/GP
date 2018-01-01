@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php //error_reporting(0) ?>
+<?php error_reporting(0) ?>
 
 <link href="style.css" rel="stylesheet" type="text/css" />
 
@@ -403,5 +403,5 @@ if ($action == "update_profil") {
 if (!isset($msg_err)) {
     $msg_err = "";
 }
-redirect($page . "?" . $chaine_retour . "&m=" . $msg . "&er=" . $msg_err . "#ancre");
+//redirect($page . "?" . $chaine_retour . "&m=" . $msg . "&er=" . $msg_err . "#ancre");
 ?>	

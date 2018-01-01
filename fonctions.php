@@ -1,5 +1,6 @@
 <?php require('params.php'); ?>
 <?php require_once('dumper.php'); ?>
+<?php // require_once('fpdf/fpdf.php'); ?>
 <?php
 
 //Fonctions
@@ -1281,7 +1282,27 @@ function getIdChantier($personnels, $idChantier, $idMarche) {
     return "";
 }
 
-function genererFichPaiement($start,$end,$datePaiement,$sql){
+function getPaiementsData($start,$end,$sql){
+    $res = doQuery($sql);
+    $nb = mysql_num_rows($res);
+    $tab = array();
 
+$i=0;
+    while ($ligne = mysql_fetch_array($res)) {
+        $tab[$i][0]=$ligne['CODE'];
+        $tab[$i][1]=$ligne['PRENOM']." ".$ligne['NOM'];
+        $tab[$i][2]=getSommeHeurN($ligne['ID'], $start,$end);
+        $tab[$i][3]=getSommeHeurS($ligne['ID'], $start,$end);
+        $tab[$i][4]=$ligne['TYPE']=="Salarie"?$ligne['SALAIRE_MENSUELLE']:$ligne['TARIF_JOURNALIERS'];
+        $tab[$i][5]=getMontant($ligne['ID'], $start,$end);
+        $tab[$i][6]=getSommeAvance($ligne['ID'], $start,$end);
+        $tab[$i][7]=getSommeCredit($ligne['ID'], $start,$end);
+        $tab[$i][8]=getNetAPayer($ligne['ID'], $start,$end);
+        $i++;
+    }
+    return $tab;
+}
+function genererFichPaiement($start,$end,$datePaiement,$sql){
+    redirect("printPaiement.php?start=".$start."&end=".$end."&datePaiement=".$datePaiement."&sql=".$sql);
 }
 ?>

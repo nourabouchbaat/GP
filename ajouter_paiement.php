@@ -9,6 +9,9 @@ $_SESSION['link_nav2'] = "paiements.php";
 $_SESSION['link_nav3'] = "ajouter_paiement.php";
 $_SESSION['link_nav4'] = "";
 $_SESSION['breadcrumb_nav4'] = "";
+$date1 = date("Y-m-d",mktime(0, 0, 0, date("m")-1, 27,   date("Y")));
+$date2 = date("Y-m-d",mktime(0, 0, 0, date("m"), 26,   date("Y")));
+
 ?>
 <?php require_once('menu.php'); ?>
 <div id="page-inner"> 
@@ -49,7 +52,7 @@ $_SESSION['breadcrumb_nav4'] = "";
                                     $marches = isset($_REQUEST['marches']) && !empty($_REQUEST['marches']) ? $_REQUEST['marches'] : "";
                                     $change = "onchange='this.form.submit()'";
                                     ?>
-                                    <label class="control-label"  style="width:100% !important">Marché <?php echo getTableList('marches', 'marches', $marches, 'NUM_MARCHE', $change, $where, $libelle) ?>
+                                    <label class="control-label"  style="width:100% !important">Marché <?php echo getTableList('marches', 'marches', $marches, 'NUM_MARCHE', $change, "","") ?>
 
                                     </label>
                                 </div>
@@ -66,13 +69,13 @@ $_SESSION['breadcrumb_nav4'] = "";
                                 <div class="form-group">
                                     <label class="control-label">Date pointage entre:</label>
                                     <div class="controls">
-                                        <input type="date" id="cal_required"  onchange="this.form.submit()"  name="dateDebut"  value="<?php if (isset($_REQUEST['dateDebut'])) echo $_REQUEST['dateDebut']; ?>" class="form-control input-small" />
+                                        <input type="date" id="cal_required"  onchange="this.form.submit()"  name="dateDebut"  value="<?php  echo isset($_REQUEST['dateDebut'])?$_REQUEST['dateDebut']:$date1; ?>" class="form-control input-small" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Et :</label>
                                     <div class="controls">
-                                        <input type="date" id="cal_required" onchange="this.form.submit()" name="dateFin"  value="<?php if (isset($_REQUEST['dateFin'])) echo $_REQUEST['dateFin']; ?>"   class="form-control input-small" />
+                                        <input type="date" id="cal_required" onchange="this.form.submit()" name="dateFin"  value="<?php echo isset($_REQUEST['dateFin'])?$_REQUEST['dateFin']:$date2; ?>"   class="form-control input-small" />
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +124,7 @@ $_SESSION['breadcrumb_nav4'] = "";
                             $where1 .= " and admin=1";
                         }
 
-                        $sql = "select * from personnels where STATUS=1 " . $where1 . " order by ID";
+                       echo  $sql = "select * from personnels where STATUS=1 " . $where1 . " order by ID";
                         $res = doQuery($sql);
 
                         $nb = mysql_num_rows($res);
