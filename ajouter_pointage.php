@@ -73,7 +73,42 @@ $_SESSION['link_nav3'] = "ajouter_pointage.php";
                 </div>						
             </div>
         </div>
+    </div>
 
+        <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <form name="frm1" action="" method="post" >
+                            <table border="1" style="border:1px solid grey;width: 98%;margin: 10px">
+                            	<tr>
+                            		<th style="padding: 10px">Chantier  :</th>
+                            		<td colspan="3"><?php echo !empty($chantiers)?getValeurChamp("CODE","chantiers","ID",$chantiers):""; ?></td>
+                            	</tr>
+                            	<tr>
+                            		<th style="width:100px; padding: 10px">Chef chantier  :</th>
+                            		<td style="width: 25%;">Nom<br><?php $ID_CHEF = !empty($chantiers)?getValeurChamp("ID_CHEF","chantiers","ID",$chantiers):"";echo !empty($ID_CHEF)?getValeurChamp("PRENOM","personnels","ID",$ID_CHEF)." ".getValeurChamp("NOM","personnels","ID",$ID_CHEF):""; ?></td>
+                            		<td style="width: 25%;">Code<br><?php echo !empty($ID_CHEF)?getValeurChamp("CODE","personnels","ID",$ID_CHEF):""; ?></td>
+                            		<td style="width:200px">Signature<br>&nbsp;</td>
+                            	</tr>
+
+                            	<tr>
+                            		<th style="width:100px; padding: 10px">Responsable  :</th>
+                            		<td style="width: 25%;">Nom<br><?php $ID_RESP = !empty($chantiers)?getValeurChamp("ID_RESP","chantiers","ID",$chantiers):"";echo !empty($ID_RESP)?getValeurChamp("PRENOM","personnels","ID",$ID_RESP)." ".getValeurChamp("NOM","personnels","ID",$ID_RESP):""; ?></td>
+                            		<td style="width: 25%;">Code<br><?php echo !empty($ID_RESP)?getValeurChamp("CODE","personnels","ID",$ID_RESP):""; ?></td>
+                            		<td style="width:200px">Signature<br>&nbsp;</td>
+                            	</tr>
+                            	<tr>
+                            		<th style="padding: 10px">Date  :</th>
+                            		<td colspan="3"><?php echo $date; ?></td>
+                            	</tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>						
+            </div>
+        </div>
     </div>
 
     <div class="row">
@@ -114,10 +149,20 @@ $_SESSION['link_nav3'] = "ajouter_pointage.php";
                                 <input type="hidden" name="ADMINISTRATION" value="<?php echo $_REQUEST['admin'] ?>"/>
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
-                                    <th>Code</th>
-                                    <th>Nom</th>
-                                    <th>Heur N</th>
-                                    <th>Heur S</th>
+                                    <tr> 
+                                    <th rowspan="2">Code</th>
+                                    <th rowspan="2">Nom</th>
+                                    <th colspan="2">Matin</th>
+                                    <th colspan="2">Soir</th>
+                                    <th rowspan="2">TRAVAUX EFFECTUE + REMARQUE</th>
+                                    
+                                    </tr>
+                                    <tr>
+                                    <th>H.EN</th>
+                                    <th>H.SOR</th>
+                                    <th>H.EN</th>
+                                    <th>H.SOR</th>
+                                    </tr>
                                     </thead>	
                                     <tbody>
                                         <?php
@@ -134,8 +179,12 @@ $_SESSION['link_nav3'] = "ajouter_pointage.php";
                                         <input type="hidden" name="id_<?php echo $i ?>" value="<?php echo $ligne['ID'] ?>"/>
                                         <td><?php echo $ligne['CODE'] ?></td>
                                         <td><?php echo $ligne['NOM'] . " " . $ligne['PRENOM'] ?></td>
-                                        <td><input type="number" id="<?php echo "HEUR_N" ?>__required" name="HEUR_N_<?php echo $i ?>"  value="0" class="form-control input-small"/></td>
-                                        <td><input type="number" id="<?php echo "HEUR_S" ?>__required" name="HEUR_S_<?php echo $i ?>"  value="0"  class="form-control input-small"/></td>
+                                        <td><input type="number" id="<?php echo "M_H_EN" ?>__required" name="M_H_EN_<?php echo $i ?>"  value="0" class="form-control input-small" style="width: 100px"/></td>
+                                        <td><input type="number"  style="width: 100px" id="<?php echo "M_H_SOR" ?>__required" name="M_H_SOR_<?php echo $i ?>"  value="0"  class="form-control input-small"/></td>
+                                        <td><input type="number"  style="width: 100px" id="<?php echo "S_H_EN" ?>__required" name="S_H_EN_<?php echo $i ?>"  value="0" class="form-control input-small"/></td>
+                                        <td><input type="number"  style="width: 100px" id="<?php echo "S_H_SOR" ?>__required" name="S_H_SOR_<?php echo $i ?>"  value="0"  class="form-control input-small"/></td>
+                                        <td><textarea class="form-control input-small" name="REMARQUE" style="width: 200px"></textarea></td>
+                                        
                                         <input type="hidden" name="nb_personnage" value="<?php echo $nb ?>"/>
                                         </tr>
                                         <?php
