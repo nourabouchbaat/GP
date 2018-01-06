@@ -1134,17 +1134,17 @@ function no_accent($str_accent) {
 /* * ******************************** GESTION DES PERSONNEL ********************************* */
 
 function getSommeNombreHeurN($where) {
-    $sql = "select SUM(HEUR_N) as total from  pointages where 1=1" . $where;
+   $sql = "select SUM((M_H_SOR-M_H_EN)+(S_H_SOR-S_H_EN)) as total from  pointages where 1=1" . $where;
     $res = doQuery($sql);
     $nbrHeur = 0;
     while ($ligne = mysql_fetch_array($res)) {
         $nbrHeur += $ligne['total'];
     }
-    return $nbrHeur;
+    return $nbrHeur-getSommeNombreHeurS($where);
 }
 
 function getSommeNombreHeurS($where) {
-    $sql = "select SUM(HEUR_S) as total from  pointages where 1=1" . $where;
+    $sql = "select SUM((M_H_SOR-M_H_EN)+(S_H_SOR-S_H_EN)-9) as total from  pointages where (M_H_SOR-M_H_EN)+(S_H_SOR-S_H_EN)>9 " . $where;
     $res = doQuery($sql);
     $nbrHeur = 0;
     while ($ligne = mysql_fetch_array($res)) {
@@ -1154,17 +1154,17 @@ function getSommeNombreHeurS($where) {
 }
 
 function getSommeHeurN($id, $start, $end) {
-    $sql = "select SUM(HEUR_N) as total from  pointages where ID_PERSONNELS=" . $id . " and DATE_POINTAGE between DATE_FORMAT('" . $start . "', '%Y-%m-%d') and  DATE_FORMAT('" . $end . "', '%Y-%m-%d')";
+    $sql = "select SUM((M_H_SOR-M_H_EN)+(S_H_SOR-S_H_EN)) as total from  pointages where ID_PERSONNELS=" . $id . " and DATE_POINTAGE between DATE_FORMAT('" . $start . "', '%Y-%m-%d') and  DATE_FORMAT('" . $end . "', '%Y-%m-%d')";
     $res = doQuery($sql);
     $nbrHeur = 0;
     while ($ligne = mysql_fetch_array($res)) {
         $nbrHeur += $ligne['total'];
     }
-    return $nbrHeur;
+    return $nbrHeur-getSommeHeurS($id, $start, $end);
 }
 
 function getSommeHeurS($id, $start, $end) {
-    $sql = "select SUM(HEUR_S) as total from  pointages where ID_PERSONNELS=" . $id . " and DATE_POINTAGE between DATE_FORMAT('" . $start . "', '%Y-%m-%d') and  DATE_FORMAT('" . $end . "', '%Y-%m-%d')";
+    $sql = "select SUM((M_H_SOR-M_H_EN)+(S_H_SOR-S_H_EN)-9) as total from  pointages where (M_H_SOR-M_H_EN)+(S_H_SOR-S_H_EN)>9 and ID_PERSONNELS=" . $id . " and DATE_POINTAGE between DATE_FORMAT('" . $start . "', '%Y-%m-%d') and  DATE_FORMAT('" . $end . "', '%Y-%m-%d') having SUM((M_H_SOR-M_H_EN)+(S_H_SOR-S_H_EN))>9";
     $res = doQuery($sql);
     $nbrHeur = 0;
     while ($ligne = mysql_fetch_array($res)) {

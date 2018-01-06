@@ -125,13 +125,16 @@ $_SESSION['breadcrumb_nav4'] = "";
                                             $c = "c";
                                         else
                                             $c = "";
+                                        $sommeH = $ligne['M_H_SOR']-$ligne['M_H_EN']+$ligne['S_H_SOR']-$ligne['S_H_EN'];
+                                        $HN = $sommeH >=9 ? 9:$sommeH;
+                                        $HS = $sommeH >9 ? $sommeH-9:0;
                                         ?>
                                         <tr class="<?php echo $c ?>">
                                             <td><?php echo getValeurChamp('CODE', 'personnels', 'ID', $ligne['ID_PERSONNELS']) ?></td>
                                             <td><?php echo getValeurChamp('NOM', 'personnels', 'ID', $ligne['ID_PERSONNELS']) . " " . getValeurChamp('PRENOM', 'personnels', 'ID', $ligne['ID_PERSONNELS']) ?></td>
                                             <td><?php echo $ligne['DATE_POINTAGE'] ?></td>
-                                            <td><?php echo $ligne['HEUR_N'] ?></td>
-                                            <td><?php echo $ligne['HEUR_S'] ?></td>
+                                            <td><?php echo $HN ?></td>
+                                            <td><?php echo $HS ?></td>
                                             <td><?php echo getValeurChamp('CODE', 'chantiers', 'ID', $ligne['ID_CHANTIER']) ?></td>
                                             <td class="op">
                                                 &nbsp;

@@ -124,7 +124,7 @@ $_SESSION['breadcrumb_nav4'] = "";
                                             <td><?php echo $ligne['DATE_POINTAGE_START'] ?></td>
                                             <td><?php echo $ligne['DATE_POINTAGE_END'] ?></td>
                                             <td><?php echo $ligne['SOMME_HEUR_N'] + $ligne['SOMME_HEUR_S'] ?></td>
-                                            <td><?php echo number_format(($ligne['SOMME_HEUR_N'] + $ligne['SOMME_HEUR_S']) / 9, 0, '.', ''); ?></td>
+                                            <td><?php echo number_format(($ligne['SOMME_HEUR_N'] + $ligne['SOMME_HEUR_S']) / 9, 2, '.', ''); ?></td>
                                             <td><?php echo $ligne['MONTANT'] ?> Dh</td>
                                             <td><?php echo $ligne['AVANCE'] ?> Dh</td>
                                             <td><?php echo $ligne['CREDIT'] ?> Dh</td>
