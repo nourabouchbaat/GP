@@ -355,7 +355,7 @@ if ($action == "ajouter_pointage") {
             $REMARQUE = isset($_REQUEST['REMARQUE_' . $i]) ? $_REQUEST['REMARQUE_' . $i] : "";
             $idChantier = getIdChantier($id, $idChantier, $idMarche);
             if((!empty($M_H_EN) && $M_H_EN > 0 && !empty($M_H_SOR) && $M_H_SOR > 0) || (!empty($S_H_EN) && $S_H_EN > 0 && !empty($S_H_SOR) && $S_H_SOR > 0)){
-               $req = "INSERT INTO `pointages`(`ID_PERSONNELS`, `DATE_POINTAGE`, `M_H_EN`, `M_H_SOR`, `S_H_EN`, `S_H_SOR`, `REMARQUE`, `ID_CHANTIER`) VALUES (" . $id . ",'" . $date_pointage . "'," . $M_H_EN . "," . $M_H_SOR . ",". $S_H_EN . "," . $S_H_SOR . ",'" . $REMARQUE . "'," . $idChantier . ")";
+               $req = "INSERT INTO `pointages`(`ID_PERSONNELS`, `DATE_POINTAGE`, `M_H_EN`, `M_H_SOR`, `S_H_EN`, `S_H_SOR`, `REMARQUE`, `ID_CHANTIER`, `ID_MARCHE`) VALUES (" . $id . ",'" . $date_pointage . "'," . $M_H_EN . "," . $M_H_SOR . ",". $S_H_EN . "," . $S_H_SOR . ",'" . $REMARQUE . "'," . $idChantier . "," . $idMarche . ")";
                 doQuery($req);
                 doQuery('COMMIT');
                 $msg = "L'Ajout a été effectue avec success";
@@ -407,5 +407,5 @@ if ($action == "update_profil") {
 if (!isset($msg_err)) {
     $msg_err = "";
 }
-//redirect($page . "?" . $chaine_retour . "&m=" . $msg . "&er=" . $msg_err . "#ancre");
+redirect($page . "?" . $chaine_retour . "&m=" . $msg . "&er=" . $msg_err . "#ancre");
 ?>	

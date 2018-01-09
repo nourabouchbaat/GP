@@ -15,11 +15,11 @@ $_SESSION['breadcrumb_nav4'] = "";
 <?php require_once('menu.php'); ?>
 <div id="page-inner"> 
     <div class="row">
-        <div class="col-lg-12">
+        <form action="gestion.php" name="frm" method="post" 
+            onsubmit="return checkForm(document.frm);" >
+        <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form action="gestion.php" name="frm" method="post" 
-                          onsubmit="return checkForm(document.frm);" >
                         <input type="hidden" name="act" value="m"/>
                         <input type="hidden" name="table" value="pointages"/>
                         <input type="hidden" name="page" value="pointages.php"/>
@@ -29,6 +29,7 @@ $_SESSION['breadcrumb_nav4'] = "";
 
                         <input type="hidden" name="id_noms_retour" value="pointages"/>
                         <input type="hidden" name="id_valeurs_retour" value="<?php echo $_REQUEST['pointages'] ?>"/>	
+
 
                         <div class="form-group">
                             <label class="control-label"><?php echo "Nom" ?> : </label>
@@ -44,6 +45,15 @@ $_SESSION['breadcrumb_nav4'] = "";
                         </div>
 
                         <div class="form-group">
+                            <label class="control-label">Code marche : </label>
+                            <?php echo getValeurChamp('NUM_MARCHE', 'marches', 'ID', getValeurChamp('ID_MARCHE', 'pointages', 'ID', $_REQUEST['pointages'])) ?>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Code chantier : </label>
+                            <?php echo getValeurChamp('CODE', 'chantiers', 'ID', getValeurChamp('ID_CHANTIER', 'pointages', 'ID', $_REQUEST['pointages'])) ?>
+                        </div>
+
+                        <div class="form-group">
                             <label class="control-label"><?php echo "Date pointage" ?> : </label>
                             <div class="controls">
                                 <input type="date" id="cal_required"  class="form-control input-small"  value="<?php echo getValeurChamp('DATE_POINTAGE', 'pointages', 'ID', $_REQUEST['pointages']); ?>"
@@ -51,24 +61,60 @@ $_SESSION['breadcrumb_nav4'] = "";
 
                             </div>
                         </div>
+                    </div>
+                        </div>
+                    </div>
 
+
+                        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
                         <div class="form-group">
-                            <label class="control-label"><?php echo "Heur normal" ?> : </label>
+                            <label class="control-label"><?php echo "Matin : Heur d'entrée" ?> : </label>
                             <div class="controls">
-                                <input type="number" id="<?php echo "HEUR_N" ?>_required"  value="<?php echo getValeurChamp('HEUR_N', 'pointages', 'ID', $_REQUEST['pointages']); ?>"
-                                       name="HEUR_N"  class="form-control input-small"/>
+                                <input type="number" id="<?php echo "M_H_EN" ?>_required"  value="<?php echo getValeurChamp('M_H_EN', 'pointages', 'ID', $_REQUEST['pointages']); ?>"
+                                       name="M_H_EN"  class="form-control input-small"/>
                             </div>
                         </div>
+            </div>
+            <div class="col-lg-6">
                         <div class="form-group">
-                            <label class="control-label"><?php echo "Heur supplementaire" ?> : </label>
+                            <label class="control-label"><?php echo "Matin : Heur de sortie" ?> : </label>
                             <div class="controls">
-                                <input type="number" id="<?php echo "HEUR_S" ?>_required"  value="<?php echo getValeurChamp('HEUR_S', 'pointages', 'ID', $_REQUEST['pointages']); ?>"
-                                       name="HEUR_S"  class="form-control input-small" />
+                                <input type="number" id="<?php echo "M_H_SOR" ?>_required"  value="<?php echo getValeurChamp('M_H_SOR', 'pointages', 'ID', $_REQUEST['pointages']); ?>"
+                                       name="M_H_SOR"  class="form-control input-small" />
                             </div>
                         </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+            
                         <div class="form-group">
-                            <label class="control-label">Code chantier : </label>
-                            <?php echo getTableList('chantiers', 'ID_CHANTIER', getValeurChamp('ID_CHANTIER', 'pointages', 'ID', $_REQUEST['pointages']), 'CODE', $change, $where, $libelle) ?>
+                            <label class="control-label"><?php echo "Soir : Heur d'entrée" ?> : </label>
+                            <div class="controls">
+                                <input type="number" id="<?php echo "S_H_EN" ?>_required"  value="<?php echo getValeurChamp('S_H_EN', 'pointages', 'ID', $_REQUEST['pointages']); ?>"
+                                       name="S_H_EN"  class="form-control input-small"/>
+                            </div>
+                        </div>
+            </div>
+            <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="control-label"><?php echo "Soir : Heur de sortie" ?> : </label>
+                            <div class="controls">
+                                <input type="number" id="<?php echo "S_H_SOR" ?>_required"  value="<?php echo getValeurChamp('S_H_SOR', 'pointages', 'ID', $_REQUEST['pointages']); ?>"
+                                       name="S_H_SOR"  class="form-control input-small" />
+                            </div>
+                        </div>
+            </div>
+        </div>
+                        <div class="form-group">
+                            <label class="control-label">Remarque : </label>
+                            <div class="controls">
+                                <textarea style="width:100%" rows="3" name="REMARQUE"  id="<?php echo "REMARQUE" ?>_required" ><?php echo getValeurChamp('REMARQUE', 'pointages', 'ID', $_REQUEST['pointages']); ?></textarea>
+                            </div>
                         </div>
                         <div class="form-actions">
                             <input type="submit" class="btn btn-primary" value="<?php echo _MODIFIER ?>" /> ou <a class="text-danger" href="pointages.php">Annuler</a>
