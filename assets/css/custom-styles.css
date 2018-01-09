@@ -10,7 +10,7 @@ http://creativecommons.org/licenses/by/3.0/
 ------------------------------------------------*/
 body {
     font-family: 'Open Sans', sans-serif;
-    background: #323232;
+    background: #2c4c73;
     /*#2e46c5*/
 }
 .credit{
@@ -21,6 +21,7 @@ body {
 }
 #wrapper {
     width: 100%;
+    background: #2c4c73;
 }
 
 #page-wrapper {
@@ -509,10 +510,10 @@ ul.nav.nav-second-level.collapse.in {background: #131212;}
 
 .navbar-side {
     border:none;
-    background: #323232;
+    background: #2c4c73;
 }
 .top-navbar {
-    background: #323232;
+    background: #2c4c73;
     border-bottom:none;
 }
 .top-navbar .nav > li > a > i {

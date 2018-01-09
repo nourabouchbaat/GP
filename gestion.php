@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<?php error_reporting(0) ?>
+<?php  error_reporting(0) ?>
 
 <link href="style.css" rel="stylesheet" type="text/css" />
 
@@ -347,18 +347,22 @@ if ($action == "ajouter_pointage") {
         redirect("ajouter_pointage.php?m=veuillez choisir un chantier ou un marche");
     } else {
         for ($i = 0; $i < $nb; $i++) {
-            $id = isset($_REQUEST['id_' . $i]) && !empty($_REQUEST['id_' . $i]) ? $_REQUEST['id_' . $i] : "";
-            $heurN = isset($_REQUEST['HEUR_N_' . $i]) ? $_REQUEST['HEUR_N_' . $i] : "";
-            $heurS = isset($_REQUEST['HEUR_S_' . $i]) ? $_REQUEST['HEUR_S_' . $i] : "";
+             $id = isset($_REQUEST['id_' . $i]) && !empty($_REQUEST['id_' . $i]) ? $_REQUEST['id_' . $i] : "";
+            $M_H_EN = isset($_REQUEST['M_H_EN_' . $i]) ? $_REQUEST['M_H_EN_' . $i] : "";
+            $M_H_SOR = isset($_REQUEST['M_H_SOR_' . $i]) ? $_REQUEST['M_H_SOR_' . $i] : "";
+            $S_H_EN = isset($_REQUEST['S_H_EN_' . $i]) ? $_REQUEST['S_H_EN_' . $i] : "";
+            $S_H_SOR = isset($_REQUEST['S_H_SOR_' . $i]) ? $_REQUEST['S_H_SOR_' . $i] : "";
+            $REMARQUE = isset($_REQUEST['REMARQUE_' . $i]) ? $_REQUEST['REMARQUE_' . $i] : "";
             $idChantier = getIdChantier($id, $idChantier, $idMarche);
-            (!empty($heurN) && $heurN > 0) || (!empty($heurS) && $heurS > 0);
-            if ((!empty($heurN) && $heurN > 0) || (!empty($heurS) && $heurS > 0)) {
-                $req = "INSERT INTO `pointages`(`ID_PERSONNELS`, `DATE_POINTAGE`, `HEUR_N`, `HEUR_S`, `ID_CHANTIER`) VALUES (" . $id . ",'" . $date_pointage . "'," . $heurN . "," . $heurS . "," . $idChantier . ")";
+            if((!empty($M_H_EN) && $M_H_EN > 0 && !empty($M_H_SOR) && $M_H_SOR > 0) || (!empty($S_H_EN) && $S_H_EN > 0 && !empty($S_H_SOR) && $S_H_SOR > 0)){
+               $req = "INSERT INTO `pointages`(`ID_PERSONNELS`, `DATE_POINTAGE`, `M_H_EN`, `M_H_SOR`, `S_H_EN`, `S_H_SOR`, `REMARQUE`, `ID_CHANTIER`) VALUES (" . $id . ",'" . $date_pointage . "'," . $M_H_EN . "," . $M_H_SOR . ",". $S_H_EN . "," . $S_H_SOR . ",'" . $REMARQUE . "'," . $idChantier . ")";
                 doQuery($req);
                 doQuery('COMMIT');
                 $msg = "L'Ajout a été effectue avec success";
             }
         }
+
+        redirect("ajouter_pointage.php?m=Ajout des pointage est effectue");
     }
 }
 

@@ -24,6 +24,15 @@ $_SESSION['link_nav4'] = "";
     </div>
     <div class="row">
         <div class="col-md-12">
+            <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Liste des marchies
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <!-- Advanced Tables -->
             <div class="panel panel-default">
                 <div class="panel-body">                      

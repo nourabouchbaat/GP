@@ -183,7 +183,7 @@ $_SESSION['link_nav3'] = "ajouter_pointage.php";
                                         <td><input type="number"  style="width: 100px" id="<?php echo "M_H_SOR" ?>__required" name="M_H_SOR_<?php echo $i ?>"  value="0"  class="form-control input-small"/></td>
                                         <td><input type="number"  style="width: 100px" id="<?php echo "S_H_EN" ?>__required" name="S_H_EN_<?php echo $i ?>"  value="0" class="form-control input-small"/></td>
                                         <td><input type="number"  style="width: 100px" id="<?php echo "S_H_SOR" ?>__required" name="S_H_SOR_<?php echo $i ?>"  value="0"  class="form-control input-small"/></td>
-                                        <td><textarea class="form-control input-small" name="REMARQUE" style="width: 200px"></textarea></td>
+                                        <td><textarea class="form-control input-small" name="REMARQUE_<?php echo $i ?>" style="width: 200px"></textarea></td>
                                         
                                         <input type="hidden" name="nb_personnage" value="<?php echo $nb ?>"/>
                                         </tr>
